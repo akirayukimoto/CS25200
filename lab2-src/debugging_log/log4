@@ -1,0 +1,40 @@
+Thu Jun 21 13:50:35 EDT 2018
++break main
+Breakpoint 1 at 0x4009f5: file test0.c, line 11.
++r
+Starting program: /u/data/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe5f8) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:477
+warning: Source file is more recent than executable.
+477	void at_exit_handler() {
++n
+478	  if (verbose) {
++n
+480	  }
++n
+482	
++n
+484	
++n
+485	//
++n
+main (argc=1, argv=0x7fffffffe5f8) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 9279) exited normally]
++n
+The program is not being run.
++q

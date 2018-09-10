@@ -1,0 +1,155 @@
+Thu Jun 21 21:48:32 EDT 2018
++break main
+Breakpoint 1 at 0x400b7e: file test8-1.c, line 15.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-1.c:15
+15	int main(int argc, char **argv) {
++n
+18	  srand(SEED);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++s
+malloc (size=1751) at MyMalloc.c:560
+560	  pthread_mutex_lock(&mutex);
++n
+561	  increase_malloc_calls();
++n
+563	  void *memory = allocate_object(size);
++s
+allocate_object (size=1751) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > ARENA_SIZE) {
++n
+236	  object_header *current = free_list->next;
++n
+238	  while (current != &free_list_sentinel) {
++watch current
+Hardware watchpoint 2: current
++n
+243	    if (current->object_size >= rounded_size) {
++n
+244	      size_t remainder = current->object_size - 
++n
+249	      if (remainder <= MINIMUM_SIZE) {
++n
+267	      else if (remainder > MINIMUM_SIZE) {
++n
+268	        object_header *new_header = (object_header *)((char *)current + 
++n
+272	                            rounded_size - 
++n
+270	        object_footer *cur_footer = 
++n
+276	                            current->object_size -
++n
+274	        object_footer *new_footer = 
++n
+279	        new_header->object_size = current->object_size - rounded_size;
++n
+280	        new_footer->object_size = new_header->object_size;
++n
+281	        new_header->status = UNALLOCATED;
++n
+282	        new_footer->status = new_header->status;
++n
+284	        current->object_size = rounded_size;
++n
+285	        current->status = ALLOCATED;
++n
+287	        cur_footer->object_size = current->object_size;
++n
+288	        cur_footer->status = ALLOCATED;
++n
+290	        current->prev->next = new_header;
++n
+291	        new_header->prev = current->prev;
++n
+292	        new_header->next = current->next;
++n
+293	        current->next->prev = new_header;
++n
+294	        current->prev = NULL;
++n
+295	        current->next = NULL;
++n
+297	        return (void *)(object_header *)(current + 1);
++n
+361	} /* allocate_object() */
++n
+
+Watchpoint 2 deleted because the program has left the block in
+which its expression is valid.
+0x00000000004016d4 in malloc (size=1751) at MyMalloc.c:563
+563	  void *memory = allocate_object(size);
++n
+565	  pthread_mutex_unlock(&mutex);
++n
+567	  return memory;
++n
+568	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:33
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++print ptrs[0]
+$1 = 0x603030 '\377' <repeats 200 times>...
++print &ptrs[0]
+$2 = (char **) 0x7fffffffca30
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++watch ptrs[i]
+Hardware watchpoint 3: ptrs[i]
++n
+
+Hardware watchpoint 3: ptrs[i]
+
+Old value = 0x0
+New value = 0x603ab0 ""
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:33
+33	    memset(ptrs[i], 255, alloc_size);
++watch &ptrs[i]
+Hardware watchpoint 4: &ptrs[i]
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 3: ptrs[i]
+
+Old value = 0x603ab0 '\377' <repeats 200 times>...
+New value = 0x0
+
+Hardware watchpoint 4: &ptrs[i]
+
+Old value = (char **) 0x7fffffffca40
+New value = (char **) 0x7fffffffca48
+0x0000000000400c14 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:21
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++print free_list
+$3 = (object_header *) 0x602140 <free_list_sentinel>
++print free_list->next
+$4 = (struct object_header_struct *) 0x604868
++quit

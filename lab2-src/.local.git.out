@@ -1,0 +1,1117 @@
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master aa988c7] Commit lab 2
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 43faa80] Commit lab 2
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master f90067b] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master cc4ce5c] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master ff60bf4] Commit lab 2
+ 1 file changed, 42 insertions(+), 3 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 1123e64] Commit lab 2
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 20fa936] Commit lab 2
+ 1 file changed, 36 insertions(+), 3 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master dafa9e9] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 6af8ccf] Commit lab 2
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 5c45337] Commit lab 2
+ 1 file changed, 25 insertions(+), 8 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 934fee6] Commit lab 2
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master f3d3a7c] Commit lab 2
+ 1 file changed, 27 insertions(+), 10 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master d14734e] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 85913ef] Commit lab 2
+ 1 file changed, 2 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master d1579fa] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 485bb5b] Commit lab 2
+ 2 files changed, 24 insertions(+), 19 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	test0
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 0bfde3f] Commit lab 2
+ 1 file changed, 3 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master e193a1f] Commit lab 2
+ 1 file changed, 57 insertions(+), 12 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 2f7d80e] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 81b8c74] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	test0
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 13be074] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 2c60977] Commit lab 2
+ 1 file changed, 11 insertions(+), 15 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 5bf78b4] Commit lab 2
+ 1 file changed, 45 insertions(+), 26 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 3d50d01] Commit lab 2
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 17e02df] Commit lab 2
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 2c574ec] Commit lab 2
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master fbdf8e2] Commit lab 2
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 573c858] Commit lab 2
+ 1 file changed, 3 insertions(+)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 5373ad5] Commit lab 2
+ 1 file changed, 5 insertions(+)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 84a1776] Commit lab 2
+ 1 file changed, 4 insertions(+)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 702e77e] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master b811d8c] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 623ab5f] Commit lab 2
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master 40035b1] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	test0.c
+Your branch is up-to-date with 'origin/master'.
+[master ad32a22] Commit lab 2
+ 1 file changed, 26 insertions(+), 49 deletions(-)
+ rewrite test0.c (62%)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	test0
+
+nothing added to commit but untracked files present
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+Untracked files:
+	.local.git.out
+	.local.total.out
+	debugging_log/
+	none
+	test1-1.org.out_32
+	test1-1.out_32
+	test1-2.org.out_32
+	test1-2.out_32
+	test1-3.org.out_32
+	test1-3.out_32
+	test1-4.org.out_32
+	test1-4.out_32
+	test1.org.out_32
+	test1.out_32
+	test2.org.out_32
+	test2.out_32
+	test3.org.out_32
+	test3.out_32
+	test4.org.out_32
+	test4.out_32
+	test5.org.out_32
+	test5.out_32
+	test6.org.out_32
+	test6.out_32
+	test7.org.out_32
+	test7.out_32
+	test8-1.org.out_32
+	test8-1.out_32
+	test8-2.org.out_32
+	test8-2.out_32
+	test8-3.org.out_32
+	test8-3.out_32
+	test8-4.org.out_32
+	test8-4.out_32
+	test8-5.org.out_32
+	test8-5.out_32
+	test8-7.org.out_32
+	test8-7.out_32
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master b6a2b7e] Commit lab 2
+ 1 file changed, 2 insertions(+)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 96ac8fe] Commit lab 2
+ 1 file changed, 3 insertions(+)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master 336c8cb] Commit lab 2
+ 1 file changed, 1 insertion(+)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master 4b21d52] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master 3254dc3] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master c77f257] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master b258008] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 441957e] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 59cb070] Commit lab 2
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master 6655e5f] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master b097622] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master edb987b] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+M	test8-1.c
+Your branch is up-to-date with 'origin/master'.
+[master f3e6282] Commit lab 2
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	.local.total.out
+	debugging_log/
+	none
+	test1-1.org.out_32
+	test1-1.out_32
+	test1-2.org.out_32
+	test1-2.out_32
+	test1-3.org.out_32
+	test1-3.out_32
+	test1-4.org.out_32
+	test1-4.out_32
+	test1.org.out_32
+	test1.out_32
+	test2.org.out_32
+	test2.out_32
+	test3.org.out_32
+	test3.out_32
+	test4.org.out_32
+	test4.out_32
+	test5.org.out_32
+	test5.out_32
+	test6.org.out_32
+	test6.out_32
+	test7.org.out_32
+	test7.out_32
+	test8-1.org.out_32
+	test8-1.out_32
+	test8-2.org.out_32
+	test8-2.out_32
+	test8-3.org.out_32
+	test8-3.out_32
+	test8-4.org.out_32
+	test8-4.out_32
+	test8-5.org.out_32
+	test8-5.out_32
+	test8-7.org.out_32
+	test8-7.out_32
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 18456ea] Commit lab 2
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master feb675d] Commit lab 2
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 027b035] Commit lab 2
+ 1 file changed, 9 insertions(+), 18 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master d3cc1bb] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 339c960] Commit lab 2
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master d0f276d] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	.local.total.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	diff.out
+	none
+	test0
+	test0_32
+	test1
+	test1-1
+	test1-1.org.out
+	test1-1.org.out_32
+	test1-1.out
+	test1-1.out_32
+	test1-1_32
+	test1-2
+	test1-2.org.out
+	test1-2.org.out_32
+	test1-2.out
+	test1-2.out_32
+	test1-2_32
+	test1-3
+	test1-3.org.out
+	test1-3.org.out_32
+	test1-3.out
+	test1-3.out_32
+	test1-3_32
+	test1-4
+	test1-4.org.out
+	test1-4.org.out_32
+	test1-4.out
+	test1-4.out_32
+	test1-4_32
+	test1.org.out
+	test1.org.out_32
+	test1.out
+	test1.out_32
+	test1_32
+	test2
+	test2.org.out
+	test2.org.out_32
+	test2.out
+	test2.out_32
+	test2_32
+	test3
+	test3.org.out
+	test3.org.out_32
+	test3.out
+	test3.out_32
+	test3_32
+	test4
+	test4.org.out
+	test4.org.out_32
+	test4.out
+	test4.out_32
+	test4_32
+	test5
+	test5.org.out
+	test5.org.out_32
+	test5.out
+	test5.out_32
+	test5_32
+	test6
+	test6.org.out
+	test6.org.out_32
+	test6.out
+	test6.out_32
+	test6_32
+	test7
+	test7.org.out
+	test7.org.out_32
+	test7.out
+	test7.out_32
+	test7_32
+	test8-1
+	test8-1.org.out
+	test8-1.org.out_32
+	test8-1.out
+	test8-1.out_32
+	test8-1_32
+	test8-2
+	test8-2.org.out
+	test8-2.org.out_32
+	test8-2.out
+	test8-2.out_32
+	test8-2_32
+	test8-3
+	test8-3.org.out
+	test8-3.org.out_32
+	test8-3.out
+	test8-3.out_32
+	test8-3_32
+	test8-4
+	test8-4.org.out
+	test8-4.org.out_32
+	test8-4.out
+	test8-4.out_32
+	test8-4_32
+	test8-5
+	test8-5.org.out
+	test8-5.org.out_32
+	test8-5.out
+	test8-5.out_32
+	test8-5_32
+	test8-7
+	test8-7.org.out
+	test8-7.org.out_32
+	test8-7.out
+	test8-7.out_32
+	test8-7_32
+	total.out
+	total.txt
+
+nothing added to commit but untracked files present
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+Untracked files:
+	.local.git.out
+	.local.total.out
+	debugging_log/
+	none
+	test1-1.org.out_32
+	test1-1.out_32
+	test1-2.org.out_32
+	test1-2.out_32
+	test1-3.org.out_32
+	test1-3.out_32
+	test1-4.org.out_32
+	test1-4.out_32
+	test1.org.out_32
+	test1.out_32
+	test2.org.out_32
+	test2.out_32
+	test3.org.out_32
+	test3.out_32
+	test4.org.out_32
+	test4.out_32
+	test5.org.out_32
+	test5.out_32
+	test6.org.out_32
+	test6.out_32
+	test7.org.out_32
+	test7.out_32
+	test8-1.org.out_32
+	test8-1.out_32
+	test8-2.org.out_32
+	test8-2.out_32
+	test8-3.org.out_32
+	test8-3.out_32
+	test8-4.org.out_32
+	test8-4.out_32
+	test8-5.org.out_32
+	test8-5.out_32
+	test8-7.org.out_32
+	test8-7.out_32
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 66f6e95] Commit lab 2
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master d26ae78] Commit lab 2
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master b46ae73] Commit lab 2
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master d7b0890] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 7a95515] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 55aa323] Commit lab 2
+ 1 file changed, 29 insertions(+), 16 deletions(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 553d0a7] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	test8-1.c
+Your branch is up to date with 'origin/master'.
+[master d9ca808] Commit lab 2
+ 1 file changed, 1 deletion(-)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 84aadad] Commit lab 2
+ 1 file changed, 4 insertions(+)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master aaf0f3d] Commit lab 2
+ 1 file changed, 1 insertion(+)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master dbda7cd] Commit lab 2
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 6e066d6] Commit lab 2
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master ad5d024] Commit lab 2
+ 1 file changed, 26 insertions(+), 16 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 0b71476] Commit lab 2
+ 1 file changed, 17 insertions(+), 29 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	.local.total.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	diff.out
+	none
+	test0
+	test0_32
+	test1
+	test1-1
+	test1-1.org.out
+	test1-1.org.out_32
+	test1-1.out
+	test1-1.out_32
+	test1-1_32
+	test1-2
+	test1-2.org.out
+	test1-2.org.out_32
+	test1-2.out
+	test1-2.out_32
+	test1-2_32
+	test1-3
+	test1-3.org.out
+	test1-3.org.out_32
+	test1-3.out
+	test1-3.out_32
+	test1-3_32
+	test1-4
+	test1-4.org.out
+	test1-4.org.out_32
+	test1-4.out
+	test1-4.out_32
+	test1-4_32
+	test1.org.out
+	test1.org.out_32
+	test1.out
+	test1.out_32
+	test1_32
+	test2
+	test2.org.out
+	test2.org.out_32
+	test2.out
+	test2.out_32
+	test2_32
+	test3
+	test3.org.out
+	test3.org.out_32
+	test3.out
+	test3.out_32
+	test3_32
+	test4
+	test4.org.out
+	test4.org.out_32
+	test4.out
+	test4.out_32
+	test4_32
+	test5
+	test5.org.out
+	test5.org.out_32
+	test5.out
+	test5.out_32
+	test5_32
+	test6
+	test6.org.out
+	test6.org.out_32
+	test6.out
+	test6.out_32
+	test6_32
+	test7
+	test7.org.out
+	test7.org.out_32
+	test7.out
+	test7.out_32
+	test7_32
+	test8-1
+	test8-1.org.out
+	test8-1.org.out_32
+	test8-1.out
+	test8-1.out_32
+	test8-1_32
+	test8-2
+	test8-2.org.out
+	test8-2.org.out_32
+	test8-2.out
+	test8-2.out_32
+	test8-2_32
+	test8-3
+	test8-3.org.out
+	test8-3.org.out_32
+	test8-3.out
+	test8-3.out_32
+	test8-3_32
+	test8-4
+	test8-4.org.out
+	test8-4.org.out_32
+	test8-4.out
+	test8-4.out_32
+	test8-4_32
+	test8-5
+	test8-5.org.out
+	test8-5.org.out_32
+	test8-5.out
+	test8-5.out_32
+	test8-5_32
+	test8-7
+	test8-7.org.out
+	test8-7.org.out_32
+	test8-7.out
+	test8-7.out_32
+	test8-7_32
+	total.out
+	total.txt
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master e2b8aaf] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master d190451] Commit lab 2
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	.local.total.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	diff.out
+	none
+	tags
+	test0
+	test0_32
+	test1
+	test1-1
+	test1-1.org.out
+	test1-1.org.out_32
+	test1-1.out
+	test1-1.out_32
+	test1-1_32
+	test1-2
+	test1-2.org.out
+	test1-2.org.out_32
+	test1-2.out
+	test1-2.out_32
+	test1-2_32
+	test1-3
+	test1-3.org.out
+	test1-3.org.out_32
+	test1-3.out
+	test1-3.out_32
+	test1-3_32
+	test1-4
+	test1-4.org.out
+	test1-4.org.out_32
+	test1-4.out
+	test1-4.out_32
+	test1-4_32
+	test1.org.out
+	test1.org.out_32
+	test1.out
+	test1.out_32
+	test1_32
+	test2
+	test2.org.out
+	test2.org.out_32
+	test2.out
+	test2.out_32
+	test2_32
+	test3
+	test3.org.out
+	test3.org.out_32
+	test3.out
+	test3.out_32
+	test3_32
+	test4
+	test4.org.out
+	test4.org.out_32
+	test4.out
+	test4.out_32
+	test4_32
+	test5
+	test5.org.out
+	test5.org.out_32
+	test5.out
+	test5.out_32
+	test5_32
+	test6
+	test6.org.out
+	test6.org.out_32
+	test6.out
+	test6.out_32
+	test6_32
+	test7
+	test7.org.out
+	test7.org.out_32
+	test7.out
+	test7.out_32
+	test7_32
+	test8-1
+	test8-1.org.out
+	test8-1.org.out_32
+	test8-1.out
+	test8-1.out_32
+	test8-1_32
+	test8-2
+	test8-2.org.out
+	test8-2.org.out_32
+	test8-2.out
+	test8-2.out_32
+	test8-2_32
+	test8-3
+	test8-3.org.out
+	test8-3.org.out_32
+	test8-3.out
+	test8-3.out_32
+	test8-3_32
+	test8-4
+	test8-4.org.out
+	test8-4.org.out_32
+	test8-4.out
+	test8-4.out_32
+	test8-4_32
+	test8-5
+	test8-5.org.out
+	test8-5.org.out_32
+	test8-5.out
+	test8-5.out_32
+	test8-5_32
+	test8-7
+	test8-7.org.out
+	test8-7.org.out_32
+	test8-7.out
+	test8-7.out_32
+	test8-7_32
+	total.out
+	total.txt
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master e2e6021] Commit lab 2
+ 1 file changed, 11 insertions(+), 12 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 53c8f53] Commit lab 2
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	.local.total.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	diff.out
+	none
+	test0
+	test0_32
+	test1
+	test1-1
+	test1-1.org.out
+	test1-1.org.out_32
+	test1-1.out
+	test1-1.out_32
+	test1-1_32
+	test1-2
+	test1-2.org.out
+	test1-2.org.out_32
+	test1-2.out
+	test1-2.out_32
+	test1-2_32
+	test1-3
+	test1-3.org.out
+	test1-3.org.out_32
+	test1-3.out
+	test1-3.out_32
+	test1-3_32
+	test1-4
+	test1-4.org.out
+	test1-4.org.out_32
+	test1-4.out
+	test1-4.out_32
+	test1-4_32
+	test1.org.out
+	test1.org.out_32
+	test1.out
+	test1.out_32
+	test1_32
+	test2
+	test2.org.out
+	test2.org.out_32
+	test2.out
+	test2.out_32
+	test2_32
+	test3
+	test3.org.out
+	test3.org.out_32
+	test3.out
+	test3.out_32
+	test3_32
+	test4
+	test4.org.out
+	test4.org.out_32
+	test4.out
+	test4.out_32
+	test4_32
+	test5
+	test5.org.out
+	test5.org.out_32
+	test5.out
+	test5.out_32
+	test5_32
+	test6
+	test6.org.out
+	test6.org.out_32
+	test6.out
+	test6.out_32
+	test6_32
+	test7
+	test7.org.out
+	test7.org.out_32
+	test7.out
+	test7.out_32
+	test7_32
+	test8-1
+	test8-1.org.out
+	test8-1.org.out_32
+	test8-1.out
+	test8-1.out_32
+	test8-1_32
+	test8-2
+	test8-2.org.out
+	test8-2.org.out_32
+	test8-2.out
+	test8-2.out_32
+	test8-2_32
+	test8-3
+	test8-3.org.out
+	test8-3.org.out_32
+	test8-3.out
+	test8-3.out_32
+	test8-3_32
+	test8-4
+	test8-4.org.out
+	test8-4.org.out_32
+	test8-4.out
+	test8-4.out_32
+	test8-4_32
+	test8-5
+	test8-5.org.out
+	test8-5.org.out_32
+	test8-5.out
+	test8-5.out_32
+	test8-5_32
+	test8-7
+	test8-7.org.out
+	test8-7.org.out_32
+	test8-7.out
+	test8-7.out_32
+	test8-7_32
+	total.out
+	total.txt
+
+nothing added to commit but untracked files present
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master af924f2] Commit lab 2
+ 1 file changed, 7 insertions(+), 10 deletions(-)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master e9c5164] Commit lab 2
+ 1 file changed, 1 insertion(+)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 239ea1b] Commit lab 2
+ 1 file changed, 20 insertions(+)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 8513967] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 17cbfa1] Commit lab 2
+ 1 file changed, 3 insertions(+)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 562e08f] Commit lab 2
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 4c98cb8] Commit lab 2
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+M	test0.c
+Your branch is up to date with 'origin/master'.
+[master 7fc16f6] Commit lab 2
+ 1 file changed, 2 insertions(+)
+M	MyMalloc.c
+Your branch is up to date with 'origin/master'.
+[master 4e15a1b] Commit lab 2
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master c5ddcbd] Commit lab 2
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Your branch is up-to-date with 'origin/master'.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	.local.total.out
+	MyMalloc.o
+	MyMalloc.so
+	debugging_log/
+	diff.out
+	none
+	test0
+	test0_32
+	test1
+	test1-1
+	test1-1.org.out
+	test1-1.org.out_32
+	test1-1.out
+	test1-1.out_32
+	test1-1_32
+	test1-2
+	test1-2.org.out
+	test1-2.org.out_32
+	test1-2.out
+	test1-2.out_32
+	test1-2_32
+	test1-3
+	test1-3.org.out
+	test1-3.org.out_32
+	test1-3.out
+	test1-3.out_32
+	test1-3_32
+	test1-4
+	test1-4.org.out
+	test1-4.org.out_32
+	test1-4.out
+	test1-4.out_32
+	test1-4_32
+	test1.org.out
+	test1.org.out_32
+	test1.out
+	test1.out_32
+	test1_32
+	test2
+	test2.org.out
+	test2.org.out_32
+	test2.out
+	test2.out_32
+	test2_32
+	test3
+	test3.org.out
+	test3.org.out_32
+	test3.out
+	test3.out_32
+	test3_32
+	test4
+	test4.org.out
+	test4.org.out_32
+	test4.out
+	test4.out_32
+	test4_32
+	test5
+	test5.org.out
+	test5.org.out_32
+	test5.out
+	test5.out_32
+	test5_32
+	test6
+	test6.org.out
+	test6.org.out_32
+	test6.out
+	test6.out_32
+	test6_32
+	test7
+	test7.org.out
+	test7.org.out_32
+	test7.out
+	test7.out_32
+	test7_32
+	test8-1
+	test8-1.org.out
+	test8-1.org.out_32
+	test8-1.out
+	test8-1.out_32
+	test8-1_32
+	test8-2
+	test8-2.org.out
+	test8-2.org.out_32
+	test8-2.out
+	test8-2.out_32
+	test8-2_32
+	test8-3
+	test8-3.org.out
+	test8-3.org.out_32
+	test8-3.out
+	test8-3.out_32
+	test8-3_32
+	test8-4
+	test8-4.org.out
+	test8-4.org.out_32
+	test8-4.out
+	test8-4.out_32
+	test8-4_32
+	test8-5
+	test8-5.org.out
+	test8-5.org.out_32
+	test8-5.out
+	test8-5.out_32
+	test8-5_32
+	test8-7
+	test8-7.org.out
+	test8-7.org.out_32
+	test8-7.out
+	test8-7.out_32
+	test8-7_32
+	total.out
+	total.txt
+
+nothing added to commit but untracked files present
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master 51c1227] Commit lab 2
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master e0e3bf4] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	MyMalloc.c
+Your branch is up-to-date with 'origin/master'.
+[master b4d0e11] Commit lab 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)

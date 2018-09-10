@@ -1,0 +1,649 @@
+Mon Jul 30 13:10:44 EDT 2018
++break server.c:parse_respond 
+Breakpoint 1 at 0x1874: file server.c, line 51.
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x55555575a690, request=0x7fffffffe3f0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++n
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+128	    if (!is_image) {
++n
+129	      fseek(f, 0, SEEK_END);
++n
+130	      num = ftell(f);
++n
+131	      fseek(f, 0, SEEK_SET);
++n
+132	      message_body = (char *)malloc(sizeof(char) * num);
++n
+136	      if (message_body != NULL) {
++n
+137	        fread(message_body, 1, num, f);
++n
+140	      message_length = num;
++n
+168	    printf("message body: %s\n", message_body);
++n
+169	    fclose(f);
++n
+171	  if (status == 200) {
++n
+173	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+175	    response.http_version = request->http_version;
++n
+176	    response.status_code = status;
++n
+179	    content_type_head.key = "Content-Type";
++n
+180	    content_type_head.value = content_type;
++n
+182	    connection_head.key = "Connection";
++n
+183	    connection_head.value = "close";
++n
+186	    message_length_head.key = "Content-Length";
++n
+187	    char *msg_length = (char *)malloc(sizeof(char) * message_length);
++n
+189	    sprintf(msg_length, "%d", message_length);
++n
+190	    message_length_head.value = msg_length;
++n
+191	    printf("msg len: %s\n", msg_length);
++n
+193	    header_array[0] = content_type_head;
++n
+194	    header_array[1] = connection_head;
++n
+195	    header_array[2] = message_length_head;
++n
+196	    printf("what\n");
++n
+197	    response.headers = header_array;
++n
+198	    response.num_headers = 3;
++n
+200	    response.message_body = (char *)malloc(sizeof(char) * message_length);
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++n
+202	    for (j = 0; j < message_length; j++) {
++n
+203	      response.message_body[j] = message_body[j];
++until 206
+parse_respond (sock=0x55555575a690, request=0x7fffffffe3f0) at server.c:207
+207	    printf("what2\n");
++n
+208	    char *to_string = response_string(&response);
++n
+209	    printf("to_string: %s\n", to_string);
++n
+210	    int my_length = strlen(to_string) - strlen(message_body) + message_length;
++n
+211	    socket_write(sock, to_string, my_length);
++n
+264	}
++n
+handle (sock=0x55555575a690) at server.c:402
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++until 408
+handle (sock=0x55555575a690) at server.c:426
+426	  close_socket(sock);
++n
+427	}
++n
+run_linear_server (acceptor=0x55555575a670) at server.c:15
+15	  while (1) {
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x55555575a690, request=0x7fffffffe3f0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++until 208
+parse_respond (sock=0x55555575a690, request=0x7fffffffe3f0) at server.c:208
+208	    char *to_string = response_string(&response);
++n
+209	    printf("to_string: %s\n", to_string);
++n
+210	    int my_length = strlen(to_string) - strlen(message_body) + message_length;
++n
+211	    socket_write(sock, to_string, my_length);
++n
+264	}
++n
+handle (sock=0x55555575a690) at server.c:402
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+403	    free(general_lines[j]);
++n
+402	  for (j = 0; j < num_lines; j++) {
++n
+405	  free(general_lines);
++n
+406	  general_lines = NULL;
++n
+426	  close_socket(sock);
++n
+427	}
++n
+run_linear_server (acceptor=0x55555575a670) at server.c:15
+15	  while (1) {
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x55555575a690, request=0x7fffffffe3f0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++until 208
+parse_respond (sock=0x55555575a690, request=0x7fffffffe3f0) at server.c:208
+208	    char *to_string = response_string(&response);
++s
+response_string (response=0x7fffffffe2f0) at http_messages.c:119
+119	  char *to_string = strdup(response->http_version);
++n
+124	  int new_length = strlen(to_string) + sizeof(response->status_code) + 1;
++n
+125	  to_string = realloc(to_string, new_length);
++n
+126	  sprintf(to_string, "%s %d ", to_string, response->status_code);
++n
+132	    const int status = response->status_code;
++n
+133	    response->reason_phrase = strdup(status_reason(status));
++n
+134	    new_length = strlen(to_string) + strlen(response->reason_phrase) + 3;
++n
+135	    to_string = realloc(to_string, new_length);
++n
+136	    strcat(to_string, response->reason_phrase);
++n
+137	    strcat(to_string, "\r\n");
++n
+147	  int content_length = 0;
++n
+148	  for (i = 0; i < response->num_headers; i++) {
++n
+149	    if (response->headers[i].key != NULL && response->headers[i].value != NULL) {
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+151	        strlen(response->headers[i].value) + 5;
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+151	        strlen(response->headers[i].value) + 5;
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+152	      to_string = realloc(to_string, new_length);
++n
+153	      strcat(to_string, response->headers[i].key);
++n
+154	      strcat(to_string, ": ");
++n
+155	      strcat(to_string, response->headers[i].value);
++n
+156	      strcat(to_string, "\r\n");
++n
+157	      if (!strcmp(response->headers[i].key, "Content-Length")) {
++n
+148	  for (i = 0; i < response->num_headers; i++) {
++n
+149	    if (response->headers[i].key != NULL && response->headers[i].value != NULL) {
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+151	        strlen(response->headers[i].value) + 5;
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+151	        strlen(response->headers[i].value) + 5;
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+152	      to_string = realloc(to_string, new_length);
++n
+153	      strcat(to_string, response->headers[i].key);
++n
+154	      strcat(to_string, ": ");
++watch to_string 
+Hardware watchpoint 2: to_string
++n
+155	      strcat(to_string, response->headers[i].value);
++n
+156	      strcat(to_string, "\r\n");
++n
+157	      if (!strcmp(response->headers[i].key, "Content-Length")) {
++n
+148	  for (i = 0; i < response->num_headers; i++) {
++print to_string 
+$1 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\n"
++n
+149	    if (response->headers[i].key != NULL && response->headers[i].value != NULL) {
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+151	        strlen(response->headers[i].value) + 5;
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+151	        strlen(response->headers[i].value) + 5;
++n
+150	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
++n
+152	      to_string = realloc(to_string, new_length);
++n
+153	      strcat(to_string, response->headers[i].key);
++n
+154	      strcat(to_string, ": ");
++n
+155	      strcat(to_string, response->headers[i].value);
++n
+156	      strcat(to_string, "\r\n");
++n
+157	      if (!strcmp(response->headers[i].key, "Content-Length")) {
++n
+158	        content_length = atoi(response->headers[i].value);
++n
+159	        printf("content-length: %d\n", content_length);
++n
+148	  for (i = 0; i < response->num_headers; i++) {
++n
+165	    if (content_length == 0) {
++n
+169	      new_length = strlen(to_string) + 5 + content_length;
++n
+171	    to_string = realloc(to_string, new_length);
++n
+172	    strcat(to_string, "\r\n");
++n
+175	    int my_length = strlen(to_string);
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++print to_string 
+$2 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\nContent-Length: 27393\r\n\r\n\211P"
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++print to_string 
+$3 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\nContent-Length: 27393\r\n\r\n\211PNG\006\002"
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++print to_string 
+$4 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\nContent-Length: 27393\r\n\r\n\211PNG\r\n\032\n"
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++print to_string 
+$5 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\nContent-Length: 27393\r\n\r\n\211PNG\r\n\032\n"
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++n
+176	    for (i = 0; i < content_length; i++) {
++n
+177	      int index = my_length + i;
++n
+178	      to_string[index] = response->message_body[i];
++until 179
+response_string (response=0x7fffffffe2f0) at http_messages.c:181
+181	    strcat(to_string, "\r\n");
++print to_string 
+$6 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\nContent-Length: 27393\r\n\r\n\211PNG\r\n\032\n"
++n
+184	  printf("%s\n", to_string);
++n
+185	  return to_string;
++print to_string 
+$7 = 0x55555577b960 "HTTP/1.1 200 OK\r\nContent-Type: image/png;charset=binary\r\nConnection: close\r\nContent-Length: 27393\r\n\r\n\211PNG\r\n\032\n\r\n"
++q

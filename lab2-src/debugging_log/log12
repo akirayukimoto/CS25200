@@ -1,0 +1,50 @@
+Fri Jun 22 21:49:50 EDT 2018
++r main
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-2 main
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 26780) exited normally]
++break main
+Breakpoint 1 at 0x400ad5: file test8-2.c, line 15.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-2 main
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffea48) at test8-2.c:15
+15	  size_t size = 2097152;
++n
+16	  char *mem = (char*) malloc(size);
++s
+malloc (size=2097152) at MyMalloc.c:563
+563	  pthread_mutex_lock(&mutex);
++n
+564	  increase_malloc_calls();
++n
+566	  void *memory = allocate_object(size);
++s
+allocate_object (size=2097152) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > (ARENA_SIZE + 
++n
+238	  object_header *current = free_list->next;
++n
+242	  while (current != &free_list_sentinel) {
++n
+247	    if (current->object_size >= rounded_size) {
++n
+248	      size_t remainder = current->object_size - 
++n
+253	      if (remainder < MINIMUM_SIZE) {
++n
+270	      else if (remainder >= MINIMUM_SIZE) {
++print remainder
+$1 = 18446744073709551568
++q
+Not confirmed.
++q

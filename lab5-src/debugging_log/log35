@@ -1,0 +1,75 @@
+Tue Jul 31 14:58:26 EDT 2018
++break handle_dir.c:100
+Breakpoint 1 at 0x408c: file handle_dir.c, line 100.
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:103
+103	  if (num_info > 1) {
++n
+104	    qsort(info_array, num_info, sizeof(struct info), compare_name_ascending);
++n
+108	  header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+110	  content_type_header.key = "Content-Type";
++n
+111	  content_type_header.value = "text/html";
++n
+113	  connection_header.key = "Connection";
++n
+114	  connection_header.value = "close";
++n
+115	  header_array[0] = content_type_header;
++n
+116	  header_array[1] = connection_header;
++n
+119	  char *message_body = strdup("<html><head><title>");
++n
+120	  char *part = "Index of Directory</title></head><body><h1>Index of";
++n
+121	  int new_length = strlen(message_body) + strlen(part) + 1;
++n
+122	  message_body = realloc(message_body, new_length);
++n
+123	  strcat(message_body, part);
++n
+125	  new_length = strlen(message_body) + strlen(dir_path) + 1;
++n
+126	  message_body = realloc(message_body, sizeof(char) * new_length);
++n
+127	  strcat(message_body, dir_path);
++n
+128	  char *tags1 = "</h1>";
++n
+129	  char *tags2 = "<table><th>Name</th><th>Date</th><th>Size</th>";
++n
+130	  new_length = strlen(message_body) + strlen(tags1) + strlen(tags2) + 1;
++n
+131	  message_body = realloc(message_body, sizeof(char) * new_length);
++n
+132	  strcat(message_body, tags1);
++list
+127	  strcat(message_body, dir_path);
+128	  char *tags1 = "</h1>";
+129	  char *tags2 = "<table><th>Name</th><th>Date</th><th>Size</th>";
+130	  new_length = strlen(message_body) + strlen(tags1) + strlen(tags2) + 1;
+131	  message_body = realloc(message_body, sizeof(char) * new_length);
+132	  strcat(message_body, tags1);
+133	  strcat(message_body, tags2);
+134	
+135	  // required tags
+136	  char *tag_r1 = "<tr>";
++until 200
+
+Program received signal SIGSEGV, Segmentation fault.
+__strlen_avx2 () at ../sysdeps/x86_64/multiarch/strlen-avx2.S:62
+62	../sysdeps/x86_64/multiarch/strlen-avx2.S: No such file or directory.
++n
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++n
+The program is not being run.
++q

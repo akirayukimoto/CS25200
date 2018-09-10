@@ -1,0 +1,102 @@
+Fri Jul 27 12:03:37 EDT 2018
++break misc.c:38
+Breakpoint 1 at 0x40248d: file misc.c, line 38.
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++bt
+#0  0x00007ffff7825428 in __GI_raise (sig=sig@entry=6)
+    at ../sysdeps/unix/sysv/linux/raise.c:54
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+#2  0x00007ffff78677ea in __libc_message (do_abort=do_abort@entry=2, 
+    fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff78734aa in malloc_printerr (ar_ptr=0x3, ptr=<optimized out>, 
+    str=<optimized out>, action=3) at malloc.c:5006
+#4  _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, oldp=oldp@entry=0x60fae0, 
+    oldsize=oldsize@entry=32, nb=nb@entry=64) at malloc.c:4252
+#5  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x60faf0, bytes=50) at malloc.c:3045
+#6  0x0000000000402e3b in response_string (response=0x7fffffffe7b0) at http_messages.c:151
+#7  0x0000000000401de4 in parse_respond (sock=0x606440, request=0x7fffffffe8b0)
+    at server.c:222
+#8  0x0000000000402361 in handle (sock=0x606440) at server.c:366
+#9  0x00000000004016e0 in run_linear_server (acceptor=0x606420) at server.c:17
+#10 0x00000000004016a4 in main (argc=2, argv=0x7fffffffea58) at main.c:106
++up
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+89	abort.c: No such file or directory.
++up
+#2  0x00007ffff78677ea in __libc_message (do_abort=do_abort@entry=2, 
+    fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+175	../sysdeps/posix/libc_fatal.c: No such file or directory.
++up
+#3  0x00007ffff78734aa in malloc_printerr (ar_ptr=0x3, ptr=<optimized out>, 
+    str=<optimized out>, action=3) at malloc.c:5006
+5006	malloc.c: No such file or directory.
++up
+#4  _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, oldp=oldp@entry=0x60fae0, 
+    oldsize=oldsize@entry=32, nb=nb@entry=64) at malloc.c:4252
+4252	in malloc.c
++up
+#5  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x60faf0, bytes=50) at malloc.c:3045
+3045	in malloc.c
++up
+#6  0x0000000000402e3b in response_string (response=0x7fffffffe7b0) at http_messages.c:151
+151	      to_string = realloc(to_string, new_length);
++p response
+$1 = (http_response *) 0x7fffffffe7b0
++p *response
+$2 = {http_version = 0x403a61 "HTTP/1.1", status_code = 404, 
+  reason_phrase = 0x60ba90 "Not Found", num_headers = 3, headers = 0x60b0a0, 
+  message_body = 0x60fc50 "404 Not Found"}
++p to_string
+$3 = 0x60faf0 "HTTP/1.1 404 Not Found\r\n"
++p new_length
+$4 = 50
++list
+146	  //printf("headers: %d\n", response->num_headers);
+147	  for (i = 0; i < response->num_headers; i++) {
+148	    if (response->headers[i].key != NULL && response->headers[i].value != NULL) {
+149	      new_length = strlen(to_string) + strlen(response->headers[i].key) + 
+150	        strlen(response->headers[i].value) + 4;
+151	      to_string = realloc(to_string, new_length);
+152	      strcat(to_string, response->headers[i].key);
+153	      strcat(to_string, ": ");
+154	      strcat(to_string, response->headers[i].value);
+155	      strcat(to_string, "\r\n");
++bt
+#0  0x00007ffff7825428 in __GI_raise (sig=sig@entry=6)
+    at ../sysdeps/unix/sysv/linux/raise.c:54
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+#2  0x00007ffff78677ea in __libc_message (do_abort=do_abort@entry=2, 
+    fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff78734aa in malloc_printerr (ar_ptr=0x3, ptr=<optimized out>, 
+    str=<optimized out>, action=3) at malloc.c:5006
+#4  _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, oldp=oldp@entry=0x60fae0, 
+    oldsize=oldsize@entry=32, nb=nb@entry=64) at malloc.c:4252
+#5  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x60faf0, bytes=50) at malloc.c:3045
+#6  0x0000000000402e3b in response_string (response=0x7fffffffe7b0) at http_messages.c:151
+#7  0x0000000000401de4 in parse_respond (sock=0x606440, request=0x7fffffffe8b0)
+    at server.c:222
+#8  0x0000000000402361 in handle (sock=0x606440) at server.c:366
+#9  0x00000000004016e0 in run_linear_server (acceptor=0x606420) at server.c:17
+#10 0x00000000004016a4 in main (argc=2, argv=0x7fffffffea58) at main.c:106
++list
+156	    }
+157	  }
+158	
+159	//  if (!strcmp(response->message_body, "")) {
+160	    new_length = strlen(to_string) + 2 + strlen(response->message_body);
+161	    to_string = realloc(to_string, new_length);
+162	    strcat(to_string, "\r\n");
+163	    strcat(to_string, response->message_body);
+164	//    strcat(to_string, "\r\n");
+165	//  }
++quit

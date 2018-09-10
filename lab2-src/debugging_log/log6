@@ -1,0 +1,131 @@
+Thu Jun 21 20:28:42 EDT 2018
++break main
+Breakpoint 1 at 0x400b7e: file test8-1.c, line 15.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-1.c:15
+15	int main(int argc, char **argv) {
++n
+18	  srand(SEED);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++until 34
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:36
+36	  print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++s
+41	    free(ptrs[i]);
++s
+free (ptr=0x603030) at MyMalloc.c:575
+warning: Source file is more recent than executable.
+575	  pthread_mutex_lock(&mutex);
++s
+__GI___pthread_mutex_lock (mutex=0x6020e0 <mutex>) at ../nptl/pthread_mutex_lock.c:64
+64	../nptl/pthread_mutex_lock.c: No such file or directory.
++n
+67	in ../nptl/pthread_mutex_lock.c
++n
+69	in ../nptl/pthread_mutex_lock.c
++n
+71	in ../nptl/pthread_mutex_lock.c
++n
+75	in ../nptl/pthread_mutex_lock.c
++n
+77	in ../nptl/pthread_mutex_lock.c
++n
+80	in ../nptl/pthread_mutex_lock.c
++n
+81	in ../nptl/pthread_mutex_lock.c
++n
+156	in ../nptl/pthread_mutex_lock.c
++n
+159	in ../nptl/pthread_mutex_lock.c
++n
+161	in ../nptl/pthread_mutex_lock.c
++n
+164	in ../nptl/pthread_mutex_lock.c
++n
+166	in ../nptl/pthread_mutex_lock.c
++n
+167	in ../nptl/pthread_mutex_lock.c
++n
+free (ptr=0x603030) at MyMalloc.c:576
+576	  increase_free_calls();
++n
+578	  if (ptr != NULL) {
++s
+579	    free_object(ptr);
++s
+free_object (ptr=0x603030) at MyMalloc.c:372
+372	  object_header *current = (object_header *)((char *)ptr - sizeof(object_header));
++n
+375	                      current->object_size - 
++n
+373	  object_footer *current_footer = 
++n
+377	  object_footer *left_footer = 
++n
+380	    (object_header *)((char *)current + current->object_size);
++n
+379	  object_header *right_header =
++n
+385	  if (left_footer->status != UNALLOCATED && 
++n
+386	    right_header->status != UNALLOCATED) {
++n
+385	  if (left_footer->status != UNALLOCATED && 
++n
+387	    current->status = UNALLOCATED;
++n
+388	    current_footer->status = UNALLOCATED;
++n
+390	    object_header *temp = free_list->next;
++n
+391	    while (temp != &free_list_sentinel) {
++n
+392	      if (temp < current && temp->next > current) {
++n
+396	        temp = temp->next;
++n
+391	    while (temp != &free_list_sentinel) {
++n
+392	      if (temp < current && temp->next > current) {
++n
+396	        temp = temp->next;
++n
+391	    while (temp != &free_list_sentinel) {
++n
+399	    current->next = temp->next;
++n
+400	    temp->next->prev = current;
++n
+401	    temp->next = current;
++print free_list
+$1 = (object_header *) 0x602140 <free_list_sentinel>
++n
+402	    current->prev = temp;
++n
+386	    right_header->status != UNALLOCATED) {
++n
+462	} /* free_object() */
++n
+free (ptr=0x603030) at MyMalloc.c:582
+582	  pthread_mutex_unlock(&mutex);
++n
+583	} /* free() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++q

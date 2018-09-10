@@ -1,0 +1,877 @@
+Sun Jun 24 00:44:13 EDT 2018
++break 34
+Breakpoint 1 at 0x400c20: file test8-1.c, line 34.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-1.c:36
+36	  print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++watch i
+Hardware watchpoint 2: i
++n
+
+Hardware watchpoint 2: i
+
+Old value = 1000
+New value = 0
+0x0000000000400c34 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 0
+New value = 1
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 1
+New value = 2
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 2
+New value = 3
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 3
+New value = 4
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 4
+New value = 5
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 5
+New value = 6
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 6
+New value = 7
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 7
+New value = 8
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 8
+New value = 9
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 9
+New value = 10
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 10
+New value = 11
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 11
+New value = 12
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 12
+New value = 13
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 13
+New value = 14
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 14
+New value = 15
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 15
+New value = 16
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 16
+New value = 17
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 17
+New value = 18
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 18
+New value = 19
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 19
+New value = 20
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 20
+New value = 21
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 21
+New value = 22
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 22
+New value = 23
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 23
+New value = 24
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 24
+New value = 25
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 25
+New value = 26
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 26
+New value = 27
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 27
+New value = 28
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 28
+New value = 29
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 29
+New value = 30
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 30
+New value = 31
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 31
+New value = 32
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 32
+New value = 33
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 33
+New value = 34
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 34
+New value = 35
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 35
+New value = 36
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 36
+New value = 37
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 37
+New value = 38
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 38
+New value = 39
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 39
+New value = 40
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 40
+New value = 41
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 41
+New value = 42
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 42
+New value = 43
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 43
+New value = 44
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 44
+New value = 45
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 45
+New value = 46
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 46
+New value = 47
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 47
+New value = 48
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 48
+New value = 49
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 49
+New value = 50
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 50
+New value = 51
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 51
+New value = 52
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 52
+New value = 53
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 53
+New value = 54
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 54
+New value = 55
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 55
+New value = 56
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 56
+New value = 57
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 57
+New value = 58
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 58
+New value = 59
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x621cf8) at MyMalloc.c:600
+600	  pthread_mutex_lock(&mutex);
++n
+601	  increase_free_calls();
++n
+603	  if (ptr != NULL) {
++n
+604	    free_object(ptr);
++s
+free_object (ptr=0x621cf8) at MyMalloc.c:392
+392	  object_header *current = 
++n
+396	                      current->object_size - 
++n
+394	  object_footer *current_footer = 
++n
+398	  object_footer *left_footer = 
++n
+401	    (object_header *)((char *)current + current->object_size);
++n
+400	  object_header *right_header =
++n
+406	  if (left_footer->status != UNALLOCATED && 
++n
+426	  else if (left_footer->status == UNALLOCATED && 
++print left_footer->status
+$1 = UNALLOCATED
++print right_header->status
+$2 = ALLOCATED
++print right_header->object_size
+$3 = 1008
++n
+427	      right_header->status == ALLOCATED) {
++n
+426	  else if (left_footer->status == UNALLOCATED && 
++n
+428	    if (right_header->object_size != 0) {
++n
+429	      current->status = UNALLOCATED;
++n
+430	      current_footer->status = UNALLOCATED;
++n
+434	                          left_footer->object_size -
++n
+432	      object_header *left_header =
++n
+438	        left_header->object_size + current->object_size;
++n
+437	      left_header->object_size = 
++n
+439	      current_footer->object_size = left_header->object_size;
++n
+428	    if (right_header->object_size != 0) {
++n
+487	} /* free_object() */
++n
+free (ptr=0x621cf8) at MyMalloc.c:607
+607	  pthread_mutex_unlock(&mutex);
++n
+608	} /* free() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+
+Hardware watchpoint 2: i
+
+Old value = 59
+New value = 60
+0x0000000000400c55 in main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x622308) at MyMalloc.c:600
+600	  pthread_mutex_lock(&mutex);
++n
+601	  increase_free_calls();
++n
+603	  if (ptr != NULL) {
++n
+604	    free_object(ptr);
++s
+free_object (ptr=0x622308) at MyMalloc.c:392
+392	  object_header *current = 
++n
+396	                      current->object_size - 
++n
+394	  object_footer *current_footer = 
++n
+398	  object_footer *left_footer = 
++n
+401	    (object_header *)((char *)current + current->object_size);
++print current->status
+$4 = ALLOCATED
++print current_footer->status
+$5 = (unknown: 110100480)
++print left_footer->status
+$6 = UNALLOCATED
++n
+400	  object_header *right_header =
++n
+406	  if (left_footer->status != UNALLOCATED && 
++print right_header->status
+$7 = UNALLOCATED
++n
+426	  else if (left_footer->status == UNALLOCATED && 
++n
+427	      right_header->status == ALLOCATED) {
++n
+426	  else if (left_footer->status == UNALLOCATED && 
++n
+443	  else if (right_header->status == UNALLOCATED && 
++n
+444	    left_footer->status == ALLOCATED) {
++n
+443	  else if (right_header->status == UNALLOCATED && 
++n
+468	                        left_footer->object_size +
++n
+466	    object_header *left_header = 
++print right_header->status
+$8 = UNALLOCATED
++print left_footer->status
+$9 = UNALLOCATED
++n
+472	                        right_header->object_size -
++n
+470	    object_footer *right_footer = 
++n
+474	    size_t new_size = left_footer->object_size + 
++print left_header->Status
+There is no member named Status.
++print left_header->status
+Cannot access memory at address 0x5e2ce0
++print right_footer->status
+$10 = (ALLOCATED | SENTINEL | unknown: 4294967292)
++n
+475	                      current->object_size +
++print right_footer->object_size
+$11 = 18446744073709551615
++n
+474	    size_t new_size = left_footer->object_size + 
++q

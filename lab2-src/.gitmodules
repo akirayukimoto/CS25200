@@ -1,0 +1,3 @@
+[submodule "lab2-src"]
+	path = lab2-src
+	url = git://github.com/akirayukimoto/CS25200-RE.git

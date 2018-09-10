@@ -1,0 +1,107 @@
+Mon Jul 30 14:07:08 EDT 2018
++break server.c:416
+Breakpoint 1 at 0x4025f5: file server.c, line 416.
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 31071) exited normally]
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++next
+419	}
++next
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++quit

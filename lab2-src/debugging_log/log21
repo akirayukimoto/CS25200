@@ -1,0 +1,168 @@
+Sun Jun 24 00:37:54 EDT 2018
++break 34
+Breakpoint 1 at 0x400c20: file test8-1.c, line 34.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-1.c:36
+36	  print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x604030) at MyMalloc.c:598
+598	  pthread_mutex_lock(&mutex);
++s
+__GI___pthread_mutex_lock (mutex=0x6030e0 <mutex>) at ../nptl/pthread_mutex_lock.c:64
+64	../nptl/pthread_mutex_lock.c: No such file or directory.
++s
+67	in ../nptl/pthread_mutex_lock.c
++s
+69	in ../nptl/pthread_mutex_lock.c
++s
+71	in ../nptl/pthread_mutex_lock.c
++s
+75	in ../nptl/pthread_mutex_lock.c
++s
+77	in ../nptl/pthread_mutex_lock.c
++s
+80	in ../nptl/pthread_mutex_lock.c
++s
+81	in ../nptl/pthread_mutex_lock.c
++s
+156	in ../nptl/pthread_mutex_lock.c
++s
+159	in ../nptl/pthread_mutex_lock.c
++s
+161	in ../nptl/pthread_mutex_lock.c
++s
+164	in ../nptl/pthread_mutex_lock.c
++s
+166	in ../nptl/pthread_mutex_lock.c
++s
+167	in ../nptl/pthread_mutex_lock.c
++s
+free (ptr=0x604030) at MyMalloc.c:599
+599	  increase_free_calls();
++n
+601	  if (ptr != NULL) {
++n
+602	    free_object(ptr);
++s
+free_object (ptr=0x604030) at MyMalloc.c:392
+392	  object_header *current = 
++n
+396	                      current->object_size - 
++n
+394	  object_footer *current_footer = 
++n
+398	  object_footer *left_footer = 
++n
+401	    (object_header *)((char *)current + current->object_size);
++n
+400	  object_header *right_header =
++n
+406	  if (left_footer->status != UNALLOCATED && 
++n
+407	    right_header->status != UNALLOCATED) {
++n
+406	  if (left_footer->status != UNALLOCATED && 
++n
+408	    current->status = UNALLOCATED;
++n
+409	    current_footer->status = UNALLOCATED;
++n
+411	    object_header *temp = &free_list_sentinel;
++n
+412	    while (temp->next != &free_list_sentinel) {
++n
+413	      if (temp < current && temp->next > current) {
++n
+420	    temp->next->prev = current;
++n
+421	    current->next = temp->next;
++n
+422	    temp->next = current;
++n
+423	    current->prev = temp;
++n
+407	    right_header->status != UNALLOCATED) {
++n
+485	} /* free_object() */
++n
+free (ptr=0x604030) at MyMalloc.c:605
+605	  pthread_mutex_unlock(&mutex);
++n
+606	} /* free() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x604738) at MyMalloc.c:598
+598	  pthread_mutex_lock(&mutex);
++n
+599	  increase_free_calls();
++n
+601	  if (ptr != NULL) {
++n
+602	    free_object(ptr);
++s
+free_object (ptr=0x604738) at MyMalloc.c:392
+392	  object_header *current = 
++n
+396	                      current->object_size - 
++n
+394	  object_footer *current_footer = 
++n
+398	  object_footer *left_footer = 
++n
+401	    (object_header *)((char *)current + current->object_size);
++n
+400	  object_header *right_header =
++n
+406	  if (left_footer->status != UNALLOCATED && 
++n
+426	  else if (left_footer->status == UNALLOCATED && 
++n
+427	    right_header->status == ALLOCATED) {
++n
+426	  else if (left_footer->status == UNALLOCATED && 
++n
+428	    current->status = UNALLOCATED;
++n
+429	    current_footer->status = UNALLOCATED;
++n
+433	                        left_footer->object_size -
++n
+431	    object_header *left_header =
++n
+437	      left_header->object_size + current->object_size;
++n
+436	    left_header->object_size = 
++n
+438	    current_footer->object_size = left_header->object_size;
++n
+427	    right_header->status == ALLOCATED) {
++n
+485	} /* free_object() */
++n
+free (ptr=0x604738) at MyMalloc.c:605
+605	  pthread_mutex_unlock(&mutex);
++n
+606	} /* free() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x604ab0) at MyMalloc.c:598
+598	  pthread_mutex_lock(&mutex);
++n
+599	  increase_free_calls();
++q

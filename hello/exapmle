@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in {0..100};
+do
+  sleep 2;
+  echo $i >> hello;
+done

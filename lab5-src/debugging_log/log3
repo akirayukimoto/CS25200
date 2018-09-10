@@ -1,0 +1,64 @@
+Thu Jul 26 14:51:58 EDT 2018
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++bt
+#0  0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+#2  0x00007ffff78677ea in __libc_message (do_abort=2, fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n") at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff787213e in malloc_printerr (ar_ptr=0x7ffff7bb4b20 <main_arena>, ptr=0x55555575e660, str=0x7ffff797dd3f "malloc(): memory corruption", action=<optimized out>)
+    at malloc.c:5006
+#4  _int_malloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, bytes=bytes@entry=17) at malloc.c:3474
+#5  0x00007ffff7874184 in __GI___libc_malloc (bytes=17) at malloc.c:2913
+#6  0x0000555555557107 in socket_read_line (socket=0x55555575a440) at socket.c:19
+#7  0x0000555555555faf in handle (sock=0x55555575a440) at server.c:249
+#8  0x0000555555555764 in run_linear_server (acceptor=0x55555575a420) at server.c:17
+#9  0x0000555555555728 in main (argc=2, argv=0x7fffffffea48) at main.c:106
++up
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+89	abort.c: No such file or directory.
++up
+#2  0x00007ffff78677ea in __libc_message (do_abort=2, fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n") at ../sysdeps/posix/libc_fatal.c:175
+175	../sysdeps/posix/libc_fatal.c: No such file or directory.
++up
+#3  0x00007ffff787213e in malloc_printerr (ar_ptr=0x7ffff7bb4b20 <main_arena>, ptr=0x55555575e660, str=0x7ffff797dd3f "malloc(): memory corruption", action=<optimized out>)
+    at malloc.c:5006
+5006	malloc.c: No such file or directory.
++up
+#4  _int_malloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, bytes=bytes@entry=17) at malloc.c:3474
+3474	in malloc.c
++up
+#5  0x00007ffff7874184 in __GI___libc_malloc (bytes=17) at malloc.c:2913
+2913	in malloc.c
++up
+#6  0x0000555555557107 in socket_read_line (socket=0x55555575a440) at socket.c:19
+19	  char *line = malloc(sizeof(char) * max_length + 1);
++p max_length
+$1 = 16
++up
+#7  0x0000555555555faf in handle (sock=0x55555575a440) at server.c:249
+249	  char *buffer = socket_read_line(sock);
++p sock
+$2 = (socket_t *) 0x55555575a440
++p *sock
+$3 = {socket_fd = 4, addr = {sin_family = 2, sin_port = 19231, sin_addr = {s_addr = 3072113162}, sin_zero = "\000\000\000\000\000\000\000"}}
++down
+#6  0x0000555555557107 in socket_read_line (socket=0x55555575a440) at socket.c:19
+19	  char *line = malloc(sizeof(char) * max_length + 1);
++list
+14	  // the terminating null character
+15	
+16	#define INIT_LINE_SIZE (16)
+17	
+18	  int max_length = INIT_LINE_SIZE;
+19	  char *line = malloc(sizeof(char) * max_length + 1);
+20	
+21	  int i = 0;
+22	
+23	  // continue until we see \r\n
++quit

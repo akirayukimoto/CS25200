@@ -1,0 +1,125 @@
+Fri Jul 27 12:07:32 EDT 2018
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++bt
+#0  0x00007ffff7825428 in __GI_raise (sig=sig@entry=6)
+    at ../sysdeps/unix/sysv/linux/raise.c:54
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+#2  0x00007ffff78677ea in __libc_message (do_abort=2, 
+    fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff7872aec in malloc_printerr (ar_ptr=0x7ffff7bb4b20 <main_arena>, 
+    ptr=0x60ac00, str=0x7ffff797dc75 "corrupted size vs. prev_size", 
+    action=<optimized out>) at malloc.c:5006
+#4  _int_malloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, bytes=bytes@entry=33)
+    at malloc.c:3727
+#5  0x00007ffff78732b0 in _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, 
+    oldp=oldp@entry=0x606b10, oldsize=oldsize@entry=32, nb=nb@entry=48) at malloc.c:4304
+#6  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x606b20, bytes=33) at malloc.c:3045
+#7  0x0000000000403150 in socket_read_line (socket=0x606440) at socket.c:42
+#8  0x0000000000401f7b in handle (sock=0x606440) at server.c:274
+#9  0x00000000004016e0 in run_linear_server (acceptor=0x606420) at server.c:17
+#10 0x00000000004016a4 in main (argc=2, argv=0x7fffffffea58) at main.c:106
++up
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+89	abort.c: No such file or directory.
++up
+#2  0x00007ffff78677ea in __libc_message (do_abort=2, 
+    fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+175	../sysdeps/posix/libc_fatal.c: No such file or directory.
++up
+#3  0x00007ffff7872aec in malloc_printerr (ar_ptr=0x7ffff7bb4b20 <main_arena>, 
+    ptr=0x60ac00, str=0x7ffff797dc75 "corrupted size vs. prev_size", 
+    action=<optimized out>) at malloc.c:5006
+5006	malloc.c: No such file or directory.
++up
+#4  _int_malloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, bytes=bytes@entry=33)
+    at malloc.c:3727
+3727	in malloc.c
++up
+#5  0x00007ffff78732b0 in _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, 
+    oldp=oldp@entry=0x606b10, oldsize=oldsize@entry=32, nb=nb@entry=48) at malloc.c:4304
+4304	in malloc.c
++up
+#6  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x606b20, bytes=33) at malloc.c:3045
+3045	in malloc.c
++up
+#7  0x0000000000403150 in socket_read_line (socket=0x606440) at socket.c:42
+42	      line = realloc(line, sizeof(char) * max_length + 1);
++down
+#6  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x606b20, bytes=33) at malloc.c:3045
+3045	malloc.c: No such file or directory.
++down
+#5  0x00007ffff78732b0 in _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, 
+    oldp=oldp@entry=0x606b10, oldsize=oldsize@entry=32, nb=nb@entry=48) at malloc.c:4304
+4304	in malloc.c
++up
+#6  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x606b20, bytes=33) at malloc.c:3045
+3045	in malloc.c
++up
+#7  0x0000000000403150 in socket_read_line (socket=0x606440) at socket.c:42
+42	      line = realloc(line, sizeof(char) * max_length + 1);
++up
+#8  0x0000000000401f7b in handle (sock=0x606440) at server.c:274
+274	    buffer = socket_read_line(sock);
++up
+#9  0x00000000004016e0 in run_linear_server (acceptor=0x606420) at server.c:17
+17	    handle(sock);
++down
+#8  0x0000000000401f7b in handle (sock=0x606440) at server.c:274
+274	    buffer = socket_read_line(sock);
++down
+#7  0x0000000000403150 in socket_read_line (socket=0x606440) at socket.c:42
+42	      line = realloc(line, sizeof(char) * max_length + 1);
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++bt
+#0  0x00007ffff7825428 in __GI_raise (sig=sig@entry=6)
+    at ../sysdeps/unix/sysv/linux/raise.c:54
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+#2  0x00007ffff78677ea in __libc_message (do_abort=do_abort@entry=2, 
+    fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff78734aa in malloc_printerr (ar_ptr=0x3, ptr=<optimized out>, 
+    str=<optimized out>, action=3) at malloc.c:5006
+#4  _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, oldp=oldp@entry=0x60fba0, 
+    oldsize=oldsize@entry=32, nb=nb@entry=64) at malloc.c:4252
+#5  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x60fbb0, bytes=50) at malloc.c:3045
+#6  0x0000000000402e3b in response_string (response=0x7fffffffe7b0) at http_messages.c:151
+#7  0x0000000000401de4 in parse_respond (sock=0x606440, request=0x7fffffffe8b0)
+    at server.c:222
+#8  0x0000000000402361 in handle (sock=0x606440) at server.c:366
+#9  0x00000000004016e0 in run_linear_server (acceptor=0x606420) at server.c:17
+#10 0x00000000004016a4 in main (argc=2, argv=0x7fffffffea58) at main.c:106
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca81d in __libc_recv (fd=4, buf=0x7fffffffe78f, n=1, flags=0)
+    at ../sysdeps/unix/sysv/linux/x86_64/recv.c:28
+28	../sysdeps/unix/sysv/linux/x86_64/recv.c: No such file or directory.
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca81d in __libc_recv (fd=4, buf=0x7fffffffe78f, n=1, flags=0)
+    at ../sysdeps/unix/sysv/linux/x86_64/recv.c:28
+28	../sysdeps/unix/sysv/linux/x86_64/recv.c: No such file or directory.
++quit

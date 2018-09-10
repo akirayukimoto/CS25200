@@ -1,0 +1,368 @@
+==32300== Memcheck, a memory error detector
+==32300== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==32300== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==32300== Command: ./myhttpd 2300
+==32300== Parent PID: 15807
+==32300== 
+==32300== Invalid read of size 1
+==32300==    at 0x50A5CC0: vfprintf (vfprintf.c:1632)
+==32300==    by 0x50AC898: printf (printf.c:33)
+==32300==    by 0x401AE4: parse_respond (server.c:130)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5424f90 is 0 bytes after a block of size 1,024 alloc'd
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x40197E: parse_respond (server.c:89)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x50A5CC0: vfprintf (vfprintf.c:1632)
+==32300==    by 0x50AC898: printf (printf.c:33)
+==32300==    by 0x401B87: parse_respond (server.c:144)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30F78: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x401C09: parse_respond (server.c:163)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30F78: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x401C27: parse_respond (server.c:164)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30F78: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E247D: strdup (strdup.c:41)
+==32300==    by 0x401CCC: parse_respond (server.c:176)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid write of size 1
+==32300==    at 0x50D267B: _IO_default_xsputn (genops.c:450)
+==32300==    by 0x50A492C: vfprintf (vfprintf.c:1663)
+==32300==    by 0x50C71CA: vsprintf (iovsprintf.c:42)
+==32300==    by 0x50AC9C6: sprintf (sprintf.c:32)
+==32300==    by 0x402D28: response_string (http_messages.c:126)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5427e2c is 0 bytes after a block of size 12 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402D03: response_string (http_messages.c:125)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid write of size 1
+==32300==    at 0x50C71D9: vsprintf (iovsprintf.c:43)
+==32300==    by 0x50AC9C6: sprintf (sprintf.c:32)
+==32300==    by 0x402D28: response_string (http_messages.c:126)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5427e2d is 1 bytes after a block of size 12 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402D03: response_string (http_messages.c:125)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid read of size 1
+==32300==    at 0x4C30F74: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402D5B: response_string (http_messages.c:134)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5427e2c is 0 bytes after a block of size 12 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402D03: response_string (http_messages.c:125)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30C17: strcat (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402DA5: response_string (http_messages.c:136)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid write of size 1
+==32300==    at 0x402F48: response_string (http_messages.c:155)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5427f5a is 0 bytes after a block of size 58 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402E94: response_string (http_messages.c:151)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid read of size 1
+==32300==    at 0x4C30F74: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402E32: response_string (http_messages.c:149)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5427f5a is 0 bytes after a block of size 58 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402E94: response_string (http_messages.c:151)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30C17: strcat (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402EBF: response_string (http_messages.c:152)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid read of size 1
+==32300==    at 0x4C30F74: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402F6B: response_string (http_messages.c:160)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5428093 is 0 bytes after a block of size 99 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402E94: response_string (http_messages.c:151)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30F78: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402F7D: response_string (http_messages.c:160)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x402FB5: response_string (http_messages.c:162)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Conditional jump or move depends on uninitialised value(s)
+==32300==    at 0x4C30C38: strcat (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402FE7: response_string (http_messages.c:163)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid write of size 1
+==32300==    at 0x4C30C3F: strcat (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402FE7: response_string (http_messages.c:163)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5428986 is 0 bytes after a block of size 2,214 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402F9A: response_string (http_messages.c:161)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid read of size 1
+==32300==    at 0x4C30F74: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50C669B: puts (ioputs.c:35)
+==32300==    by 0x402FF3: response_string (http_messages.c:166)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5428986 is 0 bytes after a block of size 2,214 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402F9A: response_string (http_messages.c:161)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== Invalid read of size 1
+==32300==    at 0x4C30F74: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x403251: socket_write_string (socket.c:71)
+==32300==    by 0x401D06: parse_respond (server.c:181)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300==  Address 0x5428986 is 0 bytes after a block of size 2,214 alloc'd
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402F9A: response_string (http_messages.c:161)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 
+==32300== Process terminating with default action of signal 2 (SIGINT)
+==32300==    at 0x4E4A750: __accept_nocancel (syscall-template.S:84)
+==32300==    by 0x40379A: accept_tcp_connection (tcp.c:140)
+==32300==    by 0x4032DF: accept_connection (socket.c:124)
+==32300==    by 0x4016CF: run_linear_server (server.c:16)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== HEAP SUMMARY:
+==32300==     in use at exit: 71,240 bytes in 1,094 blocks
+==32300==   total heap usage: 2,130 allocs, 1,036 frees, 135,443 bytes allocated
+==32300== 
+==32300== 48 bytes in 16 blocks are definitely lost in loss record 2 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x402D44: response_string (http_messages.c:133)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 64 bytes in 16 blocks are definitely lost in loss record 3 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x402057: handle (server.c:292)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 144 bytes in 16 blocks are definitely lost in loss record 4 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x402099: handle (server.c:296)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 217 bytes in 16 blocks are definitely lost in loss record 5 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x402078: handle (server.c:294)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 217 bytes in 16 blocks are definitely lost in loss record 6 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x401752: parse_respond (server.c:57)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 569 bytes in 16 blocks are definitely lost in loss record 8 of 21
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x401859: parse_respond (server.c:69)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 592 bytes in 16 blocks are definitely lost in loss record 9 of 21
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x4031A9: socket_read_line (socket.c:42)
+==32300==    by 0x401ECB: handle (server.c:259)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 1,457 bytes in 129 blocks are definitely lost in loss record 11 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x402220: handle (server.c:329)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 5,377 bytes in 16 blocks are definitely lost in loss record 14 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x401CCC: parse_respond (server.c:176)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 6,569 (768 direct, 5,801 indirect) bytes in 16 blocks are definitely lost in loss record 15 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x401BB0: parse_respond (server.c:149)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 6,913 bytes in 16 blocks are definitely lost in loss record 16 of 21
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402F9A: response_string (http_messages.c:161)
+==32300==    by 0x401CE6: parse_respond (server.c:179)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 7,710 bytes in 353 blocks are definitely lost in loss record 17 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x50E2489: strdup (strdup.c:42)
+==32300==    by 0x40224A: handle (server.c:333)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 7,870 (2,064 direct, 5,806 indirect) bytes in 16 blocks are definitely lost in loss record 18 of 21
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x402315: handle (server.c:349)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 8,192 bytes in 2 blocks are definitely lost in loss record 19 of 21
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x401AFF: parse_respond (server.c:131)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 10,945 bytes in 129 blocks are definitely lost in loss record 20 of 21
+==32300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x4031A9: socket_read_line (socket.c:42)
+==32300==    by 0x401FD4: handle (server.c:276)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== 14,336 bytes in 14 blocks are definitely lost in loss record 21 of 21
+==32300==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32300==    by 0x40197E: parse_respond (server.c:89)
+==32300==    by 0x4023BA: handle (server.c:368)
+==32300==    by 0x4016DF: run_linear_server (server.c:17)
+==32300==    by 0x4016A3: main (main.c:106)
+==32300== 
+==32300== LEAK SUMMARY:
+==32300==    definitely lost: 59,613 bytes in 803 blocks
+==32300==    indirectly lost: 11,607 bytes in 290 blocks
+==32300==      possibly lost: 0 bytes in 0 blocks
+==32300==    still reachable: 20 bytes in 1 blocks
+==32300==         suppressed: 0 bytes in 0 blocks
+==32300== Reachable blocks (those to which a pointer was found) are not shown.
+==32300== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==32300== 
+==32300== For counts of detected and suppressed errors, rerun with: -v
+==32300== Use --track-origins=yes to see where uninitialised values come from
+==32300== ERROR SUMMARY: 304 errors from 35 contexts (suppressed: 0 from 0)

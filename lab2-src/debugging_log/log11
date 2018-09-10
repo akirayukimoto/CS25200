@@ -1,0 +1,4 @@
+Fri Jun 22 21:49:24 EDT 2018
++break main
+Breakpoint 1 at 0x400ad5: file test8-2.c, line 15.
++q

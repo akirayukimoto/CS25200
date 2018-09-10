@@ -1,0 +1,57 @@
+Fri Jul 20 19:46:40 EDT 2018
++r
+Starting program: /home/u91/sun549/cs252/lab4-src/part1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 2380) exited with code 01]
++r 5 5
+Starting program: /home/u91/sun549/cs252/lab4-src/part1 5 5
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7ffff77ef700 (LWP 2407)]
+[New Thread 0x7ffff6fee700 (LWP 2408)]
+[New Thread 0x7ffff67ed700 (LWP 2409)]
+[New Thread 0x7ffff5fec700 (LWP 2410)]
+[New Thread 0x7ffff57eb700 (LWP 2411)]
+[New Thread 0x7ffff4fea700 (LWP 2412)]
+[New Thread 0x7fffeffff700 (LWP 2413)]
+[New Thread 0x7fffef7fe700 (LWP 2414)]
+[New Thread 0x7fffeeffd700 (LWP 2415)]
+[Thread 0x7ffff67ed700 (LWP 2409) exited]
+[Thread 0x7ffff4fea700 (LWP 2412) exited]
+[Thread 0x7ffff5fec700 (LWP 2410) exited]
+[Thread 0x7ffff6fee700 (LWP 2408) exited]
+[Thread 0x7ffff77ef700 (LWP 2407) exited]
+[New Thread 0x7fffee7fc700 (LWP 2416)]
+[Thread 0x7fffeffff700 (LWP 2413) exited]
+[Thread 0x7ffff57eb700 (LWP 2411) exited]
+[Thread 0x7fffef7fe700 (LWP 2414) exited]
+[Thread 0x7fffeeffd700 (LWP 2415) exited]
+[Thread 0x7fffee7fc700 (LWP 2416) exited]
+[Inferior 1 (process 2406) exited normally]
++r 5 5
+Starting program: /home/u91/sun549/cs252/lab4-src/part1 5 5
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7ffff77ef700 (LWP 2430)]
+[New Thread 0x7ffff6fee700 (LWP 2431)]
+[New Thread 0x7ffff67ed700 (LWP 2432)]
+[New Thread 0x7ffff5fec700 (LWP 2433)]
+[New Thread 0x7ffff57eb700 (LWP 2434)]
+[New Thread 0x7ffff4fea700 (LWP 2436)]
+[New Thread 0x7fffeffff700 (LWP 2437)]
+[New Thread 0x7fffef7fe700 (LWP 2438)]
+[New Thread 0x7fffeeffd700 (LWP 2439)]
+[Thread 0x7ffff4fea700 (LWP 2436) exited]
+[Thread 0x7ffff67ed700 (LWP 2432) exited]
+[Thread 0x7ffff6fee700 (LWP 2431) exited]
+[Thread 0x7ffff77ef700 (LWP 2430) exited]
+[Thread 0x7fffeffff700 (LWP 2437) exited]
+[New Thread 0x7fffee7fc700 (LWP 2440)]
+[Thread 0x7ffff57eb700 (LWP 2434) exited]
+[Thread 0x7ffff5fec700 (LWP 2433) exited]
+[Thread 0x7fffef7fe700 (LWP 2438) exited]
+[Thread 0x7fffeeffd700 (LWP 2439) exited]
+[Thread 0x7fffee7fc700 (LWP 2440) exited]
+[Inferior 1 (process 2429) exited normally]
++q

@@ -1,0 +1,27 @@
+Working Features:
+================
+- Process Creation
+- Command Excution
+- File Redirection
+- Pipes
+- Background
+- Ignore Control C
+- Kill Zombie
+- Quotes
+- Escape
+- Tilde Expansion
+- Build in
+- Subshell
+
+Partially Working Features:
+==========================
+- Wildcards
+- Environment Variables
+
+Not Working:
+===========
+- .shellrc
+- source
+- Line Editor
+- History
+- Variable Prompt

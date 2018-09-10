@@ -1,0 +1,4 @@
+#!/bin/bash
+setenv aaa "hola"
+echo ${aaa}
+echo "You Win!"

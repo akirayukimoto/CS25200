@@ -1,0 +1,257 @@
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+
+nothing added to commit but untracked files present
+[master c3302a7] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+
+nothing added to commit but untracked files present
+[master 4169826] Commit lab 4
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+[master a0559c2] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 2b7c26c] Commit lab 4
+ 1 file changed, 8 insertions(+)
+[master d4db2a8] Commit lab 4
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+[master b9dbfdc] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master c62279c] Commit lab 4
+ 1 file changed, 4 insertions(+)
+[master e23ef7d] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master b728d4e] Commit lab 4
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+[master 6672255] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master e462880] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 4455966] Commit lab 4
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+[master 85ec286] Commit lab 4
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+[master 3a4070f] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master b01d491] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 42684bf] Commit lab 4
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+[master 8c9b363] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 768d760] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master c71c0da] Commit lab 4
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+[master c5b7dae] Commit lab 4
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[master 6367919] Commit lab 4
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+[master 2a87180] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master c5d2b0e] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master fdf3b7f] Commit lab 4
+ 1 file changed, 3 insertions(+)
+[master fb42365] Commit lab 4
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+[master 5ffc146] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master f2c33f9] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master d7f1cff] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master bb3a74b] Commit lab 4
+ 1 file changed, 1 insertion(+)
+[master 9e130f9] Commit lab 4
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+[master da953ce] Commit lab 4
+ 1 file changed, 1 insertion(+)
+[master 829185f] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master cadf8b0] Commit lab 4
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+[master 95819b3] Commit lab 4
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+[master 824b5a6] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 72a5269] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master deb0247] Commit lab 4
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+[master b91e57d] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 4c6e062] Commit lab 4
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+[master 4a2ead3] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 69989c9] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 65ddf22] Commit lab 4
+ 1 file changed, 7 deletions(-)
+[master d67bce0] Commit lab 4
+ 2 files changed, 27 insertions(+), 3 deletions(-)
+[master fa67d0a] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 0ffdfb5] Commit lab 4
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+[master 32bd9b5] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master b37f185] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 0428966] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 6447e24] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 6b06fb3] Commit lab 4
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+[master 33adcc3] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 9c814b2] Commit lab 4
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+[master 23ec97e] Commit lab 4
+ 1 file changed, 84 insertions(+), 26 deletions(-)
+[master 9549d7f] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master c177850] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master f17cd38] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 4ed15a4] Commit lab 4
+ 1 file changed, 1 insertion(+)
+[master f6287e9] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master b9f1b20] Commit lab 4
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+[master 20914b5] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 4cfbea4] Commit lab 4
+ 1 file changed, 3 insertions(+)
+[master dd7fc6f] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master a2ad95d] Commit lab 4
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	.part1.c.swp
+	debugging_log/
+	out
+
+nothing added to commit but untracked files present
+[master 9f11133] Commit lab 4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 7e71929] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 013de9e] Commit lab 4
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+[master 33fbc6d] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 3fc4522] Commit lab 4
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+[master 7dfd8b1] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	debugging_log/
+	out
+
+nothing added to commit but untracked files present
+[master 6574827] Commit lab 4
+ 1 file changed, 13 insertions(+), 24 deletions(-)
+[master 4d2c7f5] Commit lab 4
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+[master cb22f1b] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 6142fa9] Commit lab 4
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+[master cd3e070] Commit lab 4
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+[master 246aba3] Commit lab 4
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+[master 2f16ef0] Commit lab 4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 369cca4] Commit lab 4
+ 1 file changed, 2 insertions(+)
+[master 65e09ad] Commit lab 4
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[master b616026] Commit lab 4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master b99ac51] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 47d54aa] Commit lab 4
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[master 62fe33c] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 6e7226c] Commit lab 4
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+[master bb70b5e] Commit lab 4
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+[master c0bea56] Commit lab 4
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+[master 410c7f1] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 4e62acd] Commit lab 4
+ 1 file changed, 2 insertions(+)
+[master 21e0926] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 8560626] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 47b3387] Commit lab 4
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+[master 1de3fc5] Commit lab 4
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+[master 5bd1e17] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 0d3a016] Commit lab 4
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[master 982b0c5] Commit lab 4
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+[master 437d8af] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master f603ad9] Commit lab 4
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+[master 57a618d] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 8ed57c2] Commit lab 4
+ 1 file changed, 16 insertions(+), 12 deletions(-)
+[master 22767de] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master f0166f3] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 8878b42] Commit lab 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	debugging_log/
+	out
+	out1
+
+nothing added to commit but untracked files present
+[master 5cd7250] Commit lab 4
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+[master 8acecd7] Commit lab 4
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+[master 75549a8] Commit lab 4
+ 1 file changed, 1 insertion(+)
+[master 50204e7] Commit lab 4
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 99a86bc] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 025e5ba] Commit lab 4
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+[master fb65154] Commit lab 4
+ 1 file changed, 2 insertions(+), 2 deletions(-)

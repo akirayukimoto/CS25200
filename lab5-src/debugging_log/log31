@@ -1,0 +1,1544 @@
+Mon Jul 30 14:00:21 EDT 2018
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++bt
+#0  0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+#1  0x0000000000403aef in accept_tcp_connection (acceptor=0x606420) at tcp.c:140
+#2  0x0000000000403634 in accept_connection (socket_acceptor=0x606420) at socket.c:124
+#3  0x00000000004017a0 in run_linear_server (acceptor=0x606420) at server.c:16
+#4  0x0000000000401774 in main (argc=2, argv=0x7fffffffea48) at main.c:106
++break server.c:parse_respond 
+Breakpoint 1 at 0x4017f0: file server.c, line 51.
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++n
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+128	    if (!is_image) {
++n
+129	      fseek(f, 0, SEEK_END);
++n
+130	      num = ftell(f);
++n
+131	      fseek(f, 0, SEEK_SET);
++n
+132	      message_body = (char *)malloc(sizeof(char) * num);
++n
+136	      if (message_body != NULL) {
++n
+137	        fread(message_body, 1, num, f);
++n
+140	      message_length = num;
++n
+171	    fclose(f);
++n
+173	  if (status == 200) {
++n
+175	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+177	    response.http_version = request->http_version;
++n
+178	    response.status_code = status;
++n
+181	    content_type_head.key = "Content-Type";
++n
+182	    content_type_head.value = content_type;
++n
+184	    connection_head.key = "Connection";
++n
+185	    connection_head.value = "OK";
++n
+188	    message_length_head.key = "Content-Length";
++n
+189	    char *msg_length = (char *)malloc(sizeof(char) * message_length);
++n
+191	    sprintf(msg_length, "%d", message_length);
++n
+192	    message_length_head.value = msg_length;
++n
+193	    printf("msg len: %s\n", msg_length);
++n
+195	    header_array[0] = content_type_head;
++n
+196	    header_array[1] = connection_head;
++n
+197	    header_array[2] = message_length_head;
++n
+198	    printf("what\n");
++n
+199	    response.headers = header_array;
++n
+200	    response.num_headers = 3;
++n
+203	    response.message_body = message_body;
++n
+205	    char *to_string = response_string(&response);
++until 208
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:208
+208	    socket_write(sock, to_string, my_length);
++n
+209	    free(header_array);
++n
+211	    free(to_string);
++n
+256	}
++n
+handle (sock=0x606440) at server.c:394
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+397	  free(general_lines);
++n
+398	  general_lines = NULL;
++n
+418	  close_socket(sock);
++n
+419	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++n
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+124	      fclose(f);
++n
+125	      f = fopen(revised_path, "rb");
++n
+126	      is_image = 1;
++n
+128	    if (!is_image) {
++n
+144	      int max_char = 10240;
++n
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++until 158
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:159
+159	      message_body[num] = 0;
++n
+160	      message_length = num;
++n
+171	    fclose(f);
++n
+173	  if (status == 200) {
++n
+175	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+177	    response.http_version = request->http_version;
++n
+178	    response.status_code = status;
++n
+181	    content_type_head.key = "Content-Type";
++n
+182	    content_type_head.value = content_type;
++n
+184	    connection_head.key = "Connection";
++n
+185	    connection_head.value = "OK";
++n
+188	    message_length_head.key = "Content-Length";
++n
+189	    char *msg_length = (char *)malloc(sizeof(char) * message_length);
++n
+191	    sprintf(msg_length, "%d", message_length);
++n
+192	    message_length_head.value = msg_length;
++n
+193	    printf("msg len: %s\n", msg_length);
++n
+195	    header_array[0] = content_type_head;
++n
+196	    header_array[1] = connection_head;
++n
+197	    header_array[2] = message_length_head;
++n
+198	    printf("what\n");
++n
+199	    response.headers = header_array;
++n
+200	    response.num_headers = 3;
++n
+203	    response.message_body = message_body;
++n
+205	    char *to_string = response_string(&response);
++n
+206	    printf("%s", to_string);
++n
+207	    int my_length = strlen(to_string) - strlen(message_body) + message_length;
++n
+208	    socket_write(sock, to_string, my_length);
++n
+209	    free(header_array);
++n
+211	    free(to_string);
++n
+256	}
++n
+handle (sock=0x606440) at server.c:394
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+397	  free(general_lines);
++n
+398	  general_lines = NULL;
++n
+418	  close_socket(sock);
++n
+419	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++n
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+124	      fclose(f);
++n
+125	      f = fopen(revised_path, "rb");
++n
+126	      is_image = 1;
++n
+128	    if (!is_image) {
++n
+144	      int max_char = 10240;
++n
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++until 105
+handle (sock=0x606440) at server.c:394
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+397	  free(general_lines);
++n
+398	  general_lines = NULL;
++n
+418	  close_socket(sock);
++n
+419	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++n
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+124	      fclose(f);
++n
+125	      f = fopen(revised_path, "rb");
++n
+126	      is_image = 1;
++n
+128	    if (!is_image) {
++n
+144	      int max_char = 10240;
++n
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++until 208
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:208
+208	    socket_write(sock, to_string, my_length);
++n
+209	    free(header_array);
++n
+211	    free(to_string);
++n
+256	}
++n
+handle (sock=0x606440) at server.c:394
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+395	    free(general_lines[j]);
++n
+394	  for (j = 0; j < num_lines; j++) {
++n
+397	  free(general_lines);
++n
+398	  general_lines = NULL;
++n
+418	  close_socket(sock);
++n
+419	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++n
+55	  char *revised_path = strdup("./http-root-dir");
++n
+57	  char *ptr = strdup(request->request_uri);
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
++n
+70	      strcat(revised_path, "/htdocs");
++n
+73	      strcat(revised_path, ptr);
++n
+84	  printf("revised path: %s\n", revised_path);
++n
+100	  f = fopen(revised_path, "r+");
++n
+101	  int message_length = 0;
++n
+104	  if (f == NULL) {
++n
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+124	      fclose(f);
++n
+125	      f = fopen(revised_path, "rb");
++n
+126	      is_image = 1;
++n
+128	    if (!is_image) {
++n
+144	      int max_char = 10240;
++n
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++n
+154	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+152	        message_body[num] = ch;
++n
+153	        num++;
++con
+Ambiguous command "con": condition, continue.
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++i b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004017f0 in parse_respond at server.c:51
+	breakpoint already hit 17 times
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++list
+46	
+47	/*
+48	 * Parsing request to respond
+49	 */
+50	
+51	void parse_respond(socket_t *sock, http_request * const request) {
+52	  //printf("pt 1\n");
+53	  http_response response;
+54	//  char *revised_path = (char *)malloc(sizeof(char) * strlen("/http-root-dir"));
+55	  char *revised_path = strdup("./http-root-dir");
++list
+56	//  printf("print: %s\n", request->request_uri);
+57	  char *ptr = strdup(request->request_uri);
+58	  //printf("%s\n", ptr);
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
+61	    int new_length = strlen(revised_path) + strlen(ptr) + 1;
+62	    revised_path = realloc(revised_path, new_length);
+63	    strcat(revised_path, ptr);
+64	  }
+65	  else {
++list
+66	    if (ptr[0] == '/') {
+67	      //printf("what about here\n");
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length + 1);
+70	      strcat(revised_path, "/htdocs");
+71	      //char *ptr = strdup(request->request_uri);
+72	      //printf("what about here\n");
+73	      strcat(revised_path, ptr);
+74	      //printf("what a:qbout here\n");
+75	      //printf("%s\n", revised_path);
++list
+76	    }
+77	    else {
+78	      int new_length = strlen(revised_path) + strlen("/htdocs/") + strlen(ptr) + 1;
+79	      revised_path = realloc(revised_path, sizeof(char) * new_length);
+80	      strcat(revised_path, "/htdocs/");
+81	      strcat(revised_path, request->request_uri);
+82	    }
+83	  }
+84	  printf("revised path: %s\n", revised_path);
+85	  int status;
++list
+86	  char *content_type;
+87	//  printf("content_type: %s\n", content_type);
+88	  //int max_chars = 1024;
+89	  char *message_body;
+90	  //message_body[0] = '\0';
+91	  //int message_length = 0;
+92	  //printf("here?\n");
+93	  //int is_image = 0;
+94	  FILE *f;
+95	  //if (!strncmp(revised_path, "image", strlen("image"))) {
++list
+96	   // f = fopen(revised_path, "rb");
+97	    //is_image = 1;
+98	  //}
+99	  //else {
+100	  f = fopen(revised_path, "r+");
+101	  int message_length = 0;
+102	  //}
+103	  //printf("here\n");
+104	  if (f == NULL) {
+105	    printf("here\n");
++list
+106	    status = 404;
+107	    content_type = strdup("text/plain");
+108	    message_body = strdup("404 Not Found");
+109	    printf("message: %s\n", message_body);
+110	  }
+111	  else {
+112	//    printf("here?\n");
+113	    status = 200;
+114	    content_type = get_content_type(revised_path);
+115	    printf("content_type: %s\n", content_type);
++list
+116	    //free(revised_path);
+117	    //revised_path = NULL;
+118	    //char ch;
+119	    int num = 0;
+120	    //while ((ch = fgetc(f)) != EOF) {
+121	    printf("whatttttttt\n");
+122	    int is_image = 0;
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
+124	      fclose(f);
+125	      f = fopen(revised_path, "rb");
++list
+126	      is_image = 1;
+127	    }
+128	    if (!is_image) {
+129	      fseek(f, 0, SEEK_END);
+130	      num = ftell(f);
+131	      fseek(f, 0, SEEK_SET);
+132	      message_body = (char *)malloc(sizeof(char) * num);
+133	      //printf("whattttttt!\n");
+134	      //message_body[num] = ch;
+135	      //num++;
++list
+136	      if (message_body != NULL) {
+137	        fread(message_body, 1, num, f);
+138	      }
+139	      //printf("num: %d\n", num);
+140	      message_length = num;
+141	    }
+142	    else {
+143	      char ch;
+144	      int max_char = 10240;
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++list
+146	      //char *p = message_body;
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
+148	        //*p = ch;
+149	       // p++;
+150	        //num++;
+151	//        printf("cur_char: %d\n", ch);
+152	        message_body[num] = ch;
+153	        num++;
+154	        if (num == max_char) {
+155	          max_char = max_char * 2;
++list
+156	          message_body = realloc(message_body, sizeof(char) * max_char);
+157	        }
+158	      }
+159	      message_body[num] = 0;
+160	      message_length = num;
+161	      /*
+162	      FILE *file_test = fopen("test", "w+");
+163	      fwrite(message_body, sizeof(char), message_length, file_test);
+164	      fclose(file_test);
+165	      */
++list
+166	    }
+167	    
+168	    //printf("whattttttthigh\n");
+169	    //message_body[num] = '\0';
+170	    //printf("message body: %s\n", message_body);
+171	    fclose(f);
+172	  }
+173	  if (status == 200) {
+174	    //printf("hello\n");
+175	    header *header_array = (header *)malloc(sizeof(header) * 3);
++list
+176	
+177	    response.http_version = request->http_version;
+178	    response.status_code = status;
+179	
+180	    header content_type_head;
+181	    content_type_head.key = "Content-Type";
+182	    content_type_head.value = content_type;
+183	    header connection_head;
+184	    connection_head.key = "Connection";
+185	    connection_head.value = "OK";
++list
+186	
+187	    header message_length_head;
+188	    message_length_head.key = "Content-Length";
+189	    char *msg_length = (char *)malloc(sizeof(char) * message_length);
+190	    //int tmp = strlen(message_body);
+191	    sprintf(msg_length, "%d", message_length);
+192	    message_length_head.value = msg_length;
+193	    printf("msg len: %s\n", msg_length);
+194	
+195	    header_array[0] = content_type_head;
++list
+196	    header_array[1] = connection_head;
+197	    header_array[2] = message_length_head;
+198	    printf("what\n");
+199	    response.headers = header_array;
+200	    response.num_headers = 3;
+201	
+202	    //response.message_body = (char *)malloc(sizeof(char) * message_length);
+203	    response.message_body = message_body;
+204	    //printf("what2\n");
+205	    char *to_string = response_string(&response);
++list
+206	    printf("%s", to_string);
+207	    int my_length = strlen(to_string) - strlen(message_body) + message_length;
+208	    socket_write(sock, to_string, my_length);
+209	    free(header_array);
+210	    //free(message_body);
+211	    free(to_string);
+212	  }
+213	  else if (status == 404) {
+214	    response.http_version = "HTTP/1.1";
+215	    header *header_array = (header *)malloc(sizeof(header) * 3);
++list
+216	    response.status_code = status;
+217	    header content_type_head;
+218	    content_type_head.key = "Content-Type";
+219	//    printf("contenttype: %s\n", content_type);
+220	    content_type_head.value = content_type;
+221	    header connection_head;
+222	    connection_head.key = strdup("Connection");
+223	//    printf("whatttttttttttt\n");
+224	    connection_head.value = strdup("close");
+225	
++list
+226	    header message_length_head;
+227	    int tmp = strlen(message_body);
+228	    char *message_length = (char *)malloc(sizeof(char) * tmp);
+229	    sprintf(message_length, "%d", tmp);
+230	    message_length_head.key = "Content-Length";
+231	    message_length_head.value = message_length;
+232	//    printf("whatttttttttttt\n");
+233	
+234	    header_array[0] = content_type_head;
+235	    header_array[1] = connection_head;
++list
+236	    header_array[2] = message_length_head;
+237	//    printf("whatttttttttttt\n");
+238	
+239	    response.headers = header_array;
+240	    response.num_headers = 3;
+241	
+242	//    printf("whatttttttttttt\n");
+243	    response.message_body = message_body;
+244	    //fclose(f);
+245	// printf("whatttttttttttt\n");
++list
+246	    char *to_string = response_string(&response);
+247	//     printf("whatttttttttttt\n");
+248	//    printf("to_string: %s\n", to_string);
+249	    //int my_length = strlen(to_string) - strlen(message_body) + message
+250	    socket_write_string(sock, to_string);
+251	    free(header_array);
+252	    //free(message_body);
+253	    free(to_string);
+254	  }
+255	  //free(to_string);
++list
+256	}
+257	
+258	/*
+259	 * Handle an incoming connection on the passed socket.
+260	 */
+261	
+262	//int max_lines = 20;
+263	//int max_headers = 1;
+264	
+265	void handle(socket_t *sock) {
++list
+266	  http_request request;
+267	
+268	  // TODO: Replace this code and actually parse the HTTP request
+269	  /*
+270	  request.method = "GET";
+271	  request.request_uri = "/";
+272	  request.query = "";
+273	  request.http_version = "HTTP/1.1";
+274	  request.num_headers = 0;
+275	  request.message_body = "";
++list
+276	
+277	  print_request(&request);
+278	  */
+279	  int max_lines = 1;
+280	  int max_headers = 1;
+281	  int num_lines = 0;
+282	  //printf("hello\n");
+283	  char *buffer = socket_read_line(sock);
+284	  //printf("hello\n");
+285	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++list
+286	  //printf("heyhey:\n%s\n", buffer);
+287	  // Read all lines of request and save them in a string array
+288	  
+289	  while (strlen(buffer) > 2) {
+290	    if (num_lines == max_lines) {
+291	      max_lines = max_lines + 1;
+292	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
+293	    }
+294	    //printf("hello??????????????????????????????????????????????????????????\n");
+295	    //char *ptr = strtok(buffer, "\r");
++bt
+#0  parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+#1  0x0000000000402595 in handle (sock=0x606440) at server.c:392
+#2  0x00000000004017b0 in run_linear_server (acceptor=0x606420) at server.c:17
+#3  0x0000000000401774 in main (argc=2, argv=0x7fffffffea48) at main.c:106
++list server.c:17
+12	 */
+13	
+14	void run_linear_server(acceptor *acceptor) {
+15	  while (1) {
+16	    socket_t *sock = accept_connection(acceptor);
+17	    handle(sock);
+18	  }
+19	}
+20	
+21	/*
++list server.c:392
+387	
+388	  //http_response response;
+389	
+390	  // TODO: Add your code to create the correct HTTP response
+391	  //printf("Am I here?\n");
+392	  parse_respond(sock, &request);
+393	  int j;
+394	  for (j = 0; j < num_lines; j++) {
+395	    free(general_lines[j]);
+396	  }
++list 
+397	  free(general_lines);
+398	  general_lines = NULL;
+399	/*
+400	  for (j = 0; j < num_headers; j++) {
+401	    free(header_array[j].key);
+402	    free(header_array[j].value);
+403	  }
+404	*/
+405	//  free(header_array);
+406	//  header_array = NULL;
++list 
+407	/*
+408	  response.http_version = "HTTP/1.1";
+409	
+410	  char *to_string = response_string(&response);
+411	  printf("%s\n", to_string);
+412	  socket_write_string(sock, to_string);
+413	
+414	  free(to_string);
+415	  to_string = NULL;
+416	*/
++list 
+417	  //free(buffer);
+418	  close_socket(sock);
+419	}
++break socket.c:414
+No line 414 in file "socket.c".
++break server.c:414
+Breakpoint 2 at 0x4025f5: file server.c, line 414.
++con
+Ambiguous command "con": condition, continue.
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++cont
+Continuing.
+
+Breakpoint 2, handle (sock=0x606440) at server.c:418
+418	  close_socket(sock);
++cont
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++list
+79	in ../sysdeps/unix/syscall-template.S
++list
+79	in ../sysdeps/unix/syscall-template.S
++list
+79	in ../sysdeps/unix/syscall-template.S
++up
+#1  0x0000000000403aef in accept_tcp_connection (acceptor=0x606420) at tcp.c:140
+140	  int socket_fd = accept(acceptor->master_socket,
++list
+135	 */
+136	
+137	tcp_socket *accept_tcp_connection(tcp_acceptor *acceptor) {
+138	  struct sockaddr_in addr;
+139	  socklen_t addr_len = sizeof(addr);
+140	  int socket_fd = accept(acceptor->master_socket,
+141	                         (struct sockaddr*) &addr,
+142	                         &addr_len);
+143	  if (socket_fd == -1) {
+144	    fprintf(stderr, "Unable to accept connection: %s\n", strerror(errno));
++list
+145	    return NULL;
+146	  }
+147	
+148	  tcp_socket *socket = malloc(sizeof(tcp_socket));
+149	  socket->socket_fd = socket_fd;
+150	  socket->addr = addr;
+151	
+152	  char inet_pres[INET_ADDRSTRLEN];
+153	  if (inet_ntop(addr.sin_family,
+154	                &(addr.sin_addr),
++quit

@@ -1,0 +1,163 @@
+Sat Jul 28 19:13:30 EDT 2018
++break server.c:110
+Breakpoint 1 at 0x401b15: file server.c, line 110.
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 12958) exited normally]
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:112
+112	    status = 200;
++n
+113	    content_type = get_content_type(revised_path);
++n
+114	    printf("content_type: %s\n", content_type);
++n
+118	    int num = 0;
++n
+120	    printf("whatttttttt\n");
++n
+121	    if (!is_image) {
++n
+122	      fseek(f, 0, SEEK_END);
++n
+123	      num = ftell(f);
++n
+124	      fseek(f, 0, SEEK_SET);
++n
+125	      message_body = (char *)malloc(sizeof(char) * num);
++n
+129	      if (message_body != NULL) {
++n
+130	        fread(message_body, 1, num, f);
++n
+155	    printf("message body: %s\n", message_body);
++n
+156	    fclose(f);
++n
+158	  if (status == 200) {
++n
+160	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+162	    response.http_version = request->http_version;
++n
+163	    response.status_code = status;
++n
+166	    content_type_head.key = "Content-Type";
++n
+167	    content_type_head.value = content_type;
++n
+169	    connection_head.key = "Connection";
++n
+170	    connection_head.value = "close";
++n
+173	    message_length_head.key = "Content-Length";
++n
+174	    char *msg_length = (char *)malloc(sizeof(char) * strlen(message_body));
++n
+175	    int tmp = strlen(message_body);
++n
+176	    sprintf(msg_length, "%d", tmp);
++n
+177	    message_length_head.value = msg_length;
++n
+178	    printf("msg len: %s\n", msg_length);
++n
+180	    header_array[0] = content_type_head;
++n
+181	    header_array[1] = connection_head;
++n
+182	    header_array[2] = message_length_head;
++n
+183	    printf("what\n");
++n
+184	    response.headers = header_array;
++n
+185	    response.num_headers = 3;
++n
+187	    response.message_body = strdup(message_body);
++n
+189	    printf("what2\n");
++n
+190	    char *to_string = response_string(&response);
++n
+192	    socket_write_string(sock, to_string);
++n
+243	}
++n
+handle (sock=0x606440) at server.c:381
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+382	    free(general_lines[j]);
++n
+381	  for (j = 0; j < num_lines; j++) {
++n
+384	  free(general_lines);
++n
+385	  general_lines = NULL;
++n
+405	  close_socket(sock);
++n
+406	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:112
+112	    status = 200;
++n
+113	    content_type = get_content_type(revised_path);
++n
+114	    printf("content_type: %s\n", content_type);
++n
+118	    int num = 0;
++n
+120	    printf("whatttttttt\n");
++n
+121	    if (!is_image) {
++n
+122	      fseek(f, 0, SEEK_END);
+Quit
++q

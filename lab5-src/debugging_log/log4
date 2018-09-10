@@ -1,0 +1,35 @@
+Thu Jul 26 14:56:10 EDT 2018
++break httpd_messages.c:124
+No source file named httpd_messages.c.
++break http_messages.c:124
+Breakpoint 1 at 0x2d87: file http_messages.c, line 124.
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 21616) exited normally]
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, response_string (response=0x7fffffffe7a0) at http_messages.c:124
+124	  sprintf(to_string, "%s %d ", to_string, response->status_code);
++list
+119	  char *to_string = strdup(response->http_version);
+120	  printf("ghere?\n");
+121	//  strcpy(to_string, response->http_version);
+122	//  strcat(to_string, incorrect);
+123	  //strcat(to_string, response->status_code);
+124	  sprintf(to_string, "%s %d ", to_string, response->status_code);
+125	  printf("ghere?2\n");
+126	  
+127	//  if (response->reason_phrase == NULL ||
+128	//    !strcmp(response->reason_phrase, "")) {
++p to_string
+$1 = 0x55555575b640 "HTTP/1.1"
++p response->status_code
+$2 = 200
++p to_string
+$3 = 0x55555575b640 "HTTP/1.1"
++q

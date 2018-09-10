@@ -1,0 +1,12 @@
+Working Features:
+- Basic Server
+- Forking
+
+Partially Working Features:
+- Browsing Directory
+
+Not Working:
+- Threads
+- Threads Pool
+- Authorization
+- TLS

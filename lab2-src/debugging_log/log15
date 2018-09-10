@@ -1,0 +1,71 @@
+Sat Jun 23 10:15:56 EDT 2018
++break main
+Breakpoint 1 at 0xbd9: file test8-7.c, line 16.
++r
+Starting program: /u/data/u91/sun549/cs252/lab2-src/test8-7 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe5e8) at test8-7.c:16
+16	int main(int argc, char **argv) {
++n
+19	  size_t size = 2097152;
++n
+23	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+24	      ptrs[i] = (char*) malloc(size);
++n
+25	      print_list();
++n
+29	      memset(ptrs[i], 'a', size);
++n
+30	      assert(ptrs[i][size - 1] == 'a');
++n
+31	      if (i == ALLOCATIONS / 2) {
++n
+23	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+24	      ptrs[i] = (char*) malloc(size);
++n
+25	      print_list();
++n
+29	      memset(ptrs[i], 'a', size);
++n
+30	      assert(ptrs[i][size - 1] == 'a');
++n
+31	      if (i == ALLOCATIONS / 2) {
++n
+23	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+24	      ptrs[i] = (char*) malloc(size);
++s
+malloc (size=2097152) at MyMalloc.c:563
+563	  pthread_mutex_lock(&mutex);
++n
+564	  increase_malloc_calls();
++n
+566	  void *memory = allocate_object(size);
++s
+allocate_object (size=2097152) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > (ARENA_SIZE + 
++print rounded_size
+$1 = 2097200
++print (ARENA_SIZE + sizeof(object_header) + sizeof(object_footer))
+No symbol "ARENA_SIZE" in current context.
++n
+238	  object_header *current = free_list->next;
++n
+242	  while (current != &free_list_sentinel) {
++print current
+$2 = (object_header *) 0x555555b580a0
++print current->object_size
+$3 = 0
++n
+246	    void *temp = (void *)((char *)current + sizeof(object_header));
++q

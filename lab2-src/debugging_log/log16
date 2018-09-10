@@ -1,0 +1,213 @@
+Sat Jun 23 10:18:23 EDT 2018
++break main
+Breakpoint 1 at 0xbd9: file test8-7.c, line 16.
++r
+Starting program: /u/data/u91/sun549/cs252/lab2-src/test8-7 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe5e8) at test8-7.c:16
+16	int main(int argc, char **argv) {
++n
+19	  size_t size = 2097152;
++n
+23	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+24	      ptrs[i] = (char*) malloc(size);
++s
+malloc (size=2097152) at MyMalloc.c:563
+563	  pthread_mutex_lock(&mutex);
++n
+564	  increase_malloc_calls();
++n
+566	  void *memory = allocate_object(size);
++s
+allocate_object (size=2097152) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > (ARENA_SIZE + 
++n
+238	  object_header *current = free_list->next;
++n
+242	  while (current != &free_list_sentinel) {
++n
+246	    void *temp = (void *)((char *)current + sizeof(object_header));
++n
+247	    if (object_size(temp) >= rounded_size) {
++print (object_size(temp))
+$1 = 2097200
++n
+248	      size_t remainder = object_size(temp) - rounded_size;
++n
+249	      size_t min_size = MINIMUM_SIZE + 
++n
+253	      if (remainder < min_size) {
++n
+254	        current->status = ALLOCATED;
++n
+257	                             object_size(temp) -
++n
+255	        object_footer *cur_footer =
++n
+259	        cur_footer->status = ALLOCATED;
++n
+261	        current->prev->next = current->next;
++print current->next
+$2 = (struct object_header_struct *) 0x5555557570a0 <free_list_sentinel>
++print current->prev->next
+$3 = (struct object_header_struct *) 0x555555758010
++n
+262	        current->next->prev = current->prev;
++print current->next->prev
+$4 = (struct object_header_struct *) 0x555555758010
++print current->prev
+$5 = (struct object_header_struct *) 0x5555557570a0 <free_list_sentinel>
++n
+263	        current->prev = NULL;
++n
+264	        current->next = NULL;
++n
+266	        return (void *)(object_header *)(current + 1);
++n
+364	} /* allocate_object() */
++n
+malloc (size=2097152) at MyMalloc.c:568
+568	  pthread_mutex_unlock(&mutex);
++n
+570	  return memory;
++n
+571	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffe5e8) at test8-7.c:25
+25	      print_list();
++n
+29	      memset(ptrs[i], 'a', size);
++n
+30	      assert(ptrs[i][size - 1] == 'a');
++n
+31	      if (i == ALLOCATIONS / 2) {
++n
+23	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+24	      ptrs[i] = (char*) malloc(size);
++s
+malloc (size=2097152) at MyMalloc.c:563
+563	  pthread_mutex_lock(&mutex);
++n
+564	  increase_malloc_calls();
++n
+566	  void *memory = allocate_object(size);
++s
+allocate_object (size=2097152) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > (ARENA_SIZE + 
++n
+238	  object_header *current = free_list->next;
++n
+242	  while (current != &free_list_sentinel) {
++n
+316	  void *new_block = get_memory_from_os(ARENA_SIZE +
++s
+get_memory_from_os (size=2097248) at MyMalloc.c:531
+531	  heap_size += size;
++s
+533	  void *new_block = sbrk(size);
++s
+__GI___sbrk (increment=2097248) at sbrk.c:32
+32	sbrk.c: No such file or directory.
++n
+40	in sbrk.c
++n
+32	in sbrk.c
++n
+40	in sbrk.c
++n
+44	in sbrk.c
++n
+48	in sbrk.c
++n
+56	in sbrk.c
++n
+60	in sbrk.c
++n
+get_memory_from_os (size=2097248) at MyMalloc.c:535
+535	  num_chunks++;
++n
+537	  return new_block;
++n
+538	} /* get_memory_from_os() */
++n
+allocate_object (size=2097152) at MyMalloc.c:320
+320	  object_footer *start_fencepost = (object_footer *)new_block;
++n
+321	  object_header *new_object = 
++n
+326	                             rounded_size -
++n
+324	  object_footer *new_footer = 
++n
+328	  object_header *new_next_header = 
++n
+330	  object_footer *new_next_footer =
++n
+332	  object_header *end_fencepost = 
++n
+335	  start_fencepost->status = ALLOCATED;
++n
+336	  start_fencepost->object_size = 0;
++n
+338	  end_fencepost->status = ALLOCATED;
++n
+339	  end_fencepost->object_size = 0;
++n
+340	  end_fencepost->next = NULL;
++n
+341	  end_fencepost->prev = NULL;
++n
+343	  size_t real_size = ARENA_SIZE + 
++n
+346	  new_next_header->status = UNALLOCATED;
++n
+347	  new_next_header->object_size = real_size - rounded_size;
++n
+348	  new_next_footer->object_size = new_next_header->object_size;
++n
+349	  new_next_footer->status = UNALLOCATED;
++n
+351	  new_next_header->prev = free_list->prev;
++n
+352	  free_list->prev = new_next_header;
++n
+353	  new_next_header->prev->next = new_next_header;
++n
+354	  new_next_header->next = free_list;
++n
+356	  new_object->status = ALLOCATED;
++n
+357	  new_object->object_size = rounded_size;;
++n
+358	  new_object->prev = NULL;
++n
+359	  new_object->next = NULL;
++n
+360	  new_footer->object_size = new_object->object_size;
++n
+361	  new_footer->status = ALLOCATED;
++n
+363	  return (void *) (new_object + 1);
++n
+364	} /* allocate_object() */
++print free_list
+$6 = (object_header *) 0x5555557570a0 <free_list_sentinel>
++print free_list->next
+$7 = (struct object_header_struct *) 0x555555b580a0
++q

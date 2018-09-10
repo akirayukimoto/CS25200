@@ -1,0 +1,28 @@
+#! /bin/bash
+if [[ $# -ne 1 ]] 
+then
+	echo "Usage: fibonacci <limit>"
+	exit 1
+fi
+if ! [[ $1 =~ ^-?[0-9]+$ ]]
+then
+	echo "Usage: fibonacci <limit>"
+	exit 1
+fi
+F0=0
+F1=1
+echo -n ${F1} " "
+for (( I=1; I<$1; I++))
+do
+	let SUM=${F0}+${F1}
+	if [[ ${I} -ne $1-1 ]]
+	then
+		echo -n ${SUM} " "
+	else
+		echo -n ${SUM}
+	fi
+	let F0=${F1}
+	let F1=${SUM}
+done
+echo ""
+exit 0

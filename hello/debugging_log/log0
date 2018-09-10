@@ -1,0 +1,46 @@
+Sun Jul 8 19:12:14 EDT 2018
++break main
+Breakpoint 1 at 0x40089e: file here.c, line 5.
++r
+Starting program: /home/u91/sun549/cs252/hello/here 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea78) at here.c:5
+5	int main(int argc, char **argv) {
++n
+7	  int *pipeFd = malloc (2 * 4);
++n
+10	  pipe(pipeFd);
++n
+22	  if (fork() == 0) {
++n
+40	    fgets(msg, MSG_LEN, stdin);
++n
+
+Program received signal SIGTTIN, Stopped (tty input).
+main (argc=1, argv=0x7fffffffea78) at here.c:40
+40	    fgets(msg, MSG_LEN, stdin);
++n
+
+Program received signal SIGTTIN, Stopped (tty input).
+main (argc=1, argv=0x7fffffffea78) at here.c:40
+40	    fgets(msg, MSG_LEN, stdin);
++n
+41	    close(pipeFd[0]);
++n
+42	    puts("Can you here me?");
++n
+43	    fflush(stdout);
++n
+55	  fprintf(stderr, "%s\n", msg);
++n
+57	}
++n
+__libc_start_main (main=0x400886 <main>, argc=1, argv=0x7fffffffea78, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffea68) at ../csu/libc-start.c:325
+325	../csu/libc-start.c: No such file or directory.
++n
+[Inferior 1 (process 31898) exited normally]
++n
+The program is not being run.
++q

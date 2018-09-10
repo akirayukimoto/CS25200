@@ -1,0 +1,314 @@
+Thu Jun 21 00:15:31 EDT 2018
++break main
+Breakpoint 1 at 0x4009f5: file test0.c, line 11.
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++s
+pthread_mutex_lock (mutex=0x6020c0 <mutex>) at forward.c:192
+192	forward.c: No such file or directory.
++s
+malloc (size=8) at MyMalloc.c:461
+461	  increase_malloc_calls();
++s
+increase_malloc_calls () at MyMalloc.c:73
+73	  malloc_calls++;
++n
+74	} /* increase_malloc_calls() */
++n
+malloc (size=8) at MyMalloc.c:463
+463	  void *memory = allocate_object(size);
++n
+465	  pthread_mutex_unlock(&mutex);
++n
+467	  return memory;
++n
+468	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 14798) exited normally]
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++n
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 14883) exited normally]
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++s
+allocate_object (size=8) at MyMalloc.c:217
+217	  if (size < MINIMUM_SIZE) {
++s
+228	                         sizeof(object_footer) +
++s
+226	  size_t rounded_size = (size +
++s
+234	  if (rounded_size > ARENA_SIZE) {
++s
+240	  if (initialized != 1) {
++s
+241	    initialized = 1;
++s
+242	    initialize();
++s
+initialize () at MyMalloc.c:121
+121	  pthread_mutex_init(&mutex, NULL);
++s
+pthread_mutex_init (mutex=0x6020c0 <mutex>, mutexattr=0x0) at forward.c:188
+188	forward.c: No such file or directory.
++s
+initialize () at MyMalloc.c:126
+126	  const char *env_verbose = getenv(VERBOSE_ENV_VAR);
++s
+__GI_getenv (name=0x4013eb "MALLOCVERBOSE") at getenv.c:34
+34	getenv.c: No such file or directory.
++s
+35	in getenv.c
++s
+strlen () at ../sysdeps/x86_64/strlen.S:66
+66	../sysdeps/x86_64/strlen.S: No such file or directory.
++s
+67	in ../sysdeps/x86_64/strlen.S
++s
+68	in ../sysdeps/x86_64/strlen.S
++s
+69	in ../sysdeps/x86_64/strlen.S
++s
+70	in ../sysdeps/x86_64/strlen.S
++s
+71	in ../sysdeps/x86_64/strlen.S
++s
+72	in ../sysdeps/x86_64/strlen.S
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++n
+465	  pthread_mutex_unlock(&mutex);
++n
+467	  return memory;
++n
+468	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 14990) exited normally]
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++n
+465	  pthread_mutex_unlock(&mutex);
++n
+467	  return memory;
++n
+468	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 15025) exited normally]
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++s
+_IO_puts (str=0x4013c4 "Before any allocation") at ioputs.c:33
+33	ioputs.c: No such file or directory.
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++s
+allocate_object (size=8) at MyMalloc.c:217
+217	  if (size < MINIMUM_SIZE) {
++n
+228	                         sizeof(object_footer) +
++n
+226	  size_t rounded_size = (size +
++n
+234	  if (rounded_size > ARENA_SIZE) {
++n
+240	  if (initialized != 1) {
++n
+241	    initialized = 1;
++n
+242	    initialize();
++n
+245	  object_header *current = free_list->next;
++n
+247	  while (current != &free_list_sentinel) {
++n
+252	    size_t real_size = current->object_size + 
++n
+255	    if (real_size >= rounded_size) {
++n
+256	      size_t remainder = current->object_size - rounded_size;
++n
+258	      if (remainder <= MINIMUM_SIZE) {
++n
+276	      else if (remainder > MINIMUM_SIZE) {
++n
+277	        object_header *new_header = (object_header *)((char *)current + 
++n
+280	                                                      rounded_size - 
++n
+279	        object_footer *cur_footer = (object_footer *)((char *)current +
++n
+282	        object_footer *new_footer = (object_footer *)((char *)current + 
++n
+285	        new_header->object_size = current->object_size - rounded_size;
++n
+286	        new_footer->object_size = new_header->object_size;
++n
+287	        new_header->status = UNALLOCATED;
++print heap_size
+$1 = 4194496
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++print heap_size
+$2 = 2097248
+Quit
++un
+Ambiguous command "un": undisplay, unset, until.
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++print heap_size
+$3 = 2097248
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++print heap_size
+$4 = 2097248
++quit

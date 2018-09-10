@@ -1,0 +1,21 @@
+Thu Jul 26 14:50:22 EDT 2018
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++bt
+#0  0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+#1  0x00007ffff782702a in __GI_abort () at abort.c:89
+#2  0x00007ffff78677ea in __libc_message (do_abort=do_abort@entry=2, fmt=fmt@entry=0x7ffff7980ed8 "*** Error in `%s': %s: 0x%s ***\n") at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff78734aa in malloc_printerr (ar_ptr=0x3, ptr=<optimized out>, str=<optimized out>, action=3) at malloc.c:5006
+#4  _int_realloc (av=av@entry=0x7ffff7bb4b20 <main_arena>, oldp=oldp@entry=0x55555575d1d0, oldsize=oldsize@entry=32, nb=nb@entry=48) at malloc.c:4252
+#5  0x00007ffff7874839 in __GI___libc_realloc (oldmem=0x55555575d1e0, bytes=33) at malloc.c:3045
+#6  0x000055555555716c in socket_read_line (socket=0x55555575a440) at socket.c:40
+#7  0x0000555555555faf in handle (sock=0x55555575a440) at server.c:249
+#8  0x0000555555555764 in run_linear_server (acceptor=0x55555575a420) at server.c:17
+#9  0x0000555555555728 in main (argc=2, argv=0x7fffffffea48) at main.c:106
++quit

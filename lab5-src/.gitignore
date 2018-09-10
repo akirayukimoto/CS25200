@@ -1,0 +1,5 @@
+*.o
+myhttpd
+myhttpsd
+.local.git.out
+*.pem

@@ -1,0 +1,406 @@
+Thu Jun 21 20:18:39 EDT 2018
++break main
+Breakpoint 1 at 0x400b7e: file test8-1.c, line 15.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-1.c:15
+15	int main(int argc, char **argv) {
++n
+18	  srand(SEED);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++until 34
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:36
+36	  print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x603738) at MyMalloc.c:572
+572	  pthread_mutex_lock(&mutex);
++n
+573	  increase_free_calls();
++n
+575	  if (ptr != NULL) {
++n
+576	    free_object(ptr);
++s
+free_object (ptr=0x603738) at MyMalloc.c:372
+372	  object_header *current = (object_header *)((char *)ptr - sizeof(object_header));
++n
+375	                      current->object_size - 
++n
+373	  object_footer *current_footer = 
++n
+377	  object_footer *left_footer = 
++n
+380	    (object_header *)((char *)current + current->object_size);
++n
+379	  object_header *right_header =
++n
+385	  if (left_footer->status != UNALLOCATED && 
++n
+405	  else if (left_footer->status == UNALLOCATED && 
++n
+406	    right_header->status == ALLOCATED) {
++n
+405	  else if (left_footer->status == UNALLOCATED && 
++n
+409	                        left_footer->object_size -
++n
+407	    object_header *left_header =
++n
+412	      left_header->object_size + current->object_size;
++n
+411	    left_header->object_size = 
++n
+413	    current_footer->object_size = left_header->object_size;
++n
+406	    right_header->status == ALLOCATED) {
++n
+459	} /* free_object() */
++n
+free (ptr=0x603738) at MyMalloc.c:579
+579	  pthread_mutex_unlock(&mutex);
++n
+580	} /* free() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++print ptrs[i]
+$1 = 0x603ab0 '\377' <repeats 200 times>...
++s
+free (ptr=0x603ab0) at MyMalloc.c:572
+572	  pthread_mutex_lock(&mutex);
++n
+573	  increase_free_calls();
++n
+575	  if (ptr != NULL) {
++n
+576	    free_object(ptr);
++s
+free_object (ptr=0x603ab0) at MyMalloc.c:372
+372	  object_header *current = (object_header *)((char *)ptr - sizeof(object_header));
++print free_list
+$2 = (object_header *) 0x602140 <free_list_sentinel>
++print free_list->next
+$3 = (struct object_header_struct *) 0x603010
++print free_list->prev
+$4 = (struct object_header_struct *) 0x80af00
++n
+375	                      current->object_size - 
++n
+373	  object_footer *current_footer = 
++n
+377	  object_footer *left_footer = 
++n
+380	    (object_header *)((char *)current + current->object_size);
++n
+379	  object_header *right_header =
++n
+385	  if (left_footer->status != UNALLOCATED && 
++n
+386	    right_header->status != UNALLOCATED) {
++print left_footer->status
+$5 = ALLOCATED
++print right_header->status
+$6 = ALLOCATED
++n
+385	  if (left_footer->status != UNALLOCATED && 
++n
+387	    current->status = UNALLOCATED;
++n
+388	    current_footer->status = UNALLOCATED;
++n
+390	    object_header *temp = free_list->next;
++n
+391	    while (temp != &free_list_sentinel) {
++n
+392	      if (temp < current && temp->next > current) {
++n
+399	    current->next = temp->next;
++n
+400	    temp->next->prev = current;
++n
+401	    temp->next = current;
++n
+402	    current->prev = temp;
++n
+386	    right_header->status != UNALLOCATED) {
++n
+459	} /* free_object() */
++n
+free (ptr=0x603ab0) at MyMalloc.c:579
+579	  pthread_mutex_unlock(&mutex);
++n
+580	} /* free() */
++n
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++until 42
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:44
+44	  print_list();
++until 42
+__libc_start_main (main=0x400b66 <main>, argc=1, argv=0x7fffffffea68, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffea58) at ../csu/libc-start.c:325
+325	../csu/libc-start.c: No such file or directory.
++q

@@ -1,0 +1,64 @@
+Fri Jul 27 12:18:15 EDT 2018
++break parse_respond
+Breakpoint 1 at 0x401720: file server.c, line 51.
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:51
+51	void parse_respond(socket_t *sock, http_request * const request) {
++list
+46	
+47	/*
+48	 * Parsing request to respond
+49	 */
+50	
+51	void parse_respond(socket_t *sock, http_request * const request) {
+52	  //printf("pt 1\n");
+53	  http_response response;
+54	//  char *revised_path = (char *)malloc(sizeof(char) * strlen("/http-root-dir"));
+55	  char *revised_path = strdup("./http-root-dir");
++n
+55	  char *revised_path = strdup("./http-root-dir");
++p revised_path
+$1 = 0x7fffffffe8f0 " \351\377\377\377\177"
++n
+57	  char *ptr = strdup(request->request_uri);
++p revised_path
+$2 = 0x607540 "./http-root-dir"
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++p ptr
+$3 = 0x607560 "/complex.html"
++n
+60	    !strncmp(ptr, "/htdocs", strlen("/htdocs"))) {
++n
+59	  if (!strncmp(ptr, "/icons", strlen("/icons")) ||
++n
+66	    if (ptr[0] == '/') {
++n
+68	      int new_length = strlen(revised_path) + strlen("/htdocs") + strlen(ptr);
++n
+69	      revised_path = realloc(revised_path, sizeof(char) * new_length);
++p new_length
+$4 = 35
++p strlen(revised_path)
+$5 = 15
++p revised_path
+$6 = 0x607540 "./http-root-dir"
++n
+70	      strcat(revised_path, "/htdocs");
++p revised_path
+$7 = 0x607420 "./http-root-dir"
++n
+73	      strcat(revised_path, ptr);
++p ptr
+$8 = 0x607560 "/complex.html"
++n
+88	  int max_chars = 1024;
++p strlen(revised_path)
+$9 = 35
++p revised_path
+$10 = 0x607420 "./http-root-dir/htdocs/complex.html"
++quit

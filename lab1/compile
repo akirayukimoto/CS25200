@@ -1,0 +1,30 @@
+#! /bin/bash
+
+if [ $# -ne 0 ]
+then
+	echo "Usage: compile"
+	exit 1
+fi
+
+for File in *.c
+do
+	echo "C program: ${File}"
+	gcc -Wall -std=c99 ${File}
+	if (("$?" - 0 == 0))
+	then
+		echo "Successfully compiled!"
+		for input in input*data
+		do
+			if a.out < $input
+			then
+				echo "Run successful."
+			else
+				echo "Run failed on ${input}."
+			fi
+		done
+	else
+		echo "Compilation of ${File} failed!"
+	fi
+	echo ""
+done
+exit 0

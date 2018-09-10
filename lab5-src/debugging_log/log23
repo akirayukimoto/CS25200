@@ -1,0 +1,11 @@
+Sat Jul 28 21:28:08 EDT 2018
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000403215 in response_string (response=0x7fffffffe7a0) at http_messages.c:179
+179	    to_string[i + content_length] = 0;
+Quit
++q

@@ -1,0 +1,202 @@
+Sat Jun 23 10:44:07 EDT 2018
++break main
+Breakpoint 1 at 0xc22: file test8-1.c, line 15.
++r
+Starting program: /u/data/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe5e8) at test8-1.c:15
+15	int main(int argc, char **argv) {
++n
+18	  srand(SEED);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++n
+29	    ptrs[i] = (char *) malloc(alloc_size * sizeof(char));
++n
+33	    memset(ptrs[i], 255, alloc_size);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++until 34
+main (argc=1, argv=0x7fffffffe5e8) at test8-1.c:36
+36	  print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x555555758030) at MyMalloc.c:592
+warning: Source file is more recent than executable.
+592	  pthread_mutex_lock(&mutex);
++n
+593	  increase_free_calls();
++n
+595	  if (ptr != NULL) {
++n
+596	    free_object(ptr);
++s
+free_object (ptr=0x555555758030) at MyMalloc.c:388
+388	  object_header *current = 
++n
+392	                      current->object_size - 
++n
+390	  object_footer *current_footer = 
++n
+394	  object_footer *left_footer = 
++n
+397	    (object_header *)((char *)current + current->object_size);
++n
+396	  object_header *right_header =
++n
+402	  if (left_footer->status != UNALLOCATED && 
++n
+403	    right_header->status != UNALLOCATED) {
++n
+402	  if (left_footer->status != UNALLOCATED && 
++n
+404	    current->status = UNALLOCATED;
++n
+405	    current_footer->status = UNALLOCATED;
++n
+407	    object_header *temp = &free_list_sentinel;
++n
+408	    while (temp->next != &free_list_sentinel) {
++n
+409	      if (temp < current && temp->next > current) {
++n
+416	    temp->next->prev = current;
++print temp
+$1 = (object_header *) 0x5555557570a0 <free_list_sentinel>
++n
+417	    current->next = temp->next;
++n
+418	    temp->next = current;
++n
+419	    current->prev = temp;
++print current->prev
+$2 = (struct object_header_struct *) 0x0
++n
+403	    right_header->status != UNALLOCATED) {
++n
+479	} /* free_object() */
++n
+free (ptr=0x555555758030) at MyMalloc.c:599
+599	  pthread_mutex_unlock(&mutex);
++n
+600	} /* free() */
++n
+main (argc=1, argv=0x7fffffffe5e8) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x555555758738) at MyMalloc.c:592
+592	  pthread_mutex_lock(&mutex);
++n
+593	  increase_free_calls();
++n
+595	  if (ptr != NULL) {
++n
+596	    free_object(ptr);
++s
+free_object (ptr=0x555555758738) at MyMalloc.c:388
+388	  object_header *current = 
++n
+392	                      current->object_size - 
++n
+390	  object_footer *current_footer = 
++n
+394	  object_footer *left_footer = 
++n
+397	    (object_header *)((char *)current + current->object_size);
++n
+396	  object_header *right_header =
++n
+402	  if (left_footer->status != UNALLOCATED && 
++n
+422	  else if (left_footer->status == UNALLOCATED && 
++n
+423	    right_header->status == ALLOCATED) {
++n
+422	  else if (left_footer->status == UNALLOCATED && 
++n
+424	    current->status = UNALLOCATED;
++n
+428	                        left_footer->object_size -
++n
+426	    object_header *left_header =
++n
+431	      left_header->object_size + current->object_size;
++print free_list->next
+$3 = (struct object_header_struct *) 0x555555758010
++n
+430	    left_header->object_size = 
++n
+432	    current_footer->object_size = left_header->object_size;
++n
+423	    right_header->status == ALLOCATED) {
++print free_list->next->object_size
+$4 = 1800
++n
+479	} /* free_object() */
++n
+free (ptr=0x555555758738) at MyMalloc.c:599
+599	  pthread_mutex_unlock(&mutex);
++n
+600	} /* free() */
++n
+main (argc=1, argv=0x7fffffffe5e8) at test8-1.c:40
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++sn
+Undefined command: "sn".  Try "help".
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++s
+free (ptr=0x555555759a40) at MyMalloc.c:592
+592	  pthread_mutex_lock(&mutex);
++n
+593	  increase_free_calls();
++n
+595	  if (ptr != NULL) {
++n
+596	    free_object(ptr);
++s
+free_object (ptr=0x555555759a40) at MyMalloc.c:388
+388	  object_header *current = 
++n
+392	                      current->object_size - 
++n
+390	  object_footer *current_footer = 
++n
+394	  object_footer *left_footer = 
++n
+397	    (object_header *)((char *)current + current->object_size);
++n
+396	  object_header *right_header =
++n
+402	  if (left_footer->status != UNALLOCATED && 
++n
+403	    right_header->status != UNALLOCATED) {
++n
+402	  if (left_footer->status != UNALLOCATED && 
++n
+404	    current->status = UNALLOCATED;
++n
+405	    current_footer->status = UNALLOCATED;
++n
+407	    object_header *temp = &free_list_sentinel;
++:q
+Undefined command: "".  Try "help".
++kill
++q

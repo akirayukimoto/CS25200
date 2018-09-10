@@ -1,0 +1,4 @@
+user lab1 lab2 lab3 midterm final
+hays1 75 100 90 85 75
+sun549 100 90 70 50 50
+han405 93 100 70 80 80

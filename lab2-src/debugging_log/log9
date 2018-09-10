@@ -1,0 +1,74 @@
+Fri Jun 22 18:27:50 EDT 2018
++break main
+Breakpoint 1 at 0x400ad5: file test8-2.c, line 15.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-2 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-2.c:15
+15	  size_t size = 2097152;
++n
+16	  char *mem = (char*) malloc(size);
++n
+17	  print_list();
++n
+21	  memset(mem, 'a', size);
++s
+__memset_sse2 () at ../sysdeps/x86_64/multiarch/../memset.S:53
+53	../sysdeps/x86_64/multiarch/../memset.S: No such file or directory.
++s
+54	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+55	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+56	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+57	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+59	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+60	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+77	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+78	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+__memset_sse2 () at ../sysdeps/x86_64/multiarch/../memset.S:78
+78	in ../sysdeps/x86_64/multiarch/../memset.S
++s
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-2 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-2.c:15
+15	  size_t size = 2097152;
++n
+16	  char *mem = (char*) malloc(size);
++s
+malloc (size=2097152) at MyMalloc.c:560
+560	  pthread_mutex_lock(&mutex);
++n
+561	  increase_malloc_calls();
++n
+563	  void *memory = allocate_object(size);
++s
+allocate_object (size=2097152) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > ARENA_SIZE) {
++n
+233	    return NULL;
++n
+361	} /* allocate_object() */
++quit

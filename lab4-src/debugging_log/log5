@@ -1,0 +1,150 @@
+Fri Jul 20 19:46:11 EDT 2018
++break main
+Breakpoint 1 at 0x400d0f: file part1.c, line 130.
++r 5 5
+Starting program: /home/u91/sun549/cs252/lab4-src/part1 5 5
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=3, argv=0x7fffffffea58) at part1.c:130
+130	int main(int argc, char **argv) {
++n
+131	  if (argc != 3) {
++n
+138	  pthread_mutex_init(&buffer_mutex, NULL);
++n
+143	  sem_init(&empty_sem, 0, 0);
++n
+144	  sem_init(&full_sem, 0, BUF_SIZE);
++n
+150	  count = 0;
++n
+151	  buffer.head = 0;
++n
+152	  buffer.tail = 0;
++n
+154	  pthread_t producer_thread[atoi(argv[1])];
++n
+155	  pthread_t consumer_thread[atoi(argv[2])];
++n
+170	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+171	    pthread_create(&producer_thread[i], NULL, producer, (void *)(&i));
++n
+[New Thread 0x7ffff77ef700 (LWP 2311)]
+170	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+[Thread 0x7ffff77ef700 (LWP 2311) exited]
+171	    pthread_create(&producer_thread[i], NULL, producer, (void *)(&i));
++n
+[New Thread 0x7ffff6dd8700 (LWP 2312)]
+170	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+[Thread 0x7ffff6dd8700 (LWP 2312) exited]
+171	    pthread_create(&producer_thread[i], NULL, producer, (void *)(&i));
++n
+[New Thread 0x7ffff65d7700 (LWP 2315)]
+170	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+171	    pthread_create(&producer_thread[i], NULL, producer, (void *)(&i));
++n
+[New Thread 0x7ffff5dd6700 (LWP 2316)]
+170	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+171	    pthread_create(&producer_thread[i], NULL, producer, (void *)(&i));
++n
+[New Thread 0x7ffff55d5700 (LWP 2317)]
+170	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+175	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+176	    pthread_create(&consumer_thread[i], NULL, consumer, (void *)(&i));
++n
+[New Thread 0x7ffff4dd4700 (LWP 2318)]
+175	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+[Thread 0x7ffff4dd4700 (LWP 2318) exited]
+176	    pthread_create(&consumer_thread[i], NULL, consumer, (void *)(&i));
++n
+[New Thread 0x7fffeffff700 (LWP 2321)]
+175	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+[Thread 0x7ffff65d7700 (LWP 2315) exited]
+[Thread 0x7fffeffff700 (LWP 2321) exited]
+176	    pthread_create(&consumer_thread[i], NULL, consumer, (void *)(&i));
++n
+[New Thread 0x7fffef7fe700 (LWP 2322)]
+175	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+[Thread 0x7ffff55d5700 (LWP 2317) exited]
+[Thread 0x7ffff5dd6700 (LWP 2316) exited]
+[Thread 0x7fffef7fe700 (LWP 2322) exited]
+176	    pthread_create(&consumer_thread[i], NULL, consumer, (void *)(&i));
++n
+[New Thread 0x7fffeeffd700 (LWP 2323)]
+175	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+[Thread 0x7fffeeffd700 (LWP 2323) exited]
+176	    pthread_create(&consumer_thread[i], NULL, consumer, (void *)(&i));
++n
+[New Thread 0x7fffee7fc700 (LWP 2325)]
+175	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+[Thread 0x7fffee7fc700 (LWP 2325) exited]
+180	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+181	    pthread_join(producer_thread[i], NULL);
++n
+180	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+181	    pthread_join(producer_thread[i], NULL);
++n
+180	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+181	    pthread_join(producer_thread[i], NULL);
++n
+180	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+181	    pthread_join(producer_thread[i], NULL);
++n
+180	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+181	    pthread_join(producer_thread[i], NULL);
++n
+180	  for (i = 0; i < atoi(argv[1]); i++) {
++n
+184	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+185	    pthread_join(consumer_thread[i], NULL);
++n
+184	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+185	    pthread_join(consumer_thread[i], NULL);
++n
+184	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+185	    pthread_join(consumer_thread[i], NULL);
++n
+184	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+185	    pthread_join(consumer_thread[i], NULL);
++n
+184	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+185	    pthread_join(consumer_thread[i], NULL);
++n
+184	  for (i = 0; i < atoi(argv[2]); i++) {
++n
+188	  pthread_mutex_destroy(&buffer_mutex);
++n
+192	  return 0;
++n
+193	} /* main() */
++n
+__libc_start_main (main=0x400cf7 <main>, argc=3, argv=0x7fffffffea58, init=<optimized out>, 
+    fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffffffea48)
+    at ../csu/libc-start.c:325
+325	../csu/libc-start.c: No such file or directory.
++n
+[Inferior 1 (process 2305) exited normally]
++q

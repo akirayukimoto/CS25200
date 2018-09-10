@@ -1,0 +1,1168 @@
+Tue Jul 31 14:46:10 EDT 2018
++break handle_dir.c:handle_directory 
+Breakpoint 1 at 0x3c3f: file handle_dir.c, line 25.
++r
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 24687) exited normally]
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575cfd0, request=0x7fffffffe3a0) at handle_dir.c:25
+25	void handle_directory(socket_t *sock, const http_request *request) {
++n
+27	  response.http_version = request->http_version;
++n
+28	  response.status_code = 200;
++n
+30	  int max_info = 20;
++n
+31	  int num_info = 0;
++n
+33	  struct info * info_array = malloc(sizeof(struct info) * max_info);
++n
+35	  char *dir_path = strdup(request->request_uri);
++n
+37	  DIR *dir = opendir(dir_path);
++n
+38	  if (dir == NULL) {
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++print md_time
+$1 = 0x55555575ed50 "6 22 118, 3:46"
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+101	  if (num_info > 1) {
++n
+102	    qsort(info_array, num_info, sizeof(struct info), compare_name_ascending);
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcmp_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S:31
+31	../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S: No such file or directory.
++print info_array[0].name
+No symbol "info_array" in current context.
++n
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++n
+The program is not being run.
++n
+The program is not being run.
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:25
+25	void handle_directory(socket_t *sock, const http_request *request) {
++n
+27	  response.http_version = request->http_version;
++n
+28	  response.status_code = 200;
++n
+30	  int max_info = 20;
++n
+31	  int num_info = 0;
++n
+33	  struct info * info_array = malloc(sizeof(struct info) * max_info);
++n
+35	  char *dir_path = strdup(request->request_uri);
++n
+37	  DIR *dir = opendir(dir_path);
++n
+38	  if (dir == NULL) {
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++print info_array[num_info]
+$2 = {name = 0x555555765610 "./http-root-dir/htdocs/dir1/c", date = 0x555555765750 "6 22 118, 3:46", 
+  size = 0x55555575cf10 "0", is_dir = 1433780504}
++n
+96	    free(md_time);
++n
+97	    num_info++;
++print info_array[num_info]
+$3 = {name = 0x555555765610 "./http-root-dir/htdocs/dir1/c", date = 0x555555765750 "6 22 118, 3:46", 
+  size = 0x55555575cf10 "0", is_dir = 1433780504}
++m
+Ambiguous command "m": macro, maintenance, make, mem, monitor, mt.
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+64	      stat(file_info.name, &st);
++n
+65	      int size = st.st_size;
++n
+66	      new_len = sizeof(size);
++n
+67	      char *size_str = malloc(sizeof(char) * new_len);
++n
+68	      sprintf(size_str, "%d", size);
++n
+69	      file_info.size = strdup(size_str);
++n
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++n
+79	    int month = foo->tm_mon;
++n
+80	    int day = foo->tm_mday;
++n
+81	    int hour = foo->tm_hour;
++n
+82	    int min = foo->tm_min;
++n
+83	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+85	    char *md_time = malloc(sizeof(char) * new_len);
++n
+86	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+87	    file_info.date = strdup(md_time);
++n
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++n
+96	    free(md_time);
++n
+97	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+101	  if (num_info > 1) {
++n
+102	    qsort(info_array, num_info, sizeof(struct info), compare_name_ascending);
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcmp_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S:31
+31	../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S: No such file or directory.
++n
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:25
+25	void handle_directory(socket_t *sock, const http_request *request) {
++n
+27	  response.http_version = request->http_version;
++n
+28	  response.status_code = 200;
++n
+30	  int max_info = 20;
++n
+31	  int num_info = 0;
++n
+33	  struct info * info_array = malloc(sizeof(struct info) * max_info);
++n
+35	  char *dir_path = strdup(request->request_uri);
++n
+37	  DIR *dir = opendir(dir_path);
++n
+38	  if (dir == NULL) {
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++until 55
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:55
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++list
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
+54	    strcat(file_path, ent->d_name);
+55	    file_info.name = strdup(file_path);
+56	
+57	    // add file size info to file info
+58	    if (is_direc(file_info.name)) {
+59	      // if it is a directory, no need to show its size
+60	      file_info.size = strdup("-");
+61	    }
+62	    else {
++until 70
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:70
+70	      free(size_str);
++n
+76	    stat(file_path, &attrib);
++n
+77	    foo = gmtime(&(attrib.st_mtime));
++n
+78	    int year = foo->tm_year;
++list
+73	    // add file last modified date to file info
+74	    struct tm *foo;
+75	    struct stat attrib;
+76	    stat(file_path, &attrib);
+77	    foo = gmtime(&(attrib.st_mtime));
+78	    int year = foo->tm_year;
+79	    int month = foo->tm_mon;
+80	    int day = foo->tm_mday;
+81	    int hour = foo->tm_hour;
+82	    int min = foo->tm_min;
++until 88
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:90
+90	    if (num_info == max_info) {
++n
+94	    info_array[num_info] = file_info;
++n
+95	    free(file_path);
++until 99
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:101
+101	  if (num_info > 1) {
++n
+102	    qsort(info_array, num_info, sizeof(struct info), compare_name_ascending);
++s
+__GI_qsort (b=0x55555575d310, n=8, s=32, cmp=0x555555557bce <compare_name_ascending>) at msort.c:308
+308	msort.c: No such file or directory.
++n
+__GI___qsort_r (b=0x55555575d310, n=8, s=32, cmp=0x555555557bce <compare_name_ascending>, arg=0x0)
+    at msort.c:166
+166	in msort.c
++n
+172	in msort.c
++n
+167	in msort.c
++n
+175	in msort.c
++n
+177	in msort.c
++n
+168	in msort.c
++n
+177	in msort.c
++n
+239	in msort.c
++n
+234	in msort.c
++n
+235	in msort.c
++n
+236	in msort.c
++n
+237	in msort.c
++n
+239	in msort.c
++n
+285	in msort.c
++n
+287	in msort.c
++n
+289	in msort.c
++n
+293	in msort.c
++n
+295	in msort.c
++n
+297	in msort.c
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcmp_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S:31
+31	../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S: No such file or directory.
++n
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++q

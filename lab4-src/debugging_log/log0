@@ -1,0 +1,43 @@
+Wed Jul 18 14:28:23 EDT 2018
++break main
+Breakpoint 1 at 0x400d32: file part1.c, line 126.
++r 5 5
+Starting program: /home/u91/sun549/cs252/lab4-src/part1 5 5
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=3, argv=0x7fffffffea58) at part1.c:126
+126	int main(int argc, char **argv) {
++n
+127	  if (argc != 3) {
++n
+134	  pthread_mutex_init(&buffer_mutex, NULL);
++n
+139	  sem_init(&empty_sem, 0, 0);
++n
+140	  sem_init(&full_sem, 0, BUF_SIZE);
++n
+146	  count = 0;
++n
+147	  buffer.head = 0;
++n
+148	  buffer.tail = 0;
++n
+154	  pthread_create(&consumer_thread, NULL, consumer, (void *)buffer.buf);
++n
+[New Thread 0x7ffff77ef700 (LWP 38078)]
+155	  pthread_create(&producer_thread, NULL, producer, (void *)buffer.buf);
++n
+
+Thread 2 "part1" received signal SIGABRT, Aborted.
+[Switching to Thread 0x7ffff77ef700 (LWP 38078)]
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++n
+[Thread 0x7ffff77ef700 (LWP 38078) exited]
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++exit
+Undefined command: "exit".  Try "help".
++q

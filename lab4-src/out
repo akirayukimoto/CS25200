@@ -1,0 +1,150 @@
+producer current index: 0
+producer current index: 1
+Producer 0 starting
+Thread 0 produced H
+producer current index: 2
+Thread 0 produced e
+Thread 0 produced l
+Thread 0 produced l
+Thread 0 produced o
+Thread 0 produced ,
+Thread 0 produced  
+Thread 0 produced W
+Thread 0 produced o
+Thread 0 produced r
+Thread 0 produced l
+Thread 0 produced d
+Thread 0 produced !
+Producer 1 starting
+Thread 1 produced H
+Thread 1 produced e
+Thread 1 produced l
+Thread 1 produced l
+Thread 1 produced o
+Thread 1 produced ,
+Thread 1 produced  
+Thread 1 produced W
+Thread 1 produced o
+Thread 1 produced r
+Thread 1 produced l
+Thread 1 produced d
+Thread 1 produced !
+producer current index: 3
+Producer 2 starting
+Thread 2 produced H
+Thread 2 produced e
+Thread 2 produced l
+Thread 2 produced l
+Thread 2 produced o
+Thread 2 produced ,
+producer current index: 4
+Producer 3 starting
+consumer current index: 0
+Producer 4 starting
+consumer current index: 1
+consumer current index: 2
+consumer current index: 3
+consumer current index: 4
+Consumer 3 starting
+Thread 3 consumed H
+Thread 2 produced  
+Thread 3 consumed e
+Thread 3 consumed l
+Thread 3 produced H
+Thread 3 consumed l
+Thread 3 produced e
+Thread 3 produced l
+Thread 3 consumed o
+Thread 4 produced H
+Thread 3 consumed ,
+Thread 2 produced W
+Thread 3 consumed  
+Thread 2 produced o
+Thread 3 consumed W
+Thread 3 produced l
+Thread 3 consumed o
+Thread 2 produced r
+Thread 3 consumed r
+Thread 4 produced e
+Thread 3 consumed l
+Thread 3 produced o
+Thread 3 consumed d
+Thread 2 produced l
+Thread 3 consumed !
+Thread 3 produced ,
+Consumer 2 starting
+Thread 2 consumed H
+Thread 2 consumed e
+Thread 4 produced l
+Thread 2 consumed l
+Thread 4 produced l
+Thread 4 produced o
+Thread 2 consumed l
+Consumer 1 starting
+Thread 2 consumed o
+Thread 4 produced ,
+Thread 4 produced  
+Thread 2 consumed ,
+Thread 3 produced  
+Consumer 0 starting
+Consumer 4 starting
+Thread 2 consumed  
+Thread 1 consumed H
+Thread 2 consumed W
+Thread 1 consumed e
+Thread 1 consumed l
+Thread 3 produced W
+Thread 1 consumed l
+Thread 3 produced o
+Thread 1 consumed o
+Thread 3 produced r
+Thread 1 consumed ,
+Thread 3 produced l
+Thread 1 consumed  
+Thread 3 produced d
+Thread 1 consumed W
+Thread 3 produced !
+Thread 1 consumed o
+Thread 1 consumed r
+Thread 1 consumed l
+Thread 1 consumed d
+Thread 1 consumed !
+Thread 4 produced W
+Thread 4 produced o
+Thread 4 produced r
+Thread 4 produced l
+Thread 4 produced d
+Thread 4 produced !
+Thread 2 consumed o
+Thread 2 consumed r
+Thread 2 consumed l
+Thread 2 consumed d
+Thread 2 consumed !
+Thread 0 consumed H
+Thread 0 consumed e
+Thread 0 consumed l
+Thread 0 consumed l
+Thread 0 consumed o
+Thread 0 consumed ,
+Thread 0 consumed  
+Thread 0 consumed W
+Thread 0 consumed o
+Thread 0 consumed r
+Thread 0 consumed l
+Thread 0 consumed d
+Thread 2 produced d
+Thread 2 produced !
+Thread 4 consumed H
+Thread 4 consumed e
+Thread 4 consumed l
+Thread 4 consumed l
+Thread 4 consumed o
+Thread 4 consumed ,
+Thread 4 consumed  
+Thread 4 consumed W
+Thread 4 consumed o
+Thread 4 consumed r
+Thread 4 consumed l
+Thread 4 consumed d
+Thread 4 consumed !
+Thread 0 consumed !

@@ -1,0 +1,269 @@
+Sat Jun 23 09:26:10 EDT 2018
++break main
+Breakpoint 1 at 0x804882c: file test4.c, line 9.
++r
+Starting program: /u/data/u91/sun549/cs252/lab2-src/test4_32 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0xffffd784) at test4.c:9
+9	  printf("\n---- Running test4 ---\n");
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++s
+malloc (size=100) at MyMalloc.c:560
+560	  pthread_mutex_lock(&mutex);
++n
+561	  increase_malloc_calls();
++n
+563	  void *memory = allocate_object(size);
++n
+565	  pthread_mutex_unlock(&mutex);
++n
+567	  return memory;
++n
+568	} /* malloc() */
++n
+main (argc=1, argv=0xffffd784) at test4.c:17
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++s
+malloc (size=100) at MyMalloc.c:560
+560	  pthread_mutex_lock(&mutex);
++n
+561	  increase_malloc_calls();
++n
+563	  void *memory = allocate_object(size);
++s
+allocate_object (size=100) at MyMalloc.c:215
+215	  if (size < MINIMUM_SIZE) {
++n
+226	                         sizeof(object_footer) +
++n
+224	  size_t rounded_size = (size +
++n
+232	  if (rounded_size > (ARENA_SIZE + 
++n
+238	  object_header *current = free_list->next;
++n
+242	  while (current != &free_list_sentinel) {
++n
+247	    if (current->object_size >= rounded_size) {
++n
+248	      size_t remainder = current->object_size - rounded_size;
++n
+250	      if (remainder <= MINIMUM_SIZE) {
++n
+267	      else if (remainder > MINIMUM_SIZE) {
++n
+268	        object_header *new_header = (object_header *)((char *)current + 
++n
+272	                            rounded_size - 
++n
+270	        object_footer *cur_footer = 
++n
+276	                            current->object_size -
++n
+274	        object_footer *new_footer = 
++n
+279	        new_header->object_size = current->object_size - rounded_size;
++n
+280	        new_footer->object_size = new_header->object_size;
++n
+281	        new_header->status = UNALLOCATED;
++n
+282	        new_footer->status = UNALLOCATED;
++n
+284	        current->object_size = rounded_size;
++n
+285	        current->status = ALLOCATED;
++n
+287	        cur_footer->object_size = current->object_size;
++n
+288	        cur_footer->status = ALLOCATED;
++n
+290	        current->prev->next = new_header;
++n
+291	        new_header->prev = current->prev;
++n
+292	        new_header->next = current->next;
++n
+293	        current->next->prev = new_header;
++n
+294	        current->prev = NULL;
++n
+295	        current->next = NULL;
++n
+297	        return (void *)(object_header *)(current + 1);
++n
+361	} /* allocate_object() */
++n
+malloc (size=100) at MyMalloc.c:565
+565	  pthread_mutex_unlock(&mutex);
++n
+567	  return memory;
++n
+568	} /* malloc() */
++n
+main (argc=1, argv=0xffffd784) at test4.c:17
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++until 17
+main (argc=1, argv=0xffffd784) at test4.c:17
+17	    *p1 = 100;
++n
+15	  for ( i = 0; i < allocations; i++) {
++n
+16	    char *p1 = (char *) malloc(100);
++n
+17	    *p1 = 100;
++until 18
+main (argc=1, argv=0xffffd784) at test4.c:19
+19	  print_list();
++n
+21	  exit(0);
++q

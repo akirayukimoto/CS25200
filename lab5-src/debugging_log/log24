@@ -1,0 +1,10 @@
+Sat Jul 28 21:28:46 EDT 2018
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++q

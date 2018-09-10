@@ -1,0 +1,6 @@
+Thu Jun 21 00:15:07 EDT 2018
++break main
+No symbol table is loaded.  Use the "file" command.
++ls
+Undefined command: "ls".  Try "help".
++q

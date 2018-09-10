@@ -1,0 +1,367 @@
+Tue Jul 31 14:55:40 EDT 2018
++break handle_dir.c:handle_directory 
+Breakpoint 1 at 0x3c39: file handle_dir.c, line 25.
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:25
+25	void handle_directory(socket_t *sock, const http_request *request) {
++n
+27	  response.http_version = request->http_version;
++n
+28	  response.status_code = 200;
++n
+30	  int max_info = 20;
++n
+31	  int num_info = 0;
++n
+33	  struct info * info_array = malloc(sizeof(struct info) * max_info);
++n
+35	  char *dir_path = strdup(request->request_uri);
++n
+37	  DIR *dir = opendir(dir_path);
++n
+38	  if (dir == NULL) {
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+65	      stat(file_info.name, &st);
++n
+66	      int size = st.st_size;
++n
+67	      new_len = sizeof(size);
++n
+68	      char *size_str = malloc(sizeof(char) * new_len);
++n
+69	      sprintf(size_str, "%d", size);
++n
+70	      file_info.size = strdup(size_str);
++n
+71	      free(size_str);
++n
+72	      file_info.is_dir = 0;
++n
+78	    stat(file_path, &attrib);
++n
+79	    foo = gmtime(&(attrib.st_mtime));
++n
+80	    int year = foo->tm_year;
++n
+81	    int month = foo->tm_mon;
++n
+82	    int day = foo->tm_mday;
++n
+83	    int hour = foo->tm_hour;
++n
+84	    int min = foo->tm_min;
++n
+85	    new_len = sizeof(foo->tm_year) + sizeof(foo->tm_mon) + sizeof(foo->tm_mday)
++n
+87	    char *md_time = malloc(sizeof(char) * new_len);
++n
+88	    sprintf(md_time, "%d %d %d, %d:%d", month, day, year, hour, min);
++n
+89	    file_info.date = strdup(md_time);
++n
+92	    if (num_info == max_info) {
++n
+96	    info_array[num_info] = file_info;
++n
+97	    free(file_path);
++n
+98	    free(md_time);
++n
+99	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++n
+47	    char *file_path = strdup(dir_path);
++n
+48	    if (file_path[strlen(file_path) - 1] != '/') {
++n
+52	    int new_len = strlen(file_path) + strlen(ent->d_name);
++n
+53	    file_path = realloc(file_path, sizeof(char) * new_len);
++n
+54	    strcat(file_path, ent->d_name);
++n
+55	    file_info.name = strdup(file_path);
++n
+58	    if (is_direc(file_info.name)) {
++n
+60	      file_info.size = strdup("-");
++untl 99
+Undefined command: "untl".  Try "help".
++list
+55	    file_info.name = strdup(file_path);
+56	
+57	    // add file size info to file info
+58	    if (is_direc(file_info.name)) {
+59	      // if it is a directory, no need to show its size
+60	      file_info.size = strdup("-");
+61	      file_info.is_dir = 1;
+62	    }
+63	    else {
+64	      struct stat st;
++until 99
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:99
+99	    num_info++;
++n
+43	  while ((ent = readdir(dir)) != NULL) {
++until 100
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:103
+103	  if (num_info > 1) {
++n
+104	    qsort(info_array, num_info, sizeof(struct info), compare_name_ascending);
++s
+__GI_qsort (b=0x55555575d310, n=8, s=32, cmp=0x555555557bce <compare_name_ascending>) at msort.c:308
+308	msort.c: No such file or directory.
++n
+__GI___qsort_r (b=0x55555575d310, n=8, s=32, cmp=0x555555557bce <compare_name_ascending>, arg=0x0)
+    at msort.c:166
+166	in msort.c
++n
+172	in msort.c
++n
+167	in msort.c
++n
+175	in msort.c
++n
+177	in msort.c
++n
+168	in msort.c
++n
+177	in msort.c
++n
+239	in msort.c
++n
+234	in msort.c
++n
+235	in msort.c
++n
+236	in msort.c
++n
+237	in msort.c
++n
+239	in msort.c
++n
+285	in msort.c
++n
+287	in msort.c
++n
+289	in msort.c
++n
+293	in msort.c
++n
+295	in msort.c
++n
+297	in msort.c
++n
+299	in msort.c
++n
+300	in msort.c
++n
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:108
+108	  header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+110	  content_type_header.key = "Content-Type";
++n
+111	  content_type_header.value = "text/html";
++n
+113	  connection_header.key = "Connection";
++n
+114	  connection_header.value = "close";
++n
+115	  header_array[0] = content_type_header;
++n
+116	  header_array[1] = connection_header;
++n
+119	  char *message_body = strdup("<html><head><title>");
++n
+120	  char *part = "Index of Directory</title></head><body><h1>Index of";
++n
+121	  int new_length = strlen(message_body) + strlen(part) + 1;
++n
+122	  message_body = realloc(message_body, new_length);
++n
+123	  strcat(message_body, part);
++n
+125	  new_length = strlen(message_body) + strlen(dir_path) + 1;
++n
+126	  message_body = realloc(message_body, sizeof(char) * new_length);
++n
+127	  strcat(message_body, dir_path);
++n
+128	  char *tags1 = "</h1>";
++n
+129	  char *tags2 = "<table><th>Name</th><th>Date</th><th>Size</th>";
++n
+130	  new_length = strlen(message_body) + strlen(tags1) + strlen(tags2) + 1;
++n
+131	  message_body = realloc(message_body, sizeof(char) * new_length);
++n
+132	  strcat(message_body, tags1);
++n
+133	  strcat(message_body, tags2);
++n
+136	  char *tag_r1 = "<tr>";
++n
+137	  char *tag_d1 = "<td>";
++n
+138	  char *tag_a1 = "<A HREF=\"";
++n
+139	  char *tag_a2 = "\">";
++n
+140	  char *tag_a3 = "</A>";
++n
+141	  char *tag_d2 = "</td>";
++n
+142	  char *tag_r2 = "</tr>";
++n
+145	  for (i = 0; i < num_info; i++) {
++n
+147	    new_length = strlen(message_body) + strlen(tag_r1) + strlen(tag_d1)
++n
+148	      + strlen(tag_a1) + 2 * strlen(info_array[i].name) 
++n
+149	      + strlen(tag_a2) + strlen(tag_a3) + strlen(tag_d2) + 1;
++n
+147	    new_length = strlen(message_body) + strlen(tag_r1) + strlen(tag_d1)
++n
+150	    message_body = realloc(message_body, sizeof(char) * new_length);
++n
+151	    strcat(message_body, tag_r1);
++n
+152	    strcat(message_body, tag_d1);
++n
+153	    strcat(message_body, tag_a1);
++n
+154	    strcat(message_body, info_array[i].name);
++n
+155	    strcat(message_body, tag_a2);
++n
+156	    strcat(message_body, info_array[i].name);
++n
+157	    strcat(message_body, tag_a3);
++n
+158	    strcat(message_body, tag_d2);
++n
+161	    new_length = strlen(message_body) + strlen(tag_d1) 
++n
+162	      + strlen(info_array[i].date) + strlen(tag_d2) + 1;
++n
+161	    new_length = strlen(message_body) + strlen(tag_d1) 
++n
+163	    message_body = realloc(message_body, sizeof(char) * new_length);
++n
+164	    strcat(message_body, tag_d1);
++n
+165	    strcat(message_body, info_array[i].date);
++n
+166	    strcat(message_body, tag_d2);
++n
+169	    new_length = strlen(message_body) + strlen(tag_d1)
++n
+170	      + strlen(info_array[i].size) + strlen(tag_d2) + strlen(tag_r2) + 1;
++n
+169	    new_length = strlen(message_body) + strlen(tag_d1)
++n
+171	    message_body = realloc(message_body, sizeof(char) * new_length);
++n
+172	    strcat(message_body, tag_d1);
++n
+173	    strcat(message_body, info_array[i].size);
++n
+174	    strcat(message_body, tag_d2);
++n
+175	    strcat(message_body, tag_r2);
++n
+145	  for (i = 0; i < num_info; i++) {
++n
+147	    new_length = strlen(message_body) + strlen(tag_r1) + strlen(tag_d1)
++n
+148	      + strlen(tag_a1) + 2 * strlen(info_array[i].name) 
++n
+149	      + strlen(tag_a2) + strlen(tag_a3) + strlen(tag_d2) + 1;
++n
+147	    new_length = strlen(message_body) + strlen(tag_r1) + strlen(tag_d1)
++n
+150	    message_body = realloc(message_body, sizeof(char) * new_length);
++n
+151	    strcat(message_body, tag_r1);
++n
+152	    strcat(message_body, tag_d1);
++n
+153	    strcat(message_body, tag_a1);
++n
+154	    strcat(message_body, info_array[i].name);
++n
+155	    strcat(message_body, tag_a2);
++n
+156	    strcat(message_body, info_array[i].name);
++n
+157	    strcat(message_body, tag_a3);
++n
+158	    strcat(message_body, tag_d2);
++n
+161	    new_length = strlen(message_body) + strlen(tag_d1) 
++n
+162	      + strlen(info_array[i].date) + strlen(tag_d2) + 1;
++n
+161	    new_length = strlen(message_body) + strlen(tag_d1) 
++n
+163	    message_body = realloc(message_body, sizeof(char) * new_length);
++n
+164	    strcat(message_body, tag_d1);
++n
+165	    strcat(message_body, info_array[i].date);
++n
+166	    strcat(message_body, tag_d2);
++n
+169	    new_length = strlen(message_body) + strlen(tag_d1)
++n
+170	      + strlen(info_array[i].size) + strlen(tag_d2) + strlen(tag_r2) + 1;
++n
+169	    new_length = strlen(message_body) + strlen(tag_d1)
++n
+171	    message_body = realloc(message_body, sizeof(char) * new_length);
++n
+172	    strcat(message_body, tag_d1);
++n
+173	    strcat(message_body, info_array[i].size);
++n
+174	    strcat(message_body, tag_d2);
++n
+175	    strcat(message_body, tag_r2);
++n
+145	  for (i = 0; i < num_info; i++) {
++n
+147	    new_length = strlen(message_body) + strlen(tag_r1) + strlen(tag_d1)
++n
+148	      + strlen(tag_a1) + 2 * strlen(info_array[i].name) 
++n
+149	      + strlen(tag_a2) + strlen(tag_a3) + strlen(tag_d2) + 1;
++n
+147	    new_length = strlen(message_body) + strlen(tag_r1) + strlen(tag_d1)
++cont
+Continuing.
+
+Breakpoint 1, handle_directory (sock=0x555555765850, request=0x7fffffffe3a0) at handle_dir.c:25
+25	void handle_directory(socket_t *sock, const http_request *request) {
++q

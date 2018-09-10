@@ -1,0 +1,43 @@
+Wed Jul 25 19:47:54 EDT 2018
++r 5555
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 5555
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff783ecc0 in _IO_vfprintf_internal (s=0x7ffff7bb5620 <_IO_2_1_stdout_>, 
+    format=<optimized out>, ap=ap@entry=0x7fffffffe708) at vfprintf.c:1632
+1632	vfprintf.c: No such file or directory.
++n
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++r 5555
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 5555
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca750 in __accept_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++break handle
+Breakpoint 1 at 0x401aaa: file server.c, line 133.
++r 5555
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 5555
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle (sock=0x606440) at server.c:133
+133	void handle(socket_t *sock) {
++n
+147	  int num_lines = 0;
++n
+148	  char *buffer = socket_read_line(sock);
++n
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7bca81d in __libc_recv (fd=4, buf=0x7fffffffe78f, n=1, flags=0)
+    at ../sysdeps/unix/sysv/linux/x86_64/recv.c:28
+28	../sysdeps/unix/sysv/linux/x86_64/recv.c: No such file or directory.
+Quit
++q

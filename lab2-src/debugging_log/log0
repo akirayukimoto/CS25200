@@ -1,0 +1,362 @@
+Wed Jun 20 23:55:53 EDT 2018
++break main
+Breakpoint 1 at 0x4009f5: file test0.c, line 11.
++n
+The program is not being run.
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++s
+allocate_object (size=8) at MyMalloc.c:217
+217	  if (size < MINIMUM_SIZE) {
++n
+228	                         sizeof(object_footer) +
++n
+226	  size_t rounded_size = (size +
++n
+234	  if (rounded_size > ARENA_SIZE) {
++n
+240	  if (initialized != 1) {
++n
+241	    initialized = 1;
++n
+242	    initialize();
++n
+245	  object_header *current = free_list->next;
++n
+247	  while (current != &free_list_sentinel) {
++n
+252	    size_t real_size = current->object_size + 
++n
+255	    if (real_size >= rounded_size) {
++n
+256	      size_t remainder = current->object_size - rounded_size;
++n
+258	      if (remainder <= MINIMUM_SIZE) {
++n
+276	      else if (remainder > MINIMUM_SIZE) {
++n
+277	        object_header *new_header = (object_header *)((char *)current + 
++n
+280	                                                      rounded_size - 
++n
+279	        object_footer *cur_footer = (object_footer *)((char *)current +
++n
+282	        object_footer *new_footer = (object_footer *)((char *)current + 
++n
+285	        new_header->object_size = current->object_size - rounded_size;
++n
+286	        new_footer->object_size = new_header->object_size;
++n
+287	        new_header->status = UNALLOCATED;
++n
+288	        new_footer->status = new_header->status;
++n
+291	                               sizeof(object_header) - 
++n
+290	        current->object_size = rounded_size - 
++n
+293	        current->status = ALLOCATED;
++n
+295	        cur_footer->object_size = current->object_size;
++n
+296	        cur_footer->status = ALLOCATED;
++n
+298	        current->prev->next = new_header;
++n
+299	        new_header->prev = current->prev;
++n
+300	        new_header->next = current->next;
++n
+301	        current->next->prev = new_header;
++n
+302	        current->prev = NULL;
++n
+303	        current->next = NULL;
++n
+305	        return (void *)(object_header *)(current + 1);
++n
+351	} /* allocate_object() */
++n
+malloc (size=8) at MyMalloc.c:465
+465	  pthread_mutex_unlock(&mutex);
++n
+467	  return memory;
++n
+468	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 6348) exited normally]
++n
+The program is not being run.
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++n
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 6671) exited normally]
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++run
+Program not restarted.
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++n
+465	  pthread_mutex_unlock(&mutex);
++n
+467	  return memory;
++n
+468	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 6770) exited normally]
++run
+Starting program: /home/u91/sun549/cs252/lab2-src/test0 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test0.c:11
+11	  printf("\n---- Running test0 ---\n");
++n
+13	  printf("Before any allocation\n");
++n
+14	  print_list();
++n
+16	  malloc(8);
++s
+malloc (size=8) at MyMalloc.c:460
+460	  pthread_mutex_lock(&mutex);
++n
+461	  increase_malloc_calls();
++n
+463	  void *memory = allocate_object(size);
++print size
+$1 = 8
++s
+allocate_object (size=8) at MyMalloc.c:217
+217	  if (size < MINIMUM_SIZE) {
++print size
+$2 = 8
++n
+228	                         sizeof(object_footer) +
++n
+226	  size_t rounded_size = (size +
++n
+234	  if (rounded_size > ARENA_SIZE) {
++n
+240	  if (initialized != 1) {
++print initialized
+$3 = 0
++n
+241	    initialized = 1;
++n
+242	    initialize();
++s
+initialize () at MyMalloc.c:121
+121	  pthread_mutex_init(&mutex, NULL);
++n
+126	  const char *env_verbose = getenv(VERBOSE_ENV_VAR);
++n
+127	  verbose = (!env_verbose || strcmp(env_verbose, VERBOSE_DISABLE_STRING));
++n
+132	  setvbuf(stdout, NULL, _IONBF, 0);
++n
+136	  void *new_block = get_memory_from_os(ARENA_SIZE +
++n
+142	  atexit(at_exit_handler_in_c);
++n
+146	  object_footer *start_fencepost = (object_footer *) new_block;
++n
+147	  object_header *current_header =
++n
+150	  object_footer *current_footer =
++n
+154	  object_header *end_fencepost =
++n
+162	  start_fencepost->status = ALLOCATED;
++n
+163	  start_fencepost->object_size = 0;
++n
+165	  end_fencepost->status = ALLOCATED;
++n
+166	  end_fencepost->object_size = 0;
++n
+167	  end_fencepost->next = NULL;
++n
+168	  end_fencepost->prev = NULL;
++n
+172	  current_header->status = UNALLOCATED;
++n
+173	  current_header->object_size = ARENA_SIZE +
++n
+177	  current_footer->status = UNALLOCATED;
++n
+178	  current_footer->object_size = current_header->object_size;
++n
+182	  free_list = &free_list_sentinel;
++n
+183	  free_list->prev = current_header;
++n
+184	  free_list->next = current_header;
++n
+185	  current_header->next = free_list;
++n
+186	  current_header->prev = free_list;
++n
+190	  free_list->status = SENTINEL;
++n
+191	  free_list->object_size = 0;
++n
+195	  mem_start = (char *) current_header;
++n
+196	} /* initialize() */
++n
+allocate_object (size=8) at MyMalloc.c:245
+245	  object_header *current = free_list->next;
++n
+247	  while (current != &free_list_sentinel) {
++n
+252	    size_t real_size = current->object_size + 
++n
+255	    if (real_size >= rounded_size) {
++print real_size
+$4 = 2097248
++print rounded _size
+No symbol "rounded" in current context.
++print rounded_size
+$5 = 56
++n
+256	      size_t remainder = current->object_size - rounded_size;
++print remainder
+$6 = 140737488349792
++print rounded_size
+$7 = 56
++print current->object_size
+$8 = 2097200
++n
+258	      if (remainder <= MINIMUM_SIZE) {
++print remainder
+$9 = 2097144
++n
+276	      else if (remainder > MINIMUM_SIZE) {
++n
+277	        object_header *new_header = (object_header *)((char *)current + 
++n
+280	                                                      rounded_size - 
++n
+279	        object_footer *cur_footer = (object_footer *)((char *)current +
++n
+282	        object_footer *new_footer = (object_footer *)((char *)current + 
++n
+285	        new_header->object_size = current->object_size - rounded_size;
++n
+286	        new_footer->object_size = new_header->object_size;
++n
+287	        new_header->status = UNALLOCATED;
++n
+288	        new_footer->status = new_header->status;
++n
+291	                               sizeof(object_header) - 
++print new_header->status
+$10 = UNALLOCATED
++n
+290	        current->object_size = rounded_size - 
++n
+293	        current->status = ALLOCATED;
++n
+295	        cur_footer->object_size = current->object_size;
++n
+296	        cur_footer->status = ALLOCATED;
++print cur_footer->status
+$11 = UNALLOCATED
++print cur_footer->object_size
+$12 = 8
++n
+298	        current->prev->next = new_header;
++n
+299	        new_header->prev = current->prev;
++n
+300	        new_header->next = current->next;
++n
+301	        current->next->prev = new_header;
++n
+302	        current->prev = NULL;
++n
+303	        current->next = NULL;
++n
+305	        return (void *)(object_header *)(current + 1);
++print current
+$13 = (object_header *) 0x803070
++n
+351	} /* allocate_object() */
++n
+malloc (size=8) at MyMalloc.c:465
+465	  pthread_mutex_unlock(&mutex);
++n
+467	  return memory;
++print memory
+$14 = (void *) 0x803090
++n
+468	} /* malloc() */
++n
+main (argc=1, argv=0x7fffffffea68) at test0.c:17
+17	  printf("After allocation\n");
++n
+18	  print_list();
++n
+20	  exit(0);
++n
+[Inferior 1 (process 7168) exited normally]
++q

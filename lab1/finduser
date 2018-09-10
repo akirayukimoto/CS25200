@@ -1,0 +1,44 @@
+#! /bin/bash
+
+if [[ $# -ne 0 ]]
+then
+	echo "Usage: finduser"
+	exit 1
+fi
+
+echo "Welcome to User Finder"
+echo -n "Please enter part or all of a username to search for: "
+read part
+
+Count=$(ypcat passwd | cut -d":" -f1-1 | grep ${part} | wc -l)
+
+if [[ $Count -eq 0 ]]
+then
+	echo "Sorry, I could not find that username."
+	exit 1
+elif [[ $Count -gt 1 ]] 
+then
+	echo "I found ${Count} matches!"
+	echo "You might want to be more specific."
+	echo "The first of these matches is:"
+else
+	echo "Match found!"
+fi
+
+RESULT=$(ypcat passwd | cut -d":" -f1-1 | grep ${part})
+USERNAME=$(echo ${RESULT} | cut -d" " -f1-1)
+
+INFO=$(ypcat passwd | cut -d":" -f1-7 | grep ${USERNAME})
+
+echo "Username: ${USERNAME}"
+NAME=$(echo ${INFO} | cut -d":" -f5-5 | cut -d"," -f1-1)
+echo "Name: ${NAME}"
+HOME_DIRECTORY=$(echo ${INFO} | cut -d":" -f6-6)
+echo "Home Directory: ${HOME_DIRECTORY}"
+SHELL=$(echo ${INFO} | cut -d":" -f7-7)
+echo "Shell: ${SHELL}"
+echo "Search complete on $(date)"
+
+exit 0
+
+

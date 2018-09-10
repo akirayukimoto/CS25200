@@ -1,0 +1,67 @@
+Sat Jul 14 23:31:14 EDT 2018
++break main
+Breakpoint 1 at 0x406409: file command.c, line 459.
++r
+Starting program: /home/u91/sun549/cs252/lab3-src/shell 
+
+Breakpoint 1, main () at command.c:459
+459	int main() {
++n
+462	  current_command = command_create();
++n
+468	  sa_ctrl.sa_handler = ctrl_c;
++n
+469	  sigemptyset(&sa_ctrl.sa_mask);
++n
+470	  sa_ctrl.sa_flags = SA_RESTART;
++n
+471	  if (sigaction(SIGINT, &sa_ctrl, NULL)) {
++n
+477	  sa_zombie.sa_handler = zombie;
++n
+478	  sigemptyset(&sa_zombie.sa_mask);
++n
+479	  sa_zombie.sa_flags = SA_RESTART;
++n
+480	  if (sigaction(SIGCHLD, &sa_zombie, NULL)) {
++n
+485	  prompt();
++n
+487	  yyparse();
++n
+[Inferior 1 (process 41439) exited normally]
++r
+Starting program: /home/u91/sun549/cs252/lab3-src/shell 
+
+Breakpoint 1, main () at command.c:459
+459	int main() {
++n
+462	  current_command = command_create();
++n
+468	  sa_ctrl.sa_handler = ctrl_c;
++n
+469	  sigemptyset(&sa_ctrl.sa_mask);
++n
+470	  sa_ctrl.sa_flags = SA_RESTART;
++n
+471	  if (sigaction(SIGINT, &sa_ctrl, NULL)) {
++n
+477	  sa_zombie.sa_handler = zombie;
++n
+478	  sigemptyset(&sa_zombie.sa_mask);
++n
+479	  sa_zombie.sa_flags = SA_RESTART;
++n
+480	  if (sigaction(SIGCHLD, &sa_zombie, NULL)) {
++n
+485	  prompt();
++n
+487	  yyparse();
++ls -a `cat temp`
+Undefined command: "ls".  Try "help".
++n
+[Inferior 1 (process 23128) exited normally]
++exit
+Undefined command: "exit".  Try "help".
+Error detected on fd 0
+error detected on stdin

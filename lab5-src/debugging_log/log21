@@ -1,0 +1,693 @@
+Sat Jul 28 20:14:06 EDT 2018
++break server.c:112
+Breakpoint 1 at 0x401ad1: file server.c, line 112.
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:113
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+128	    if (!is_image) {
++n
+129	      fseek(f, 0, SEEK_END);
++n
+130	      num = ftell(f);
++n
+131	      fseek(f, 0, SEEK_SET);
++n
+132	      message_body = (char *)malloc(sizeof(char) * num);
++n
+136	      if (message_body != NULL) {
++n
+137	        fread(message_body, 1, num, f);
++n
+140	      message_length = num;
++n
+164	    printf("message body: %s\n", message_body);
++n
+165	    fclose(f);
++n
+167	  if (status == 200) {
++n
+169	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+171	    response.http_version = request->http_version;
++n
+172	    response.status_code = status;
++n
+175	    content_type_head.key = "Content-Type";
++n
+176	    content_type_head.value = content_type;
++n
+178	    connection_head.key = "Connection";
++n
+179	    connection_head.value = "close";
++n
+182	    message_length_head.key = "Content-Length";
++n
+183	    char *msg_length = (char *)malloc(sizeof(char) * message_length);
++n
+185	    sprintf(msg_length, "%d", message_length);
++n
+186	    message_length_head.value = msg_length;
++n
+187	    printf("msg len: %s\n", msg_length);
++n
+189	    header_array[0] = content_type_head;
++n
+190	    header_array[1] = connection_head;
++n
+191	    header_array[2] = message_length_head;
++n
+192	    printf("what\n");
++n
+193	    response.headers = header_array;
++n
+194	    response.num_headers = 3;
++n
+196	    response.message_body = strdup(message_body);
++n
+198	    printf("what2\n");
++n
+199	    char *to_string = response_string(&response);
++n
+200	    printf("to_string: %s\n", to_string);
++n
+201	    socket_write_string(sock, to_string);
++n
+253	}
++n
+handle (sock=0x606440) at server.c:391
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+394	  free(general_lines);
++n
+395	  general_lines = NULL;
++n
+415	  close_socket(sock);
++n
+416	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:113
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+124	      fclose(f);
++n
+125	      f = fopen(revised_path, "rb");
++n
+126	      is_image = 1;
++n
+128	    if (!is_image) {
++n
+144	      int max_char = 10240;
++n
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++until 155
+handle (sock=0x606440) at server.c:391
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+392	    free(general_lines[j]);
++n
+391	  for (j = 0; j < num_lines; j++) {
++n
+394	  free(general_lines);
++n
+395	  general_lines = NULL;
++n
+415	  close_socket(sock);
++n
+416	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:113
+113	    status = 200;
++n
+114	    content_type = get_content_type(revised_path);
++n
+115	    printf("content_type: %s\n", content_type);
++n
+119	    int num = 0;
++n
+121	    printf("whatttttttt\n");
++n
+122	    int is_image = 0;
++n
+123	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+124	      fclose(f);
++n
+125	      f = fopen(revised_path, "rb");
++n
+126	      is_image = 1;
++n
+128	    if (!is_image) {
++n
+144	      int max_char = 10240;
++n
+145	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++watch message_body[num]
+Hardware watchpoint 2: message_body[num]
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = -119 '\211'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = -119 '\211'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 80 'P'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 80 'P'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 78 'N'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 78 'N'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 71 'G'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 71 'G'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 13 '\r'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 13 '\r'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 10 '\n'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 10 '\n'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 26 '\032'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 26 '\032'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 10 '\n'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 10 '\n'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+152	        num++;
++watch message_body[num]
+Hardware watchpoint 3: message_body[num]
++print message_body
+$1 = 0x60f710 "\211PNG\r\n\032\n"
++n
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 13 '\r'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 0 '\000'
+New value = 13 '\r'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 13 '\r'
+New value = 0 '\000'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 13 '\r'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 73 'I'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 0 '\000'
+New value = 73 'I'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 73 'I'
+New value = 0 '\000'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 73 'I'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 72 'H'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 0 '\000'
+New value = 72 'H'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 72 'H'
+New value = 0 '\000'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 72 'H'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 0 '\000'
+New value = 68 'D'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 0 '\000'
+New value = 68 'D'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:152
+152	        num++;
++n
+
+Hardware watchpoint 2: message_body[num]
+
+Old value = 68 'D'
+New value = 0 '\000'
+
+Hardware watchpoint 3: message_body[num]
+
+Old value = 68 'D'
+New value = 0 '\000'
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:153
+153	        if (num == max_char) {
++n
+147	      while(read(fileno(f), &ch, sizeof(ch)) != 0) {
++n
+151	        message_body[num] = ch;
++print message_body
+$2 = 0x60f710 "\211PNG\r\n\032\n"
++q

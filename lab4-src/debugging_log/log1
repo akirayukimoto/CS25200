@@ -1,0 +1,156 @@
+Wed Jul 18 14:48:55 EDT 2018
++break main
+Breakpoint 1 at 0x400d32: file part1.c, line 126.
++r 5 5
+Starting program: /home/u91/sun549/cs252/lab4-src/part1 5 5
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=3, argv=0x7fffffffea58) at part1.c:126
+warning: Source file is more recent than executable.
+126	int main(int argc, char **argv) {
++n
+127	  if (argc != 3) {
++n
+134	  pthread_mutex_init(&buffer_mutex, NULL);
++n
+139	  sem_init(&empty_sem, 0, 0);
++n
+140	  sem_init(&full_sem, 0, BUF_SIZE);
++n
+146	  count = 0;
++n
+147	  buffer.head = 0;
++n
+148	  buffer.tail = 0;
++n
+159	  pthread_create(&producer_thread, NULL, &producer, (void *)buffer.buf);
++s
+__pthread_create_2_1 (newthread=0x7fffffffe958, attr=0x0, 
+    start_routine=0x400ae6 <producer>, arg=0x602160 <buffer>) at pthread_create.c:511
+511	pthread_create.c: No such file or directory.
++n
+505	in pthread_create.c
++n
+510	in pthread_create.c
++n
+511	in pthread_create.c
++n
+513	in pthread_create.c
++n
+514	in pthread_create.c
++n
+516	in pthread_create.c
++n
+514	in pthread_create.c
++n
+516	in pthread_create.c
++n
+534	in pthread_create.c
++n
+535	in pthread_create.c
++n
+539	in pthread_create.c
++n
+558	in pthread_create.c
++n
+539	in pthread_create.c
++n
+571	in pthread_create.c
++n
+539	in pthread_create.c
++n
+561	in pthread_create.c
++n
+572	in pthread_create.c
++n
+539	in pthread_create.c
++n
+567	in pthread_create.c
++n
+573	in pthread_create.c
++n
+567	in pthread_create.c
++n
+568	in pthread_create.c
++n
+573	in pthread_create.c
++n
+578	in pthread_create.c
++n
+572	in pthread_create.c
++n
+578	in pthread_create.c
++n
+581	in pthread_create.c
++n
+586	in pthread_create.c
++n
+587	in pthread_create.c
++n
+586	in pthread_create.c
++n
+587	in pthread_create.c
++n
+591	in pthread_create.c
++n
+596	in pthread_create.c
++n
+606	in pthread_create.c
++n
+609	in pthread_create.c
++n
+631	in pthread_create.c
++n
+633	in pthread_create.c
++n
+643	in pthread_create.c
++n
+648	in pthread_create.c
++n
+645	in pthread_create.c
++n
+648	in pthread_create.c
++n
+652	in pthread_create.c
++n
+648	in pthread_create.c
++n
+679	in pthread_create.c
++n
+[New Thread 0x7ffff77ef700 (LWP 39636)]
+682	in pthread_create.c
++n
+679	in pthread_create.c
++n
+682	in pthread_create.c
++n
+713	in pthread_create.c
++n
+
+Thread 2 "part1" received signal SIGABRT, Aborted.
+[Switching to Thread 0x7ffff77ef700 (LWP 39636)]
+0x00007ffff7825428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
+54	../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
++n
+[Thread 0x7ffff77ef700 (LWP 39636) exited]
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++q

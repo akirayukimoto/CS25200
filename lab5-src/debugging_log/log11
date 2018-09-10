@@ -1,0 +1,371 @@
+Fri Jul 27 12:26:21 EDT 2018
++break server.c:110
+Breakpoint 1 at 0x401a43: file server.c, line 110.
++r
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 32401) exited normally]
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:111
+111	    status = 200;
++n
+112	    content_type = get_content_type(revised_path);
++n
+113	    printf("content_type: %s\n", content_type);
++n
+117	    int num = 0;
++n
+119	    printf("whatttttttt\n");
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++p ch
+$1 = 60 '<'
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++p ch
+$2 = 33 '!'
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++p message_bodyu
+No symbol "message_bodyu" in current context.
++p message_body
+$3 = 0x607680 "<!"
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++list
+116	    char ch;
+117	    int num = 0;
+118	    //while ((ch = fgetc(f)) != EOF) {
+119	    printf("whatttttttt\n");
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
+121	      if (ch == EOF)
+122	        break;
+123	 //     printf("num: %d\n", num);
+124	 //     printf("max_char: %d\n", max_chars);
+125	 //     printf("num = max? %d\n", (num == max_chars));
++list
+126	      if (num == max_chars) {
+127	        //printf("here?\n");
+128	        max_chars = max_chars * 2;
+129	        printf("max_char: %d\n", max_chars);
+130	        printf("msg: %s\n", message_body);
+131	        char *usg = (char *)realloc(message_body, max_chars);
+132	        message_body = usg;
+133	        //char *usg;
+134	        //usg
+135	        printf("here\n");
++break 127
+Breakpoint 2 at 0x401aaf: file server.c, line 127.
++cont
+Continuing.
+
+Breakpoint 2, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:128
+128	        max_chars = max_chars * 2;
++p max_chars
+$4 = 1024
++p message_body
+$5 = 0x607680 "<!DOCTYPE HTML>\r\n<html>\r\n\t<head>\r\n\t\t<style type=\"text/css\"></style>\r\n\t</head>\r\n\t<body bgcolor=\"#B2D5FF\" link=\"#666600\" vlink=\"#666600\">\r\n\t<!--body bgcolor=\"#CCDDF2\" link=\"#666600\" vlink=\"#666600\"-->\r\n"...
++n
+129	        printf("max_char: %d\n", max_chars);
++n
+130	        printf("msg: %s\n", message_body);
++n
+131	        char *usg = (char *)realloc(message_body, max_chars);
++n
+132	        message_body = usg;
++p usg
+$6 = 0x607cc0 "<!DOCTYPE HTML>\r\n<html>\r\n\t<head>\r\n\t\t<style type=\"text/css\"></style>\r\n\t</head>\r\n\t<body bgcolor=\"#B2D5FF\" link=\"#666600\" vlink=\"#666600\">\r\n\t<!--body bgcolor=\"#CCDDF2\" link=\"#666600\" vlink=\"#666600\"-->\r\n"...
++n
+135	        printf("here\n");
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++n
+138	      message_body[num] = ch;
++n
+139	      num++;
++n
+120	    while (read(fileno(f), &ch, sizeof(ch))) {
++n
+121	      if (ch == EOF)
++n
+126	      if (num == max_chars) {
++quit

@@ -1,0 +1,2649 @@
+Sat Jul 28 19:18:30 EDT 2018
++break server.c:112
+Breakpoint 1 at 0x401ac7: file server.c, line 112.
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:112
+112	    status = 200;
++n
+113	    content_type = get_content_type(revised_path);
++n
+114	    printf("content_type: %s\n", content_type);
++n
+118	    int num = 0;
++n
+120	    printf("whatttttttt\n");
++n
+121	    int is_image = 0;
++n
+122	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+127	    if (!is_image) {
++n
+128	      fseek(f, 0, SEEK_END);
++n
+129	      num = ftell(f);
++n
+130	      fseek(f, 0, SEEK_SET);
++n
+131	      message_body = (char *)malloc(sizeof(char) * num);
++n
+135	      if (message_body != NULL) {
++n
+136	        fread(message_body, 1, num, f);
++n
+161	    printf("message body: %s\n", message_body);
++n
+162	    fclose(f);
++n
+164	  if (status == 200) {
++n
+166	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+168	    response.http_version = request->http_version;
++n
+169	    response.status_code = status;
++n
+172	    content_type_head.key = "Content-Type";
++n
+173	    content_type_head.value = content_type;
++n
+175	    connection_head.key = "Connection";
++n
+176	    connection_head.value = "close";
++n
+179	    message_length_head.key = "Content-Length";
++n
+180	    char *msg_length = (char *)malloc(sizeof(char) * strlen(message_body));
++n
+181	    int tmp = strlen(message_body);
++n
+182	    sprintf(msg_length, "%d", tmp);
++n
+183	    message_length_head.value = msg_length;
++n
+184	    printf("msg len: %s\n", msg_length);
++n
+186	    header_array[0] = content_type_head;
++n
+187	    header_array[1] = connection_head;
++n
+188	    header_array[2] = message_length_head;
++n
+189	    printf("what\n");
++n
+190	    response.headers = header_array;
++n
+191	    response.num_headers = 3;
++n
+193	    response.message_body = strdup(message_body);
++n
+195	    printf("what2\n");
++n
+196	    char *to_string = response_string(&response);
++n
+198	    socket_write_string(sock, to_string);
++n
+249	}
++n
+handle (sock=0x606440) at server.c:387
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+390	  free(general_lines);
++n
+391	  general_lines = NULL;
++n
+411	  close_socket(sock);
++n
+412	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:112
+112	    status = 200;
++n
+113	    content_type = get_content_type(revised_path);
++n
+114	    printf("content_type: %s\n", content_type);
++n
+118	    int num = 0;
++n
+120	    printf("whatttttttt\n");
++n
+121	    int is_image = 0;
++n
+122	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+123	      fclose(f);
++n
+124	      f = fopen(revised_path, "rb");
++n
+125	      is_image = 1;
++n
+127	    if (!is_image) {
++n
+142	      int max_char = 10240;
++n
+143	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++print message_body
+$1 = 0x60a150 "<?xm"
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++print message_body
+$2 = 0x60a150 "<?xml "
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++print message_body
+$3 = 0x60a150 "<?xml version"
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++print message_body
+$4 = 0x60a150 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!-- Gene"
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++print message_body
+$5 = 0x60a150 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n<!DOCTYPE"
++until 155
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:156
+156	      message_body[num] = 0;
++n
+161	    printf("message body: %s\n", message_body);
++n
+162	    fclose(f);
++n
+164	  if (status == 200) {
++n
+166	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+168	    response.http_version = request->http_version;
++n
+169	    response.status_code = status;
++n
+172	    content_type_head.key = "Content-Type";
++n
+173	    content_type_head.value = content_type;
++n
+175	    connection_head.key = "Connection";
++n
+176	    connection_head.value = "close";
++n
+179	    message_length_head.key = "Content-Length";
++n
+180	    char *msg_length = (char *)malloc(sizeof(char) * strlen(message_body));
++n
+181	    int tmp = strlen(message_body);
++n
+182	    sprintf(msg_length, "%d", tmp);
++n
+183	    message_length_head.value = msg_length;
++n
+184	    printf("msg len: %s\n", msg_length);
++n
+186	    header_array[0] = content_type_head;
++n
+187	    header_array[1] = connection_head;
++n
+188	    header_array[2] = message_length_head;
++n
+189	    printf("what\n");
++n
+190	    response.headers = header_array;
++n
+191	    response.num_headers = 3;
++n
+193	    response.message_body = strdup(message_body);
++n
+195	    printf("what2\n");
++n
+196	    char *to_string = response_string(&response);
++n
+198	    socket_write_string(sock, to_string);
++n
+249	}
++n
+handle (sock=0x606440) at server.c:387
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+390	  free(general_lines);
++n
+391	  general_lines = NULL;
++n
+411	  close_socket(sock);
++n
+412	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:112
+112	    status = 200;
++n
+113	    content_type = get_content_type(revised_path);
++n
+114	    printf("content_type: %s\n", content_type);
++n
+118	    int num = 0;
++n
+120	    printf("whatttttttt\n");
++n
+121	    int is_image = 0;
++n
+122	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+123	      fclose(f);
++n
+124	      f = fopen(revised_path, "rb");
++n
+125	      is_image = 1;
++n
+127	    if (!is_image) {
++n
+142	      int max_char = 10240;
++n
+143	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++print message_body
+$6 = 0x60f710 "\211PN"
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++print message_body
+$7 = 0x60f710 "\211PNG\r\n\032\n"
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++print message_body
+$8 = 0x60f710 "\211PNG\r\n\032\n"
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++print message_body
+$9 = 0x60f710 "\211PNG\r\n\032\n"
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++print message_body
+$10 = 0x60f710 "\211PNG\r\n\032\n"
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++until 155
+parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:156
+156	      message_body[num] = 0;
++print message_body
+$11 = 0x60f710 "\211PNG\r\n\032\n"
++n
+161	    printf("message body: %s\n", message_body);
++n
+162	    fclose(f);
++n
+164	  if (status == 200) {
++n
+166	    header *header_array = (header *)malloc(sizeof(header) * 3);
++n
+168	    response.http_version = request->http_version;
++n
+169	    response.status_code = status;
++n
+172	    content_type_head.key = "Content-Type";
++n
+173	    content_type_head.value = content_type;
++n
+175	    connection_head.key = "Connection";
++n
+176	    connection_head.value = "close";
++n
+179	    message_length_head.key = "Content-Length";
++n
+180	    char *msg_length = (char *)malloc(sizeof(char) * strlen(message_body));
++n
+181	    int tmp = strlen(message_body);
++n
+182	    sprintf(msg_length, "%d", tmp);
++n
+183	    message_length_head.value = msg_length;
++n
+184	    printf("msg len: %s\n", msg_length);
++n
+186	    header_array[0] = content_type_head;
++n
+187	    header_array[1] = connection_head;
++n
+188	    header_array[2] = message_length_head;
++n
+189	    printf("what\n");
++n
+190	    response.headers = header_array;
++n
+191	    response.num_headers = 3;
++n
+193	    response.message_body = strdup(message_body);
++n
+195	    printf("what2\n");
++n
+196	    char *to_string = response_string(&response);
++n
+198	    socket_write_string(sock, to_string);
++n
+249	}
++n
+handle (sock=0x606440) at server.c:387
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+388	    free(general_lines[j]);
++n
+387	  for (j = 0; j < num_lines; j++) {
++n
+390	  free(general_lines);
++n
+391	  general_lines = NULL;
++n
+411	  close_socket(sock);
++n
+412	}
++n
+run_linear_server (acceptor=0x606420) at server.c:18
+18	  }
++n
+16	    socket_t *sock = accept_connection(acceptor);
++n
+17	    handle(sock);
++n
+
+Breakpoint 1, parse_respond (sock=0x606440, request=0x7fffffffe8a0) at server.c:112
+112	    status = 200;
++n
+113	    content_type = get_content_type(revised_path);
++n
+114	    printf("content_type: %s\n", content_type);
++n
+118	    int num = 0;
++n
+120	    printf("whatttttttt\n");
++n
+121	    int is_image = 0;
++n
+122	    if (!strncmp(content_type, "image", strlen("image"))) {
++n
+123	      fclose(f);
++n
+124	      f = fopen(revised_path, "rb");
++n
+125	      is_image = 1;
++n
+127	    if (!is_image) {
++n
+142	      int max_char = 10240;
++n
+143	      message_body = (char *)malloc(sizeof(char) * max_char);
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++n
+150	        num++;
++n
+151	        if (num == max_char) {
++n
+145	      while((ch = fgetc(f)) != EOF) {
++n
+149	        message_body[num] = ch;
++print message_body
+$12 = 0x6129c0 "\211PNG\r\n\032\n"
++print &message_body
+$13 = (char **) 0x7fffffffe728
++q

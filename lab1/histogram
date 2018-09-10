@@ -1,0 +1,45 @@
+#! /bin/bash
+
+# check the number of arguments
+if [[ $# -ne 1 ]]
+then
+	echo "Usage: histogram <filename>"
+	exit 1
+fi
+# check whether the file is readable
+if ! [[ -r $1 ]]
+then
+	echo "Error: $1 is not readable!"
+	exit 1
+fi
+
+SUM=0
+Count=0
+Max_Index=0
+while IFS='' read -r line
+do
+	temp=$(echo ${line} | tr '[:space:]' ':')
+	Score=$(echo ${temp} | cut -d':' -f2)
+	let SUM=${SUM}+${Score}
+	let Count=Count+1
+	Index=$((Score/10))
+	Array[Index]=$((Array[Index]+1))
+	if [[ Index -gt ${Max_Index} ]]
+	then
+		let Max_Index=${Index}
+	fi
+done < $1
+
+echo "${Count} scores total..."
+for ((i = Max_Index; i >= 0; i--))
+do
+	filed=$((i*10))
+	for ((j = 0; j < Array[i]; j++))
+	do
+		Num+='='
+	done
+	printf '%3d: %s\n' ${filed} ${Num}
+	unset Num
+done
+echo "Average: $((SUM/Count))"
+exit 0

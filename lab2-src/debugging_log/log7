@@ -1,0 +1,156 @@
+Thu Jun 21 20:34:23 EDT 2018
++break main
+Breakpoint 1 at 0x400b7e: file test8-1.c, line 15.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/test8-1 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffea68) at test8-1.c:15
+15	int main(int argc, char **argv) {
++n
+18	  srand(SEED);
++n
+21	  for (i = 0; i < ALLOCATIONS; i++) {
++n
+25	    size_t alloc_size = rand() % MAX_SIZE;
++until 34
+main (argc=1, argv=0x7fffffffea68) at test8-1.c:36
+36	  print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++print ptrs[i[
+A syntax error in expression, near `'.
++print ptrs[i]
+$1 = 0x603030 '\377' <repeats 200 times>...
++print ptrs[0]
+$2 = 0x603030 '\377' <repeats 200 times>...
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++print ptr[i]
+No symbol "ptr" in current context.
++n
+41	    free(ptrs[i]);
++print ptrs[i]
+$3 = 0x6071f8 '\377' <repeats 200 times>...
++print ptrs[0]
+$4 = 0x603030 '\377' <repeats 200 times>...
++print ptrs[1]
+$5 = 0x603738 '\377' <repeats 200 times>...
++print ptrs[2]
+$6 = 0x603ab0 '\377' <repeats 200 times>...
++print ptrs[3]
+$7 = 0x604888 '\377' <repeats 200 times>...
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++n
+41	    free(ptrs[i]);
++n
+42	    print_list();
++n
+40	  for (i = 0; i<ALLOCATIONS; i++) {
++killall -u sun549
+Undefined command: "killall".  Try "help".
++q

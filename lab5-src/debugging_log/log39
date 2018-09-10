@@ -1,0 +1,5006 @@
+Tue Jul 31 19:15:44 EDT 2018
++break server.c:handle
+Breakpoint 1 at 0x402537: file server.c, line 285.
++r 2300
+Starting program: /home/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+339	      raw_path = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+340	    else if (count == 2)
++n
+341	      http_version = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+350	      (strlen(raw_path) + strlen("index.html") + 1));
++n
+349	    raw_path = realloc(raw_path, sizeof(char) * 
++n
+351	    strcat(raw_path, "index.html");
++n
+354	  request.method = method;
++n
+355	  request.http_version = http_version;
++n
+356	  request.request_uri = raw_path;
++n
+357	  request.query = "";
++n
+358	  free(buffer);
++n
+359	  buffer = NULL;
++n
+362	  header *header_array = (header *)malloc(sizeof(header) * max_headers);
++n
+363	  int num_headers = 0;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+409	  printf("num headers: %d\n", num_headers);
++n
+410	  request.headers = header_array;
++n
+411	  request.num_headers = num_headers;
++n
+412	  request.message_body = "";
++n
+414	  print_request(&request);
++n
+424	  parse_respond(sock, &request);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+429	  free(general_lines);
++n
+430	  general_lines = NULL;
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+435	  free(header_array);
++n
+436	  free(method);
++n
+437	  free(raw_path);
++n
+438	  free(http_version);
++n
+458	  close_socket(sock);
++n
+459	}
++n
+run_linear_server (acceptor=0x608420) at server.c:21
+21	  }
++n
+19	    socket_t *sock = accept_connection(acceptor);
++n
+20	    handle(sock);
++n
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+339	      raw_path = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+340	    else if (count == 2)
++n
+341	      http_version = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+354	  request.method = method;
++n
+355	  request.http_version = http_version;
++n
+356	  request.request_uri = raw_path;
++n
+357	  request.query = "";
++n
+358	  free(buffer);
++n
+359	  buffer = NULL;
++n
+362	  header *header_array = (header *)malloc(sizeof(header) * max_headers);
++n
+363	  int num_headers = 0;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+409	  printf("num headers: %d\n", num_headers);
++n
+410	  request.headers = header_array;
++n
+411	  request.num_headers = num_headers;
++n
+412	  request.message_body = "";
++n
+414	  print_request(&request);
++n
+424	  parse_respond(sock, &request);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+429	  free(general_lines);
++n
+430	  general_lines = NULL;
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+435	  free(header_array);
++n
+436	  free(method);
++n
+437	  free(raw_path);
++n
+438	  free(http_version);
++n
+458	  close_socket(sock);
++n
+459	}
++n
+run_linear_server (acceptor=0x608420) at server.c:21
+21	  }
++n
+19	    socket_t *sock = accept_connection(acceptor);
++n
+20	    handle(sock);
++n
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+339	      raw_path = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+340	    else if (count == 2)
++n
+341	      http_version = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+350	      (strlen(raw_path) + strlen("index.html") + 1));
++n
+349	    raw_path = realloc(raw_path, sizeof(char) * 
++n
+351	    strcat(raw_path, "index.html");
++n
+354	  request.method = method;
++n
+355	  request.http_version = http_version;
++n
+356	  request.request_uri = raw_path;
++n
+357	  request.query = "";
++n
+358	  free(buffer);
++n
+359	  buffer = NULL;
++n
+362	  header *header_array = (header *)malloc(sizeof(header) * max_headers);
++n
+363	  int num_headers = 0;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+409	  printf("num headers: %d\n", num_headers);
++n
+410	  request.headers = header_array;
++n
+411	  request.num_headers = num_headers;
++n
+412	  request.message_body = "";
++n
+414	  print_request(&request);
++n
+424	  parse_respond(sock, &request);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+429	  free(general_lines);
++n
+430	  general_lines = NULL;
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+435	  free(header_array);
++n
+436	  free(method);
++n
+437	  free(raw_path);
++n
+438	  free(http_version);
++n
+458	  close_socket(sock);
++n
+459	}
++n
+run_linear_server (acceptor=0x608420) at server.c:21
+21	  }
++n
+19	    socket_t *sock = accept_connection(acceptor);
++n
+20	    handle(sock);
++n
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+339	      raw_path = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+340	    else if (count == 2)
++n
+341	      http_version = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+354	  request.method = method;
++n
+355	  request.http_version = http_version;
++n
+356	  request.request_uri = raw_path;
++n
+357	  request.query = "";
++n
+358	  free(buffer);
++n
+359	  buffer = NULL;
++n
+362	  header *header_array = (header *)malloc(sizeof(header) * max_headers);
++n
+363	  int num_headers = 0;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+409	  printf("num headers: %d\n", num_headers);
++n
+410	  request.headers = header_array;
++n
+411	  request.num_headers = num_headers;
++n
+412	  request.message_body = "";
++n
+414	  print_request(&request);
++n
+424	  parse_respond(sock, &request);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+429	  free(general_lines);
++n
+430	  general_lines = NULL;
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+435	  free(header_array);
++n
+436	  free(method);
++n
+437	  free(raw_path);
++n
+438	  free(http_version);
++n
+458	  close_socket(sock);
++n
+459	}
++n
+run_linear_server (acceptor=0x608420) at server.c:21
+21	  }
++n
+19	    socket_t *sock = accept_connection(acceptor);
++n
+20	    handle(sock);
++n
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+339	      raw_path = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+340	    else if (count == 2)
++n
+341	      http_version = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+354	  request.method = method;
++n
+355	  request.http_version = http_version;
++n
+356	  request.request_uri = raw_path;
++n
+357	  request.query = "";
++n
+358	  free(buffer);
++n
+359	  buffer = NULL;
++n
+362	  header *header_array = (header *)malloc(sizeof(header) * max_headers);
++n
+363	  int num_headers = 0;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+409	  printf("num headers: %d\n", num_headers);
++n
+410	  request.headers = header_array;
++n
+411	  request.num_headers = num_headers;
++n
+412	  request.message_body = "";
++n
+414	  print_request(&request);
++n
+424	  parse_respond(sock, &request);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+429	  free(general_lines);
++n
+430	  general_lines = NULL;
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+435	  free(header_array);
++n
+436	  free(method);
++n
+437	  free(raw_path);
++n
+438	  free(http_version);
++n
+458	  close_socket(sock);
++n
+459	}
++n
+run_linear_server (acceptor=0x608420) at server.c:21
+21	  }
++n
+19	    socket_t *sock = accept_connection(acceptor);
++n
+20	    handle(sock);
++n
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+310	    if (num_lines == max_lines) {
++n
+311	      max_lines = max_lines + 1;
++n
+312	      general_lines = realloc(general_lines, sizeof(char *) * max_lines);
++n
+316	    buffer[strlen(buffer) - 2] = '\0';
++n
+317	    printf("buffer: %s\n", buffer);
++n
+318	    general_lines[num_lines] = strdup(buffer);
++n
+319	    printf("general lines: \n%s\n", general_lines[num_lines]);
++n
+320	    free(buffer);
++n
+321	    buffer = socket_read_line(sock);
++n
+323	    num_lines++;
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+339	      raw_path = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+338	    else if (count == 1)
++n
+340	    else if (count == 2)
++n
+341	      http_version = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+354	  request.method = method;
++n
+355	  request.http_version = http_version;
++n
+356	  request.request_uri = raw_path;
++n
+357	  request.query = "";
++n
+358	  free(buffer);
++n
+359	  buffer = NULL;
++n
+362	  header *header_array = (header *)malloc(sizeof(header) * max_headers);
++n
+363	  int num_headers = 0;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+366	    if (i != 0) {
++n
+367	      char *line = strdup(general_lines[i]);
++n
+372	      char *ptr = strtok(line, " ");
++n
+373	      int j = 0;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+376	          key = strdup(ptr);
++n
+384	        ptr = strtok(NULL, " ");
++n
+385	        j++;
++n
+374	      while (ptr != NULL) {
++n
+375	        if (j == 0) {
++n
+379	          if (strcmp(ptr, "Basic") != 0) {
++n
+380	            value = strdup(ptr);
++n
+381	            break;
++n
+387	      free(line);
++n
+388	      line = NULL;
++n
+389	      if (key != NULL && value != NULL) {
++n
+391	        key[strlen(key) - 1] = 0;
++n
+392	        head.key = strdup(key);
++n
+393	        head.value = strdup(value);
++n
+394	        free(key);
++n
+395	        free(value);
++n
+397	        if (num_headers == max_headers) {
++n
+398	          max_headers = max_headers + 1;
++n
+399	          header_array = realloc(header_array, sizeof(header) * max_headers);
++n
+401	        header_array[num_headers] = head;
++n
+402	        num_headers++;
++n
+365	  for (i = 0; i < num_lines; i++) {
++n
+409	  printf("num headers: %d\n", num_headers);
++n
+410	  request.headers = header_array;
++n
+411	  request.num_headers = num_headers;
++n
+412	  request.message_body = "";
++n
+414	  print_request(&request);
++n
+424	  parse_respond(sock, &request);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+427	    free(general_lines[j]);
++n
+426	  for (j = 0; j < num_lines; j++) {
++n
+429	  free(general_lines);
++n
+430	  general_lines = NULL;
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+432	    free(header_array[j].key);
++n
+433	    free(header_array[j].value);
++n
+431	  for (j = 0; j < num_headers; j++) {
++n
+435	  free(header_array);
++n
+436	  free(method);
++n
+437	  free(raw_path);
++n
+438	  free(http_version);
++n
+458	  close_socket(sock);
++n
+459	}
++n
+run_linear_server (acceptor=0x608420) at server.c:21
+21	  }
++n
+19	    socket_t *sock = accept_connection(acceptor);
++n
+20	    handle(sock);
++n
+
+Breakpoint 1, handle (sock=0x608440) at server.c:285
+285	void handle(socket_t *sock) {
++n
+299	  int max_lines = 1;
++n
+300	  int max_headers = 1;
++n
+301	  int num_lines = 0;
++n
+303	  char *buffer = socket_read_line(sock);
++n
+305	  char **general_lines = (char **)malloc(sizeof(char *) * max_lines);
++n
+309	  while (strlen(buffer) > 2) {
++n
+325	  printf("here!!!\n");
++n
+331	  char *first_line = strdup(general_lines[0]);
++n
+333	  char *p = strtok(first_line, " ");
++n
+334	  int count = 0;
++n
+335	  while (p != NULL) {
++n
+336	    if (count == 0)
++n
+337	      method = strdup(p);
++n
+342	    count++;
++n
+343	    p = strtok(NULL, " ");
++n
+335	  while (p != NULL) {
++n
+346	  free(first_line);
++n
+347	  first_line = NULL;
++n
+348	  if (!strcmp(raw_path, "/")) {
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcmp_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S:31
+31	../sysdeps/x86_64/multiarch/strcmp-sse2-unaligned.S: No such file or directory.
++n
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++q

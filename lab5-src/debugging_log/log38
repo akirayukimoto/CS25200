@@ -1,0 +1,119 @@
+Tue Jul 31 15:13:30 EDT 2018
++break handle_dir.c:190
+Breakpoint 1 at 0x4805: file handle_dir.c, line 190.
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:190
+190	  content_length_header.value = message_length;
++n
+191	  header_array[2] = content_length_header;
++n
+193	  response.headers = header_array;
++n
+194	  response.message_body = message_body;
++n
+195	  printf("message_body: %s\n", response.message_body);
++n
+198	  char *to_string = response_string(&response);
++s
+response_string (response=0x7fffffffe0e0) at http_messages.c:119
+119	  char *to_string = strdup(response->http_version);
++n
+124	  int new_length = strlen(to_string) + sizeof(response->status_code) + 2;
++n
+125	  char *status_str = (char *)malloc(sizeof(char) * sizeof(response->status_code));
++n
+126	  sprintf(status_str, "%d", response->status_code);
++n
+127	  to_string = realloc(to_string, new_length);
++n
+128	  strcat(to_string, " ");
++n
+129	  strcat(to_string, status_str);
++n
+130	  strcat(to_string, " ");
++n
+131	  free(status_str);
++n
+137	    const int status = response->status_code;
++n
+138	    char *reason = strdup(status_reason(status));
++n
+139	    response->reason_phrase = reason;
++n
+140	    new_length = strlen(to_string) + strlen(reason) + 3;
++n
+141	    to_string = realloc(to_string, new_length);
++n
+142	    strcat(to_string, reason);
++n
+143	    strcat(to_string, "\r\n");
++n
+144	    free(reason);
++n
+155	  int content_length = 0;
++n
+156	  for (i = 0; i < response->num_headers; i++) {
++n
+174	    if (content_length == 0) {
++n
+175	      new_length = strlen(to_string) + 5 + strlen(response->message_body);
++n
+180	    to_string = realloc(to_string, new_length);
++n
+181	    strcat(to_string, "\r\n");
++n
+184	    int my_length = strlen(to_string);
++n
+185	    for (i = 0; i < content_length; i++) {
++n
+193	    int cur_index = my_length + i;
++n
+194	    to_string[cur_index++] = '\r';
++n
+195	    to_string[cur_index++] = '\n';
++n
+196	    to_string[cur_index] = '\0';
++n
+198	  return to_string;
++n
+199	}
++n
+handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:199
+199	  printf("to_string:\n%s\n", to_string);
++n
+200	  socket_write_string(sock, to_string);
++n
+201	  printf("here\n");
++n
+203	  free(to_string);
++n
+204	  free(header_array);
++n
+205	  free(dir_path);
++n
+206	  for (i = 0; i < num_info; i++) {
++n
+207	    free(info_array[i].name);
++k
++r 2300
+Starting program: /u/data/u91/sun549/cs252/lab5-src/myhttpd 2300
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, handle_directory (sock=0x55555575c690, request=0x7fffffffe3a0) at handle_dir.c:190
+190	  content_length_header.value = message_length;
++n
+191	  header_array[2] = content_length_header;
++n
+193	  response.headers = header_array;
++n
+194	  response.message_body = message_body;
++n
+195	  printf("message_body: %s\n", response.message_body);
++n
+198	  char *to_string = response_string(&response);
++q

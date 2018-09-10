@@ -1,0 +1,112 @@
+#! /bin/bash
+
+if [[ $# -ne 1 ]]
+then
+	echo "Usage: verify <filename>"
+	exit 1
+fi
+
+if ! [[ -r $1 ]]
+then
+	echo "Error: $1 is not readable!"
+	exit 2
+fi
+
+Count=1
+while IFS='' read -r line
+do
+	Name=$(echo "${line}" | cut -d';' -f1)
+	Address=$(echo "${line}" | cut -d';' -f2)
+	# check whether the name is valid
+	V_NAME=0
+	V_ADDR=0
+
+	F1="[A-Z][a-z][a-z]*, [A-Z][a-z][a-z]*$"
+	F2="[A-Z][a-z][a-z]*, [A-Z][a-z][a-z]* [A-Z].$"
+	if [[ ${Name} =~ ${F1} ]]
+	then
+		let V_NAME=1
+	elif [[ ${Name} =~ ${F2} ]]
+	then
+		let V_NAME=1
+	fi
+
+	digit=$(echo "${Address}" | cut -d' ' -f1)
+	if  echo "${digit}" | grep -q "^[0-9][0-9]*$"
+	then
+		let V_ADDR=1
+	fi
+
+	# check ehether the address is valid
+	n=1
+	num=$(echo "${Address}" | wc -w)
+
+	IFS=' ' read -ra field <<< "${Address}"
+	for i in "${field[@]}"
+	do
+		if [ ${n} -eq 1 ] && [ ${V_ADDR} -eq 0 ]
+		then
+			break
+		elif [[ ${n} -gt 1 ]]
+		then
+	#		Format1="^[A-Z][a-zA-Z0-9][a-zA-Z0-9]*$"
+			Format1="^[0-9][a-zA-Z0-9][a-zA-Z0-9]*$"
+			Format2="^[A-Z][a-zA-Z0-9.]*$"
+			Format3="[[:digit:]]"
+			if [[ ${i} =~ ${Format1} ]]
+			then
+				let V_ADDR=1
+	#		elif [[ ${i} =~ ${Format2} ]]
+	#		then
+	#			let V_ADDR=1
+			elif [[ ${i} =~ ${Format2} ]]
+			then
+				let V_ADDR=1
+			elif [[ ${i} =~ ${Format3} ]]
+			then
+				if [[ ${n} -eq ${num} ]]
+				then
+					let V_ADDR=1
+				else
+					let V_ADDR=0
+					break
+				fi
+			else
+				let V_ADDR=0
+				break
+			fi
+		fi
+		let n+=1
+	done
+
+	lc=$(echo "${Address}" | tail -c 2)
+	if [[ "${lc}" == " " ]]
+	then
+		let V_ADDR=0
+	fi
+
+	if [[ ${num} -eq 1 ]]
+	then
+		let V_ADDR=0
+	fi
+	# print out
+	echo -n "Line ${Count} "
+	if [ ${V_NAME} -eq 0 ] && [ ${V_ADDR} -eq 0 ]
+	then
+		echo "has an invalid name and address!"
+	elif [[ ${V_ADDR} -eq 0 ]]
+	then
+		echo "has an invalid address!"
+	elif [[ ${V_NAME} -eq 0 ]]
+	then
+		echo "has an invalid name!"
+	else
+		echo "is valid."
+	fi
+
+	let Count+=1
+	unset V_NAME
+	unset V_ADDR
+done < $1
+
+exit 0

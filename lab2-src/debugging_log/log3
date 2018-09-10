@@ -1,0 +1,7 @@
+Thu Jun 21 11:45:59 EDT 2018
++break main
+Function "main" not defined.
++r
+Starting program: /home/u91/sun549/cs252/lab2-src/MyMalloc.o 
+During startup program exited with code 126.
++q

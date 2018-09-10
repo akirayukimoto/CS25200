@@ -1,0 +1,19 @@
+#!/bin/bash
+# This test runs many simple commands
+
+RANDOM=123456 #set the random seed
+
+CMDS=($'cat test???\n' $'echo test_*\n' $'echo *_w?l?c?r?s?\n' $'cat f?l?s/*\n' $'ls *?*?*?*\n')
+input_str=""
+
+
+for i in {1..1000}
+do
+    input_str+=${CMDS[$RANDOM % ${#CMDS[@]} ]}
+done
+
+#/bin/bash <<< "$input_str" 2>&1
+#./shell <<< "$input_str" 2>&1
+
+diff <(/bin/bash <<< "$input_str" 2>&1) <(./shell <<< "$input_str" 2>&1)
+exit $?
